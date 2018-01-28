@@ -174,7 +174,8 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 		let inteiro = true
 		let ic
 		let linha
-		
+		// ---------------------------------------------------------------------
+		// ficou mais pequeno
 		while( inteiro ){
 			at += 1
 			let ic1 = at / k
