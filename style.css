@@ -14,12 +14,18 @@ main {
 footer {
   background-color: rgb(22, 117, 170);
   padding: 2px 0 2px 0;
+  color: rgb(255, 255, 255);
 }
 
 /** AREA DE MENUS PADRÃO **/
 
 nav.navbar {
   background-color: rgb(22, 117, 170);
+}
+
+/** ICONES **/
+.fas, .far{
+  margin: 0 5px 0 5px;
 }
 
 img.logo {
@@ -29,7 +35,6 @@ img.logo {
 /*** CONFIGURAÇÕES PAGINA #HOME ***/
 #carouselhome {
   padding: 10px 0;
-  border: 1px solid red;
 }
 
 /*** CONFIGURAÇÕES CALCULO 01 ***/
