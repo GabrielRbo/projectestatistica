@@ -9,13 +9,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <title>Exact Analytcs</title>
+
+    <title>Cálculo 1</title>
     
   </head>
   <body>
 
     <header>
       <nav class="navbar navbar-expand-md navbar-light">
+
         <!-- Imagem do Logo -->
         <a class="navbar-brand" href="#">
           <img class="logo" src="img/logo01.png" alt="Exact Analytcs Empresa de Banco de Dados">
@@ -23,10 +25,10 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-principal" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-      
+          
         <div class="collapse navbar-collapse" id="menu-principal">
           <ul class="navbar-nav ml-auto">
-
+    
             <!-- Menu da NavBar-->
             <li class="nav-item">
               <a class="nav-link text-light" href="#"><i class="fas fa-home fa-xs"></i>Home</a>
@@ -37,15 +39,15 @@
             <li class="nav-item dropdown ">
               <a class="nav-link dropdown text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-calculator fa-xs"></i>Serviços</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Serviço 1</a>
-                <a class="dropdown-item" href="#">Serviço 2</a>
-                <a class="dropdown-item" href="#">Serviço 3</a>
+                  <a class="dropdown-item" href="#">Serviço 1</a>
+                  <a class="dropdown-item" href="#">Serviço 2</a>
+                  <a class="dropdown-item" href="#">Serviço 3</a>
               </div>
             </li>
             <li class="nav-item">
               <a class="nav-link text-light" href="#"><i class="fas fa-headset fa-xs"></i>Contatos</a>
             </li>
-
+    
             <!--- imagem do login-->  
           </ul>
           <a class="navbar-brand" href="#">
@@ -55,73 +57,63 @@
       </nav>
     </header>
 
-    <main>
-      <!--carousel-->
-      <div id="carouselhome" class="carousel slide" data-ride="carousel">
-        <!--marcadores-->
-        <ol class="carousel-indicators">
-          <li data-target="#carouselhome" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselhome" data-slide-to="1"></li>
-          <li data-target="#carouselhome" data-slide-to="2"></li>
-        </ol>
-        <!--slide 1-->
-        <div class="carousel-inner">
-        
-          <div class="carousel-item active">
-            <img class="rounded mx-auto d-block img-fluid" src="img/1.png" alt="Primeiro Slide"> <!--imagem slide 1-->
-          </div>
-          <!--slide 2-->
-          <div class="carousel-item">
-            <img class="rounded mx-auto d-block img-fluid" src="img/2.png" alt="Segundo Slide"> 
-          </div>
-          <!--slide 3-->
-          <div class="carousel-item">
-            <img class="rounded mx-auto d-block img-fluid" src="img/3.png" alt="Terceiro Slide"> 
-          </div>
-        </div>
-
-        <a class="carousel-control-prev" href="#carouselhome" role="button" data-slide="prev"> <!--item para indicador anterior-->
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only ">Anterior</span>
-        </a>
-
-        <a class="carousel-control-next" href="#carouselhome" role="button" data-slide="next"> <!--item para indicador próximo-->
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Próximo</span>
-        </a>
-
-      </div>
-
-      <!--cards-->
-      <div class="container">
-        <div class="row">
-          <div class="card col-sm" style="width: 18rem;">
-            <img class="card-img-top" src="img/1.png" alt="Card imagem 1">
-            <div class="card-body">
-              <h5 class="card-title">Título do card</h5>
-              <p class="card-text">Exemplo de texto escrito no card</p>
-              <a href="calculo1.html" class="btn btn-primary">Linkar pagina</a> <!--aqui serve para linkar as paginas, tem que editar-->
+    <main id="calculo01">
+        <!-- INICIO DO FORMULÁRIO PARA INSERÇÃO MANUAL DE DADOS-->
+        <form id="estatistica-descritiva" class="my-4 px-5">
+            <div class="form-group">
+              <label for="nomeVariavel">Nome da Variável</label>
+              <input type="text" class="form-control" id="nomeVariavel" placeholder="Insira o nome da Variável">
             </div>
-          </div>
-          <div class="card col-sm" style="width: 18rem;">
-            <img class="card-img-top" src="img/2.png" alt="Card imagem 2">
-            <div class="card-body">
-              <h5 class="card-title">Título do card</h5>
-              <p class="card-text">Exemplo de texto escrito no card</p>
-              <a href="#" class="btn btn-primary">Linkar pagina</a> <!--aqui serve para linkar as paginas, tem que editar-->
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="tipoCalculado" id="tipoAmostra" value="option1">
+                <label class="form-check-label" for="tipoAmostra">
+                  Amostra
+                </label>
+              </div>
+              <div class="form-check form-group">
+                <input class="form-check-input" type="radio" name="tipoCalculado" id="tipoPopulacao" value="option2">
+                <label class="form-check-label" for="tipoPopulacao">
+                  População
+                </label>
+
+              </div>
+            <div class="form-group">
+              <label for="dadosVariavel">Dados da Variável</label>
+              <input type="" class="form-control" id="dadosVariavel" placeholder="Insira os dados da Variável">
+              <small id="ajudaDados" class="form-text text-muted">Colocar os dados separados com ','</small>
             </div>
-          </div>
-          <div class="card col-sm" style="width: 18rem;">
-            <img class="card-img-top" src="img/3.png" alt="Card imagem 3">
-            <div class="card-body">
-              <h5 class="card-title">Título do card</h5>
-              <p class="card-text">Exemplo de texto escrito no card</p>
-              <a href="#" class="btn btn-primary">Linkar pagina</a> <!--aqui serve para linkar as paginas, tem que editar-->
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="calculoSelecionado" id="qualiNominal" value="option1">
+                <label class="form-check-label" for="qualiNominal">
+                  Qualitativa Nominal
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="calculoSelecionado" id="qualiOrdinal" value="option2">
+                <label class="form-check-label" for="qualiOrdinal">
+                  Qualitativa Ordinal
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="calculoSelecionado" id="quantDiscreta" value="option3" >
+                <label class="form-check-label" for="quantDiscreta">
+                  Quantitativa Discreta
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="calculoSelecionado" id="quantContinua" value="option4">
+                <label class="form-check-label" for="quantContinua">
+                  Quantitativa Continua
+                </label>
+              </div>
+
+              <button type="submit" id="BotaoCalcular" class="btn btn-primary my-4">Calcular</button>
+          </form>
+
+        <!-- FIM DO FORMULÁRIO PARA INSERÇÃO DE DADOS-->
+
+    </main> 
 
     <!--rodapé-->
     <footer>
