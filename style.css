@@ -1,6 +1,10 @@
 /**** COMFIGURAÇÕES GERAIS DAS PAGINAS***/
 
 /*** PÁGINA PADRÃO ***/
+html{
+  scroll-behavior: smooth;
+}
+
 body {
   display: flex;
   min-height: 100vh;

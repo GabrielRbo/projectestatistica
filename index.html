@@ -15,13 +15,13 @@
   <body>
 
     <header>
-      <nav class="navbar navbar-expand-md navbar-light">
+      <nav id="homing" class="navbar navbar-expand-md navbar-light ">
         <!-- Imagem do Logo -->
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.html">
           <img class="logo" src="img/logo01.png" alt="Exact Analytcs Empresa de Banco de Dados">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-principal" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#menu-principal" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon "></span>
         </button>
       
         <div class="collapse navbar-collapse" id="menu-principal">
@@ -29,10 +29,10 @@
 
             <!-- Menu da NavBar-->
             <li class="nav-item">
-              <a class="nav-link text-light" href="index.html"><i class="fas fa-home fa-xs"></i>Home</a>
+              <a class="nav-link text-light" href="#"><i class="fas fa-home fa-xs"></i>Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light" href="#"><i class="fas fa-building fa-xs"></i>Sobre</a>
+              <a class="nav-link text-light" href="#about"><i class="fas fa-building fa-xs"></i>Sobre</a>
             </li>
             <li class="nav-item dropdown ">
               <a class="nav-link dropdown text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-calculator fa-xs"></i>Serviços</a>
@@ -48,12 +48,39 @@
 
             <!--- imagem do login-->  
           </ul>
-          <a class="navbar-brand" href="#">
-            <i class="fas fa-user-circle text-light fa-2x"></i>
+          <a class="navbar-brand" href="#login">
+            <i class="fas fa-user-circle text-light fa-2x" data-toggle="modal" data-target="#telaLogin"></i>
           </a>
         </div>
       </nav>
     </header>
+
+    <!-- POP UP DE LOGIN -->
+      <div class="modal fade" id="telaLogin" tabindex="-1" role="dialog" aria-labelledby="telaLoginModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="telaLoginModal">Faça o Login para Continuar</h5>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="username" class="col-form-label">Usuário:</label>
+                  <input type="text" class="form-control" id="username">
+                </div>
+                <div class="form-group">
+                  <label for="senha" class="col-form-label">Senha:</label>
+                  <input type="password" class="form-control" name="senha">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Login</button>
+              <button type="button" class="btn btn-primary">Cadastrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <main>
       <!--carousel-->
@@ -67,9 +94,21 @@
         <!--slide 1-->
         <div class="carousel-inner">
         
-          <div class="carousel-item active">
-            <img class="rounded mx-auto d-block img-fluid" src="img/1.png" alt="Primeiro Slide"> <!--imagem slide 1-->
+          <div class="carousel-item active bg-primary">
+          <div class="row">
+            <div class="col">
+              <img class="rounded mx-auto img-fluid col-sm" style="height: 500px;" src="img/reuniao.jpg" alt="Primeiro Slide"> <!--imagem slide 1-->
+            </div>
+
+            <div class="col">
+              <h1>Boa Noite</h1>
+              <p>adhasidhsauhsaudhiashdiasdhiasudsaihdsuia <br>
+              asdgsauygdasuyasgduyasgduyasgduasydgasuy <br>
+              asdgyuasgduyasgduyasgduysagdyusgduas <br></p>
+            </div>
           </div>
+        
+        </div>
           <!--slide 2-->
           <div class="carousel-item">
             <img class="rounded mx-auto d-block img-fluid" src="img/2.png" alt="Segundo Slide"> 
@@ -122,6 +161,8 @@
         </div>
       </div>
     </main>
+    
+    <div id="about" style="border: 1px solid red; height: 720px;"></div>
 
     <!--rodapé-->
     <footer>
