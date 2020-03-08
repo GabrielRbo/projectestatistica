@@ -7,8 +7,14 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- offline -->
+    <link rel="stylesheet" href=".CSS/bootstrap.min.css">
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <!-- offline -->
+    <link rel="stylesheet" href="./CSS/all.css">
+
+    <link rel="stylesheet" href="./CSS/style.css">
 
     <title>Cálculo 1</title>
     
@@ -108,12 +114,29 @@
                 </label>
               </div>
 
-              <button type="submit" id="BotaoCalcular" class="btn btn-primary my-4">Calcular</button>
           </form>
+              <button type="submit" id="BotaoCalcular" class="btn btn-primary my-4">Calcular</button>
 
         <!-- FIM DO FORMULÁRIO PARA INSERÇÃO DE DADOS-->
     </main> 
 
+    <!-- tabela -->
+
+    <div id="tabe" style="display: none;">
+      
+      <table>
+        <caption></caption>
+        <thead>
+          <th id="variavelNome"></th>
+          <th>F.S</th>
+        </thead>
+        <tbody id="corpo"></tbody>
+      </table>
+
+    </div>
+
+
+    <!-- tabela -->
     <!--rodapé-->
     <footer>
       <div class="footer-copyright">
@@ -127,7 +150,18 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <!-- offline -->
+    <script type="text/javascript" src="./JS/jquery-3.4.1.slim.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <!-- offline -->
+    <script type="text/javascript" src="./JS/popper.min.js"></script>
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- offline -->
+    <script type="text/javascript" src="./JS/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="./JS/nominal.js"></script>
+
   </body>
 </html>
