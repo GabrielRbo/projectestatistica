@@ -42,9 +42,12 @@ function tabela(nomeVariavelTabela, localDaTabelaSite){
 	// ADD OS VALORES NA TABELA
 	const corpoTabela = document.querySelector('#corpo')
 	corpoTabela.innerHTML = ``
+	cont = 0 
 	Object.keys(sep).forEach( item => {
 		corpoTabela.innerHTML += `<tr> <td>${item}</td> <td>${sep[item]}</td> </tr>`
+		cont += sep[item]
 	})
+	corpoTabela.innerHTML += `<tr> <td>Total</td> <td>${cont}</td> </tr>`
 }
 
 
