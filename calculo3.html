@@ -22,47 +22,40 @@
   <body>
 
     <header>
-      <nav class="navbar navbar-expand-md navbar-light">
-
+      <nav id="homing" class="navbar navbar-expand-md navbar-light ">
         <!-- Imagem do Logo -->
         <a class="navbar-brand" href="index.html">
           <img class="logo" src="img/logo01.png" alt="Exact Analytcs Empresa de Banco de Dados">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-principal" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#menu-principal" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon "></span>
         </button>
-          
+      
         <div class="collapse navbar-collapse" id="menu-principal">
           <ul class="navbar-nav ml-auto">
-    
+
             <!-- Menu da NavBar-->
             <li class="nav-item">
               <a class="nav-link text-light" href="index.html"><i class="fas fa-home fa-xs"></i>Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light" href="#"><i class="fas fa-building fa-xs"></i>Sobre</a>
+              <a class="nav-link text-light" href="index.html#services"><i class="fas fa-calculator fa-xs"></i>Serviços</a>
             </li>
-            <li class="nav-item dropdown ">
-              <a class="nav-link dropdown text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-calculator fa-xs"></i>Serviços</a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="calculo1.html">Serviço 1</a>
-                  <a class="dropdown-item" href="calculo2.html">Serviço 2</a>
-                  <a class="dropdown-item" href="calculo3.html">Serviço 3</a>
-              </div>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="index.html#about"><i class="fas fa-building fa-xs"></i>Sobre</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-light" href="#"><i class="fas fa-headset fa-xs"></i>Contatos</a>
             </li>
-    
+
             <!--- imagem do login-->  
           </ul>
-          <a class="navbar-brand" href="#">
-            <i class="fas fa-user-circle text-light fa-2x"></i>
+          <a class="navbar-brand" href="#login">
+            <i class="fas fa-user-circle text-light fa-2x" data-toggle="modal" data-target="#telaLogin"></i>
           </a>
         </div>
       </nav>
     </header>
-
  
     <!--rodapé-->
     <footer>
