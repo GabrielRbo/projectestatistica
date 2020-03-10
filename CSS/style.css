@@ -46,3 +46,22 @@ input#nomeVariavel,
 #dadosVariavel {
   width: 60%;
 }
+/*** CONFIGURAÇÕES DAS TABELAS ***/
+
+table {
+  text-align: center;
+}
+thead{
+  background-color: #59a4dc;
+}
+
+#total {
+  background-color:  #004a7b;
+  color: white;
+}
+
+#calculoNominal #corpo tr:hover  {
+  background-color: aqua !important; 
+} 
+
+

@@ -47,7 +47,7 @@ function tabela(nomeVariavelTabela, localDaTabelaSite){
 		corpoTabela.innerHTML += `<tr> <td>${item}</td> <td>${sep[item]}</td> </tr>`
 		cont += sep[item]
 	})
-	corpoTabela.innerHTML += `<tr> <td>Total</td> <td>${cont}</td> </tr>`
+	corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> </tr>`
 }
 
 
@@ -62,7 +62,7 @@ document.querySelector('#BotaoCalcular').onclick = e => {
 	const tipoCalculo = document.getElementsByName('calculoSelecionado')
 
 	if( tipoCalculo[0].checked ){
-		tabela('nomeVariavel', 'tabe')
+		tabela('nomeVariavel', 'calculoNominal')
 		// alert('Qualitativa Nominal')
 
 	}else if( tipoCalculo[1].checked ){
