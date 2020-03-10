@@ -50,8 +50,6 @@ tipoCalculo[3].onchange = e => {
 }
 
 //--------------------------------------------------------------
-// const localDaTabela = document.querySelector(`#$calculoNominal`)
-// tirarTabela.style.display = 'none'
 
 function nominal(nomeVariavelTabela, localDaTabelaSite){
 	const tipoCalculo = document.getElementsByName('calculoSelecionado')
@@ -59,18 +57,38 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 	const localDaTabela = document.querySelector(`#${localDaTabelaSite}`)
 	const NomeTabela = document.querySelector('#variavelNome')
 	const nomeVariavel = document.querySelector('#nomeVariavel')
+	const dadosVariavel = document.querySelector('#dadosVariavel')
+
+	if ( nomeVariavel.value.length < 3 ){
+		alert('Adicione o nome da varial')
+		nomeVariavel.focus()
+		return
+	}
+
+	if ( dadosVariavel.value.length < 3 ){
+		alert('O dados da variavel nao poder estar vazio')
+		dadosVariavel.focus()
+	}
+
+	if ( tipoCalculo[1].checked ){
+		let ordemInput = document.querySelector('#ordem')
+		if ( ordemInput.value.length < 3 ){
+			alert('Por favor definir sua ordem')
+			ordemInput.focus()
+		}
+	}
 
 	NomeTabela.innerHTML = nomeVariavel.value
 	localDaTabela.style.display = 'block'
 
 
-	const dadosVariavel = document.querySelector('#dadosVariavel')
 	let dados = dadosVariavel.value.split(',')
 	let dadosSeparados = []
 
 	// SEPARA E CONTAS OS ELEMENTOS(DO CAMPO -> DADOS DA VARIAVEL)
 	let sep = dados.reduce( (obj, item) => {
 		// console.log(obj, item)
+		item = item.replace(/\s/g, '')// fazer testes
 		if(!obj[item]){
 			obj[item] = 1
 		}else {
@@ -100,6 +118,7 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 		corpoTabela.innerHTML = ``
 		cont = 0 
 		ordemInput.forEach( item => {
+			item = item.replace(/\s/g, '') // fazer testes
 			corpoTabela.innerHTML += `<tr> <td>${item}</td> <td>${sep[item]}</td> </tr>`
 			cont += sep[item]
 		})
@@ -134,12 +153,56 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 		let at = max - min
 
 		// 2°passo
-		let k = Math.sqrt( dados.length ) // raiz quadrada do total dos elementos
-		console.log(`kkkk ${k} ${k - 1} ${k + 1}`)
+		let k = Number( Math.sqrt( dados.length ).toString()[0] ) // raiz quadrada do total dos elementos
+		let kmais = k + 1
+		let kmenos = k - 1
 
+		//3°passo
+		let ic = at / k
+		let linha = k
+		console.log('antes', ic)
+		while ( !Number.isInteger(ic) ){
+			ic = at / kmais
+			linha = kmais
+			if( !Number.isInteger(ic) ){
+				ic = at / kmenos
+				linha = kmenos
+			}
+			at += 1
+		}
+
+		const corpoTabela = document.querySelector('#corpo')
+		corpoTabela.innerHTML = ''
+		
+		cont = 0
+		ic = Number(ic)
+		min = Number(min)
+
+		let tot = 0
+		let totVet = []
+
+		let minAux = min
+
+		for(i = 0; i < linha; i++){
+			tot = 0
+			dados.forEach( (item) => {
+				if(Number(item) >= minAux && Number(item) < (minAux + ic) ){
+					tot += 1
+				}
+			})
+			minAux += ic
+			totVet.push(tot)
+		}
+
+		for(let i = 0; i < linha; i++) {
+			corpoTabela.innerHTML += `<tr> <td>${min} |---- ${min + ic}</td> <td>${totVet[i]}</td> </tr>`
+			cont += totVet[i]
+			min += ic
+		}
+		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> </tr>`
+		
 		// FIM TABELA CONTINUA
 	}
-
 
 }
 
@@ -150,24 +213,16 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 document.querySelector('#BotaoCalcular').onclick = e => {
 	// evento do botao
 	// const nomeVarialvel = document.querySelector("#nomeVariavel")
-	// const checkAmostra = document.getElementsByName('tipoCalculado')
+	const checkAmostra = document.getElementsByName('tipoCalculado')
 	// const dadosVariavel = document.querySelector('#dadosVariavel')
-	const tipoCalculo = document.getElementsByName('calculoSelecionado')
+	// const tipoCalculo = document.getElementsByName('calculoSelecionado')
+	if ( checkAmostra[0].checked ){
+		nominal('nomeVariavel', 'calculoNominal')
+	}else if ( checkAmostra[1].checked ){
+		alert('NAO IMPLEMENTADO')
+	}else {
+		alert('selecione amostra ou populacao')
+		checkAmostra[0].focus()
+	}
 
-	nominal('nomeVariavel', 'calculoNominal')
-
-	// if( tipoCalculo[0].checked ){
-	// 	nominal('nomeVariavel', 'calculoNominal')
-	// 	// alert('Qualitativa Nominal')
-
-	// }else if( tipoCalculo[1].checked ){
-	// 	alert(' Qualitativa Ordinal ')
-
-	// }else if( tipoCalculo[2].checked ){
-	// 	alert(' Quantitativa Discreta ')
-
-	// }else if( tipoCalculo[3].checked ){
-	// 	alert('Quantitativa Continua ')
-
-	// }
 }
