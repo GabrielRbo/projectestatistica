@@ -150,7 +150,9 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 			if( Number(item) > max ) max = item
 			if( Number(item) < min ) min = item
 		} )
-		let at = max - min
+		let at = (max - min) + 1
+		
+		console.log(min,max)
 
 		// 2°passo
 		let k = Number( Math.sqrt( dados.length ).toString()[0] ) // raiz quadrada do total dos elementos
@@ -161,15 +163,44 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 		let ic = at / k
 		let linha = k
 		console.log('antes', ic)
-		while ( !Number.isInteger(ic) ){
+		
+		// while ( !Number.isInteger(ic) ){
+		// 	ic = at / kmais
+		// 	linha = kmais
+		// 	if( !Number.isInteger(ic) ){
+		// 		ic = at / kmenos
+		// 		linha = kmenos
+		// 	}
+		// 	at += 1
+		// }
+
+		let inteiro = true
+		while( inteiro ){
+			ic = at / k
+			if( Number.isInteger(ic) ){
+				inteiro = false
+				linha = k
+			}
+
 			ic = at / kmais
-			linha = kmais
-			if( !Number.isInteger(ic) ){
-				ic = at / kmenos
+			if( Number.isInteger(ic) ){
+				inteiro = false
+				linha = kmais
+			}
+
+
+			ic = at / kmenos
+			if( Number.isInteger(ic) ){
+				inteiro = false
 				linha = kmenos
 			}
+
 			at += 1
 		}
+
+
+
+		console.log('linha', linha)
 
 		const corpoTabela = document.querySelector('#corpo')
 		corpoTabela.innerHTML = ''
@@ -195,7 +226,7 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 		}
 
 		for(let i = 0; i < linha; i++) {
-			corpoTabela.innerHTML += `<tr> <td>${min} |---- ${min + ic}</td> <td>${totVet[i]}</td> </tr>`
+			corpoTabela.innerHTML += `<tr> <td>${Math.round(min)} |---- ${Math.round(min + ic)}</td> <td>${totVet[i]}</td> </tr>`
 			cont += totVet[i]
 			min += ic
 		}
