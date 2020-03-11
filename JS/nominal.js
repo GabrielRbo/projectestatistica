@@ -60,20 +60,20 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 	const dadosVariavel = document.querySelector('#dadosVariavel')
 
 	if ( nomeVariavel.value.length < 3 ){
-		alert('Adicione o nome da varial')
+		alert('Nome da variavel deve ter no minimo 3 caracteres!')
 		nomeVariavel.focus()
 		return
 	}
 
-	if ( dadosVariavel.value.length < 3 ){
+	if ( dadosVariavel.value.length < 1 ){
 		alert('O dados da variavel nao poder estar vazio')
 		dadosVariavel.focus()
 	}
 
 	if ( tipoCalculo[1].checked ){
 		let ordemInput = document.querySelector('#ordem')
-		if ( ordemInput.value.length < 3 ){
-			alert('Por favor definir sua ordem')
+		if ( ordemInput.value.length < 1 ){
+			alert('A ordem nao pode ficar fazia!')
 			ordemInput.focus()
 		}
 	}
@@ -102,11 +102,23 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 		const corpoTabela = document.querySelector('#corpo')
 		corpoTabela.innerHTML = ``
 		cont = 0 
+
+		//pega o total separado
+		let totPor = 0
 		Object.keys(sep).forEach( item => {
-			corpoTabela.innerHTML += `<tr> <td>${item}</td> <td>${sep[item]}</td> </tr>`
+			totPor += sep[item]
+		})
+
+		let fac = 0
+		let facP = 0
+
+		Object.keys(sep).forEach( item => {
+			fac += sep[item]
+			facP += sep[item] / totPor * 100
+			corpoTabela.innerHTML += `<tr> <td>${item}</td> <td>${sep[item]}</td> <td>${sep[item] / totPor * 100 }%</td> <td>${fac}</td> <td>${facP}%</td> </tr>`
 			cont += sep[item]
 		})
-		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> </tr>`
+		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id="total"> 100% </td> <td id="total"> </td> <td id="total"> </td> </tr>`
 		// FIM TABELA NOMINAL
 
 	}else if( tipoCalculo[1].checked ){
@@ -135,8 +147,7 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 			cont += sep[item]
 		})
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> </tr>`
-		// FIM TABELA NOMINAL
-		alert('Verificar com a prof pois essa nao foi entendida')
+		
 		// FIM TABELA DISCRETA
 
 	}else if( tipoCalculo[3].checked ){
@@ -151,7 +162,7 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 			if( Number(item) < min ) min = item
 		} )
 		
-		let at = (max - min) + 1
+		let at = (max - min)
 		
 		// 2°passo
 		let k = Number( Math.sqrt( dados.length ).toString()[0] ) // raiz quadrada do total dos elementos
@@ -161,33 +172,30 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 		//3°passo
 
 		let inteiro = true
-		while( inteiro ){
-			ic = at / k
-			if( Number.isInteger(ic) ){
-				inteiro = false
-				linha = k
-			}
-
-			ic = at / kmais
-			if( Number.isInteger(ic) ){
-				inteiro = false
-				linha = kmais
-			}
-
-
-			ic = at / kmenos
-			if( Number.isInteger(ic) ){
-				inteiro = false
-				linha = kmenos
-			}
-	//	console.log('at ant',at)  // Tive que desconsiderar em caso de encontrar o inteiro, porque ele jogava +1 antes de voltar 
-								  // no inicio do while e sair com a condição false.
-			if ( !Number.isInteger(ic) ){
-				at += 1
-				inteiro = true
-			}
+		let ic
+		let linha
 		
-		};
+		while( inteiro ){
+			at += 1
+			let ic1 = at / k
+			let ic2 = at / kmais
+			let ic3 = at / kmenos
+			if( Number.isInteger(ic1) ){
+				ic = ic1
+				linha = k
+				inteiro = false
+			}else if( Number.isInteger(ic2) ){
+				ic = ic2
+				linha = kmais
+				inteiro = false
+			}else if ( Number.isInteger(ic3) ){
+				ic = ic3
+				linha = kmenos
+				inteiro = false
+			}
+		}
+
+		console.log('ic', ic, linha)
 	//	console.log('dps',at)
     //   console.log('depois', ic)
 
@@ -216,8 +224,14 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 			totVet.push(tot)
 		}
 
+		//pega o total separado
+		let totPor = 0
+		Object.keys(sep).forEach( item => {
+			totPor += sep[item]
+		})
+
 		for(let i = 0; i < linha; i++) {
-			corpoTabela.innerHTML += `<tr> <td>${Math.round(min)} |---- ${Math.round(min + ic)}</td> <td>${totVet[i]}</td> </tr>`
+			corpoTabela.innerHTML += `<tr> <td>${Math.round(min)} |---- ${Math.round(min + ic)}</td> <td>${totVet[i]}</td> <td>${totVet[i] / totPor * 100}</td> <td>teste2</td> <td>teste3</td> </tr>`
 			cont += totVet[i]
 			min += ic
 		}
