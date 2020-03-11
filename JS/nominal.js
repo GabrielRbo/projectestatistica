@@ -150,29 +150,15 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 			if( Number(item) > max ) max = item
 			if( Number(item) < min ) min = item
 		} )
+		
 		let at = (max - min) + 1
 		
-		console.log(min,max)
-
 		// 2°passo
 		let k = Number( Math.sqrt( dados.length ).toString()[0] ) // raiz quadrada do total dos elementos
 		let kmais = k + 1
 		let kmenos = k - 1
-
+	//	console.log('quantidade', dados.length,'K',k, 'kmais',kmais,'kmenos', kmenos)
 		//3°passo
-		let ic = at / k
-		let linha = k
-		console.log('antes', ic)
-		
-		// while ( !Number.isInteger(ic) ){
-		// 	ic = at / kmais
-		// 	linha = kmais
-		// 	if( !Number.isInteger(ic) ){
-		// 		ic = at / kmenos
-		// 		linha = kmenos
-		// 	}
-		// 	at += 1
-		// }
 
 		let inteiro = true
 		while( inteiro ){
@@ -194,13 +180,18 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 				inteiro = false
 				linha = kmenos
 			}
+	//	console.log('at ant',at)  // Tive que desconsiderar em caso de encontrar o inteiro, porque ele jogava +1 antes de voltar 
+								  // no inicio do while e sair com a condição false.
+			if ( !Number.isInteger(ic) ){
+				at += 1
+				inteiro = true
+			}
+		
+		};
+	//	console.log('dps',at)
+    //   console.log('depois', ic)
 
-			at += 1
-		}
-
-
-
-		console.log('linha', linha)
+	//	console.log('linha', linha)
 
 		const corpoTabela = document.querySelector('#corpo')
 		corpoTabela.innerHTML = ''
