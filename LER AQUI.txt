@@ -1,0 +1,3 @@
+Foi add um arquivo org.js na pasta JS.
+Nele esta o codigo atual e um pouco mais organizado que o outro.
+Não apaguei o outro por backup.

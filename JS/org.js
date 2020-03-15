@@ -1,64 +1,47 @@
-// APENAS PARA LEMBRAR DE COMO CONTAR NAO MEXER
-function contaVetor(vetor){
-	vetor.reduce( (obj, item) => {
-		console.log(obj, item)
-		if(!obj[item]){
-			obj[item] = 1
-
-		}else {
-			obj[item]++
-
-		}
-
-		return obj
-	}, {} )
-}
-// APENAS PARA LEMBRAR DE COMO CONTAR NAO MEXER
-
-//--------------------------------------------------------------
+// pega os elementos da pagina
 const tipoCalculo = document.getElementsByName('calculoSelecionado')
 const mostraDiv = document.querySelector('#ordemVer')
-const tirarTabela = document.querySelector(`#calculoNominal`)
+const localDaTabela = document.querySelector(`#calculoNominal`)
+const NomeTabela = document.querySelector('#variavelNome')
+const nomeVariavel = document.querySelector('#nomeVariavel')
+const dadosVariavel = document.querySelector('#dadosVariavel')
+const corpoTabela = document.querySelector('#corpo')
 
+//--------------------------------------------------------------
+// se clicar no tipo de calculo esconde a tabela e o input de ordem
 if (tipoCalculo[1].checked) mostraDiv.style.display = 'block'
 tipoCalculo[1].onchange = e => {
 	if( e.isTrusted ){
 		mostraDiv.style.display = 'block'
-		tirarTabela.style.display = 'none'
+		localDaTabela.style.display = 'none'
 	}
 }
 
 tipoCalculo[0].onchange = e => {
 	if( e.isTrusted ){
 		mostraDiv.style.display = 'none'
-		tirarTabela.style.display = 'none'
+		localDaTabela.style.display = 'none'
 	}
 }
 
 tipoCalculo[2].onchange = e => {
 	if( e.isTrusted ){
 		mostraDiv.style.display = 'none'
-		tirarTabela.style.display = 'none'
+		localDaTabela.style.display = 'none'
 	}
 }
 
 tipoCalculo[3].onchange = e => {
 	if( e.isTrusted ){
 		mostraDiv.style.display = 'none'
-		tirarTabela.style.display = 'none'
+		localDaTabela.style.display = 'none'
 	}
 }
 
-//--------------------------------------------------------------
-
-function nominal(nomeVariavelTabela, localDaTabelaSite){
-	const tipoCalculo = document.getElementsByName('calculoSelecionado')
-
-	const localDaTabela = document.querySelector(`#${localDaTabelaSite}`)
-	const NomeTabela = document.querySelector('#variavelNome')
-	const nomeVariavel = document.querySelector('#nomeVariavel')
-	const dadosVariavel = document.querySelector('#dadosVariavel')
-
+// essa funcao que é chamada quando clica no botao 
+function gerarTabela(){
+	//--------------------------------------------------------------
+	// validacao precisa aprimorar
 	if ( nomeVariavel.value.length < 3 ){
 		alert('Nome da variavel deve ter no minimo 3 caracteres!')
 		nomeVariavel.focus()
@@ -68,6 +51,7 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 	if ( dadosVariavel.value.length < 1 ){
 		alert('O dados da variavel nao poder estar vazio')
 		dadosVariavel.focus()
+		return
 	}
 
 	if ( tipoCalculo[1].checked ){
@@ -75,6 +59,7 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 		if ( ordemInput.value.length < 1 ){
 			alert('A ordem nao pode ficar fazia!')
 			ordemInput.focus()
+			return
 		}
 	}
 
@@ -87,8 +72,7 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 
 	// SEPARA E CONTAS OS ELEMENTOS(DO CAMPO -> DADOS DA VARIAVEL)
 	let sep = dados.reduce( (obj, item) => {
-		// console.log(obj, item)
-		item = item.replace(/\s/g, '')// fazer testes
+		item = item.replace(/\s/g, '')// tira os espacos
 		if(!obj[item]){
 			obj[item] = 1
 		}else {
@@ -97,25 +81,24 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 		return obj
 	}, {} )
 
+
+	let totPor = 0
+	let fac = 0
+	let facP = 0
+	//pega o total separado
+	Object.keys(sep).forEach( item => {
+		totPor += sep[item]
+	})
+
 	if( tipoCalculo[0].checked ){
 		// ADD OS VALORES NA TABELA NOMINAL
-		const corpoTabela = document.querySelector('#corpo')
 		corpoTabela.innerHTML = ``
 		cont = 0 
-
-		//pega o total separado
-		let totPor = 0
-		Object.keys(sep).forEach( item => {
-			totPor += sep[item]
-		})
-
-		let fac = 0
-		let facP = 0
 
 		Object.keys(sep).forEach( item => {
 			fac += sep[item]
 			facP += sep[item] / totPor * 100
-			corpoTabela.innerHTML += `<tr> <td>${item}</td> <td>${sep[item]}</td> <td>${sep[item] / totPor * 100 }%</td> <td>${fac}</td> <td>${facP}%</td> </tr>`
+			corpoTabela.innerHTML += `<tr> <td>${item}</td> <td>${sep[item]}</td> <td>${(sep[item] / totPor * 100).toFixed(2) }%</td> <td>${fac}</td> <td>${ facP.toFixed(2) }%</td> </tr>`
 			cont += sep[item]
 		})
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id="total"> 100% </td> <td id="total"> </td> <td id="total"> </td> </tr>`
@@ -126,15 +109,19 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 		let ordemInput = document.querySelector('#ordem').value.split(',')
 		ordemInput = ordemInput.filter( (este, i) => ordemInput.indexOf(este) === i )
 
+
+
 		const corpoTabela = document.querySelector('#corpo')
 		corpoTabela.innerHTML = ``
 		cont = 0 
 		ordemInput.forEach( item => {
 			item = item.replace(/\s/g, '') // fazer testes
-			corpoTabela.innerHTML += `<tr> <td>${item}</td> <td>${sep[item]}</td> </tr>`
+			fac += sep[item]
+			facP += sep[item] / totPor * 100
+			corpoTabela.innerHTML += `<tr> <td>${item}</td> <td>${sep[item]}</td> <td>${(sep[item] / totPor * 100).toFixed(2) }%</td> <td> ${fac} </td> <td>${ facP.toFixed(2) }</td> </tr>`
 			cont += sep[item]
 		})
-		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> </tr>`
+		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id='total'>100%</td> <td id='total'></td> <td id='total'></td> </tr>`
 		// FIM TABELA ORDINAL
 
 	}else if( tipoCalculo[2].checked ){
@@ -143,10 +130,12 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 		corpoTabela.innerHTML = ``
 		cont = 0 
 		Object.keys(sep).forEach( item => {
-			corpoTabela.innerHTML += `<tr> <td>${item}</td> <td>${sep[item]}</td> </tr>`
+			fac += sep[item]
+			facP += sep[item] / totPor * 100
+			corpoTabela.innerHTML += `<tr> <td>${item}</td> <td>${sep[item]}</td> <td>${(sep[item] / totPor * 100).toFixed(2) }%</td> <td> ${fac} </td> <td>${ facP.toFixed(2) }</td> </tr>`
 			cont += sep[item]
 		})
-		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> </tr>`
+		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id='total'>100%</td> <td id='total'></td> <td id='total'></td> </tr>`
 		
 		// FIM TABELA DISCRETA
 
@@ -168,9 +157,8 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 		let k = Number( Math.sqrt( dados.length ).toString()[0] ) // raiz quadrada do total dos elementos
 		let kmais = k + 1
 		let kmenos = k - 1
-	//	console.log('quantidade', dados.length,'K',k, 'kmais',kmais,'kmenos', kmenos)
-		//3°passo
 
+		//3°passo
 		let inteiro = true
 		let ic
 		let linha
@@ -195,14 +183,7 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 				inteiro = false
 			}
 		}
-
-		console.log('ic', ic, linha)
-	//	console.log('dps',at)
-    //   console.log('depois', ic)
-
-	//	console.log('linha', linha)
-
-		const corpoTabela = document.querySelector('#corpo')
+		
 		corpoTabela.innerHTML = ''
 		
 		cont = 0
@@ -226,42 +207,45 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 		}
 
 		//pega o total separado
-		let totPor = 0
-		Object.keys(sep).forEach( item => {
-			totPor += sep[item]
-		})
+		// let totPor = 0
+		// console.log('total', totPor)
+		// Object.keys(sep).forEach( item => {
+		// 	totPor += sep[item]
+		// })
 
 		for(let i = 0; i < linha; i++) {
-			corpoTabela.innerHTML += `<tr> <td>${Math.round(min)} |---- ${Math.round(min + ic)}</td> <td>${totVet[i]}</td> <td>${totVet[i] / totPor * 100}</td> <td>teste2</td> <td>teste3</td> </tr>`
+			fiP = totVet[i] / totPor * 100
+			fac += totVet[i] 
+			facP += fiP
+			corpoTabela.innerHTML += `<tr> <td>${Math.round(min)} |---- ${Math.round(min + ic)}</td> <td>${totVet[i]}</td> <td>${fiP}</td> <td>${fac}</td> <td>${facP}</td> </tr>`
 			cont += totVet[i]
 			min += ic
 		}
-		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> </tr>`
+		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id='total'>100%</td> <td id='total'></td> <td id='total'></td> </tr>`
 		
 		// FIM TABELA CONTINUA
 	}
-
 }
-
-
-
 
 // pega o clique do botao 
 document.querySelector('#BotaoCalcular').onclick = e => {
 	// evento do botao
-	// const nomeVarialvel = document.querySelector("#nomeVariavel")
-	const checkAmostra = document.getElementsByName('tipoCalculado')
-	// const dadosVariavel = document.querySelector('#dadosVariavel')
-	// const tipoCalculo = document.getElementsByName('calculoSelecionado')
-
-
-	if ( checkAmostra[0].checked ){
-		nominal('nomeVariavel', 'calculoNominal')
-	}else if ( checkAmostra[1].checked ){
-		alert('NAO IMPLEMENTADO')
-	}else {
-		alert('selecione amostra ou populacao')
-		checkAmostra[0].focus()
-	}
-
+	gerarTabela()
 }
+
+// APENAS PARA LEMBRAR DE COMO CONTAR NAO MEXER
+function contaVetor(vetor){
+	vetor.reduce( (obj, item) => {
+		console.log(obj, item)
+		if(!obj[item]){
+			obj[item] = 1
+
+		}else {
+			obj[item]++
+
+		}
+
+		return obj
+	}, {} )
+}
+// APENAS PARA LEMBRAR DE COMO CONTAR NAO MEXER
