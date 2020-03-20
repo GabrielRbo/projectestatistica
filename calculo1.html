@@ -128,7 +128,7 @@
 
         <div class="row">
         
-        <table class="col table table-responsive-sm table-striped table-hover w-25 ml-5 mt-5">
+        <table class="col table table-responsive-sm table-striped table-hover w-25 ml-10 mt-5">
           <caption></caption>
           <thead>
             <th id="variavelNome"></th>
@@ -139,13 +139,15 @@
           </thead>
           <tbody id="corpo"></tbody>
         </table>
-
-        <div class="col-lg ml-5 mt-5" style="width: 720px; height: 360px; border: 1px solid red;"></div>
+        
+      <!-- gráfico -->
+      <div class="col-lg ml-5 mt-5" style="width: 720px; height: 360px; border: 1px solid red;">
+        <script src="Chart/Chart.min.js"></script>
+        <canvas id="myChart" width= "400" height= "250" class="chartjs-render-monitor" style="display:block; width: 100px; height: 100px;"></canvas>
       </div>
-
+      <!-- gráfico -->
     </div>
-
-    <!-- tabela -->
+  
     <!--rodapé-->
     <footer>
       <div class="footer-copyright">
@@ -155,9 +157,8 @@
       </div>        
     </footer>
 
-
     <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS , graphic.js-->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <!-- offline -->
     <script type="text/javascript" src="./JS/jquery-3.4.1.slim.min.js"></script>
@@ -167,10 +168,15 @@
     <script type="text/javascript" src="./JS/popper.min.js"></script>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
     <!-- offline -->
     <script type="text/javascript" src="./JS/bootstrap.min.js"></script>
-
+   
+    <!-- offline -->
     <script type="text/javascript" src="./JS/org.js"></script>
+    
+    <!-- offline -->   
+    <script type="text/javascript" src="./JS/graphic.js"></script>
 
   </body>
 </html>
