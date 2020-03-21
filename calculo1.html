@@ -117,14 +117,14 @@
               <!-- ordem -->
 
         </form>
-        <form class="Upload">
-          
           <button type="submit" id="BotaoCalcular" class="btn btn-primary" style="margin-left: 55px;">Calcular</button>
-          
-          <input type="file" id="botaoUpload" hidden="hidden" />
-          <button type="button" id="custom-button" class="btn btn-primary">Escolha o Arquivo</button>
+
+          <form class="Upload"> 
+            <input type="file" id="botaoUpload" hidden="hidden" />
+            <button type="button" id="custom-button" class="btn btn-primary" style="margin-left: 55px; margin-top: 5px;">Escolha o Arquivo</button>
           <span id="custom-text">Nenhum Arquivo Selecionado.</span>
         <!-- FIM DO FORMULÁRIO PARA INSERÇÃO DE DADOS-->
+      
     </main> 
 
     <!-- tabela -->
@@ -143,15 +143,17 @@
           </thead>
           <tbody id="corpo"></tbody>
         </table>
-        
-      <!-- gráfico -->
+
+        <!-- gráfico -->
       <div class="col-lg ml-5 mt-5" style="width: 720px; height: 360px; border: 1px solid red;">
         <script src="Chart/Chart.min.js"></script>
         <canvas id="myChart" width= "400" height= "250" class="chartjs-render-monitor" style="display:block; width: 100px; height: 100px;"></canvas>
       </div>
-      <!-- gráfico -->
+        <!-- gráfico -->
+        
     </div>
-  
+
+        
     <!--rodapé-->
     <footer>
       <div class="footer-copyright">
@@ -178,12 +180,12 @@
    
     <!-- offline -->
     <script type="text/javascript" src="./JS/org.js"></script>
-    
-    <!-- offline -->   
+
+    <!-- offline -->
     <script type="text/javascript" src="./JS/graphic.js"></script>
-    
+
     <!-- offline --> 
-    <script type="text/javascript" src="./JS/html.js"></script>
+   <script type="text/javascript" src="./JS/html.js"></script> 
 
   </body>
 </html>

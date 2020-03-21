@@ -1,3 +1,4 @@
+
 const btnUpload = document.getElementById("botaoUpload");
 const customBtn = document.getElementById("custom-button");
 const customTxt = document.getElementById("custom-text");
@@ -15,3 +16,4 @@ btnUpload.addEventListener("change", function() {
     customTxt.innerHTML = "Nenhum arquivo selecionado";
   }
 });
+

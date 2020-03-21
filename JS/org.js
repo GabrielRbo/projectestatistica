@@ -7,6 +7,7 @@ const nomeVariavel = document.querySelector('#nomeVariavel')
 const dadosVariavel = document.querySelector('#dadosVariavel')
 const corpoTabela = document.querySelector('#corpo')
 
+let vetorGrafico = new Array()
 //--------------------------------------------------------------
 // se clicar no tipo de calculo esconde a tabela e o input de ordem
 if (tipoCalculo[1].checked) mostraDiv.style.display = 'block'
@@ -85,7 +86,11 @@ function gerarTabela(){
 	let totPor = 0
 	let fac = 0
 	let facP = 0
-	var vetorNominal = new Array()
+
+	// limpar vetor de valores que gera no gráfico
+	vetorGrafico.length = 0
+
+	alert(vetorGrafico)
 	//pega o total separado
 	Object.keys(sep).forEach( item => {
 		totPor += sep[item]
@@ -95,19 +100,19 @@ function gerarTabela(){
 		// ADD OS VALORES NA TABELA NOMINAL
 		corpoTabela.innerHTML = ``
 		cont = 0 
-
+  
 		Object.keys(sep).forEach( item => {
 			fac += sep[item]
 			facP += sep[item] / totPor * 100
 			corpoTabela.innerHTML += `<tr> <td>${item}</td> <td>${sep[item]}</td> <td>${(sep[item] / totPor * 100).toFixed(2) }%</td> <td>${fac}</td> <td>${ facP.toFixed(2) }%</td> </tr>`
 			cont += sep[item]
-
-			vetorNominal += (sep[item] / totPor * 100).toFixed(2)
+			vetorGrafico[item] = (sep[item] / totPor * 100).toFixed(2)
+			
 		// WILL AQUI QUE ESTA PEGANDO, o valor porcentagem / precisa pegar e jogar no vetor 
 		})
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id="total"> 100% </td> <td id="total"> </td> <td id="total"> </td> </tr>`
 		// FIM TABELA NOMINAL
-		alert(vetorNominal)	
+	
 	}else if( tipoCalculo[1].checked ){
 		// ADD OS VALORES NA TABELA ORDINAL
 		let ordemInput = document.querySelector('#ordem').value.split(',')
@@ -124,6 +129,7 @@ function gerarTabela(){
 			facP += sep[item] / totPor * 100
 			corpoTabela.innerHTML += `<tr> <td>${item}</td> <td>${sep[item]}</td> <td>${(sep[item] / totPor * 100).toFixed(2) }%</td> <td> ${fac} </td> <td>${ facP.toFixed(2) }</td> </tr>`
 			cont += sep[item]
+			vetorGrafico[item] = (sep[item] / totPor * 100).toFixed(2)
 		})
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id='total'>100%</td> <td id='total'></td> <td id='total'></td> </tr>`
 		// FIM TABELA ORDINAL
@@ -138,6 +144,7 @@ function gerarTabela(){
 			facP += sep[item] / totPor * 100
 			corpoTabela.innerHTML += `<tr> <td>${item}</td> <td>${sep[item]}</td> <td>${(sep[item] / totPor * 100).toFixed(2) }%</td> <td> ${fac} </td> <td>${ facP.toFixed(2) }</td> </tr>`
 			cont += sep[item]
+			vetorGrafico[item] = (sep[item] / totPor * 100).toFixed(2)
 		})
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id='total'>100%</td> <td id='total'></td> <td id='total'></td> </tr>`
 		
@@ -224,178 +231,16 @@ function gerarTabela(){
 			corpoTabela.innerHTML += `<tr> <td>${Math.round(min)} |---- ${Math.round(min + ic)}</td> <td>${totVet[i]}</td> <td>${fiP.toFixed(2)}</td> <td>${fac}</td> <td>${facP.toFixed(2)}</td> </tr>`
 			cont += totVet[i]
 			min += ic
+			vetorGrafico[i] = (totVet[i]  / totPor * 100).toFixed(2)
 		}
 		
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id='total'>100%</td> <td id='total'></td> <td id='total'></td> </tr>`
 		
 		// FIM TABELA CONTINUA
 	}
-
- //COMEÇO DO GRÁFICO
-	 if( tipoCalculo[0].checked ){
-		var graphic = document.getElementById('myChart').getContext('2d');
 	
-		var myChart = new Chart(graphic, {
-			type: 'pie',
-			data: {
-				datasets: [{
-					//label: "Quantitativa Continua",
-					data: [14.29,14.29,14.29,14.29,14.29,28.57],
-					backgroundColor: [
-						'rgba(255, 99, 132, 0.2)',
-						'rgba(54, 162, 235, 0.2)',
-						'rgba(255, 206, 86, 0.2)',
-						'rgba(75, 192, 192, 0.2)',
-						'rgba(153, 102, 255, 0.2)',
-						'rgba(255, 159, 64, 0.2)',
-						'rgba(85, 129, 69, 0.2)'
-					],
-					borderColor: [
-						'rgba(255, 99, 132, 1)',
-						'rgba(54, 162, 235, 1)',
-						'rgba(255, 206, 86, 1)',
-						'rgba(75, 192, 192, 1)',
-						'rgba(153, 102, 255, 1)',
-						'rgba(255, 159, 64, 1)',
-						'rgba(85, 129, 69, 0.2)'
-					],
-					borderWidth: 1
-				}],
-				labels: ['arroz'],
-			},
-			options: {
-				responsive: true
-		}
-	});
-	} else if( tipoCalculo[1].checked ){
-		var graphic = document.getElementById('myChart').getContext('2d');
-	
-		var myChart = new Chart(graphic, {
-		type: 'pie',
-		data: {
-			datasets: [{
-				label: "Quantitativa Continua",
-				data: [dados],
-				backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(54, 162, 235, 0.2)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(153, 102, 255, 0.2)',
-					'rgba(255, 159, 64, 0.2)',
-					'rgba(85, 129, 69, 0.2)'
-				],
-				borderColor: [
-					'rgba(255, 99, 132, 1)',
-					'rgba(54, 162, 235, 1)',
-					'rgba(255, 206, 86, 1)',
-					'rgba(75, 192, 192, 1)',
-					'rgba(153, 102, 255, 1)',
-					'rgba(255, 159, 64, 1)',
-					'rgba(85, 129, 69, 0.2)'
-				],
-				borderWidth: 1
-			}],
-			labels: ['arroz'],
-		},
-		options: {
-			scales: {
-				yAxes: [{
-					display: true,
-				ticks: {
-				beginAtZero: true
-				}
-				}]
-			}
-		}
-	});
-	} else if( tipoCalculo[2].checked ){
-		var graphic = document.getElementById('myChart').getContext('2d');
-	
-		var myChart = new Chart(graphic, {
-		type: 'pie',
-		data: {
-			datasets: [{
-				label: "Quantitativa Continua",
-				data: [4,5,6,7,8,9,9],
-				backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(54, 162, 235, 0.2)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(153, 102, 255, 0.2)',
-					'rgba(255, 159, 64, 0.2)',
-					'rgba(85, 129, 69, 0.2)'
-				],
-				borderColor: [
-					'rgba(255, 99, 132, 1)',
-					'rgba(54, 162, 235, 1)',
-					'rgba(255, 206, 86, 1)',
-					'rgba(75, 192, 192, 1)',
-					'rgba(153, 102, 255, 1)',
-					'rgba(255, 159, 64, 1)',
-					'rgba(85, 129, 69, 0.2)'
-				],
-				borderWidth: 1
-			}],
-			labels: ['arroz'],
-		},
-		options: {
-			scales: {
-				yAxes: [{
-					display: true,
-				ticks: {
-				beginAtZero: true
-				}
-				}]
-			}
-		}
-	});	
-	} else if( tipoCalculo[3].checked ){
-		var graphic = document.getElementById('myChart').getContext('2d');
-	
-		var myChart = new Chart(graphic, {
-		type: 'pie',
-		data: {
-			datasets: [{
-				label: "Quantitativa Continua",
-				data: [4,5,6,7,8,9,9],
-				backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(54, 162, 235, 0.2)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(153, 102, 255, 0.2)',
-					'rgba(255, 159, 64, 0.2)',
-					'rgba(85, 129, 69, 0.2)'
-				],
-				borderColor: [
-					'rgba(255, 99, 132, 1)',
-					'rgba(54, 162, 235, 1)',
-					'rgba(255, 206, 86, 1)',
-					'rgba(75, 192, 192, 1)',
-					'rgba(153, 102, 255, 1)',
-					'rgba(255, 159, 64, 1)',
-					'rgba(85, 129, 69, 0.2)'
-				],
-				borderWidth: 1
-			}],
-			labels: ['arroz'],
-		},
-		options: {
-			scales: {
-				yAxes: [{
-					display: true,
-				ticks: {
-					beginAtZero: true
-				}
-				}]
-			}
-		}
-	});	
-	}
 	// FINAL DO GRÁFICO
-};
+}
 
 // pega o clique do botao 
 document.querySelector('#BotaoCalcular').onclick = e => {
