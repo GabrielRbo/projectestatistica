@@ -7,7 +7,14 @@ const nomeVariavel = document.querySelector('#nomeVariavel')
 const dadosVariavel = document.querySelector('#dadosVariavel')
 const corpoTabela = document.querySelector('#corpo')
 
-let vetorGrafico = new Array()
+// variaveis para gerar os dados do grafico
+let localGrafico = 'myChart'
+let tipoGrafico
+let vetorResulGraf = []
+let tituloGrafico = nomeVariavel.value // passar para o final
+let legendaGrafico = []
+
+
 //--------------------------------------------------------------
 // se clicar no tipo de calculo esconde a tabela e o input de ordem
 if (tipoCalculo[1].checked) mostraDiv.style.display = 'block'
@@ -39,8 +46,99 @@ tipoCalculo[3].onchange = e => {
 	}
 }
 
+function geraGrafico(localGrafico, tipoGrafico, vetorValores, titulo, legenda){
+	var graphic = document.getElementById(localGrafico).getContext('2d');
+
+	var myChart = new Chart(graphic, {
+		type: tipoGrafico,
+    data: {
+        labels: legenda,
+        datasets: [{
+            label: `${titulo}`,
+            data: vetorValores,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+}
+
+function geraGrafico2(localGrafico, tipoGrafico, vetorValores, titulo, legenda){
+	var graphic = document.getElementById(localGrafico).getContext('2d');
+
+	var myChart = new Chart(graphic, {
+		type: tipoGrafico,
+    data: {
+        labels: legenda,
+        datasets: [{
+            label: `${titulo}`,
+            data: vetorValores,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            xAxes: [{
+            	display:false,
+            	barPercentage: 1.3,
+            },{
+            	display: true,
+            }],
+            yAxes:[{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+}
+
 // essa funcao que é chamada quando clica no botao 
 function gerarTabela(){
+	vetorResulGraf = []
+	tituloGrafico = nomeVariavel.value // passar para o final
+	legendaGrafico = []
 	//--------------------------------------------------------------
 	// validacao precisa aprimorar
 	if ( nomeVariavel.value.length < 3 ){
@@ -88,9 +186,8 @@ function gerarTabela(){
 	let facP = 0
 
 	// limpar vetor de valores que gera no gráfico
-	vetorGrafico.length = 0
+	
 
-	alert(vetorGrafico)
 	//pega o total separado
 	Object.keys(sep).forEach( item => {
 		totPor += sep[item]
@@ -106,7 +203,11 @@ function gerarTabela(){
 			facP += sep[item] / totPor * 100
 			corpoTabela.innerHTML += `<tr> <td>${item}</td> <td>${sep[item]}</td> <td>${(sep[item] / totPor * 100).toFixed(2) }%</td> <td>${fac}</td> <td>${ facP.toFixed(2) }%</td> </tr>`
 			cont += sep[item]
-			vetorGrafico[item] = (sep[item] / totPor * 100).toFixed(2)
+			// MANDA OS VALORES PROS GRAFICOS
+			legendaGrafico.push(`${ item }`)
+			vetorResulGraf.push(`${sep[item]}`)
+			tipoGrafico = 'pie'
+			
 			
 		// WILL AQUI QUE ESTA PEGANDO, o valor porcentagem / precisa pegar e jogar no vetor 
 		})
@@ -129,7 +230,11 @@ function gerarTabela(){
 			facP += sep[item] / totPor * 100
 			corpoTabela.innerHTML += `<tr> <td>${item}</td> <td>${sep[item]}</td> <td>${(sep[item] / totPor * 100).toFixed(2) }%</td> <td> ${fac} </td> <td>${ facP.toFixed(2) }</td> </tr>`
 			cont += sep[item]
-			vetorGrafico[item] = (sep[item] / totPor * 100).toFixed(2)
+			// Manda grafico
+			legendaGrafico.push(`${ item }`)
+			vetorResulGraf.push(`${sep[item]}`)
+			tipoGrafico = 'pie'
+			
 		})
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id='total'>100%</td> <td id='total'></td> <td id='total'></td> </tr>`
 		// FIM TABELA ORDINAL
@@ -144,7 +249,11 @@ function gerarTabela(){
 			facP += sep[item] / totPor * 100
 			corpoTabela.innerHTML += `<tr> <td>${item}</td> <td>${sep[item]}</td> <td>${(sep[item] / totPor * 100).toFixed(2) }%</td> <td> ${fac} </td> <td>${ facP.toFixed(2) }</td> </tr>`
 			cont += sep[item]
-			vetorGrafico[item] = (sep[item] / totPor * 100).toFixed(2)
+			// Manda grafico
+			legendaGrafico.push(`${ item }`)
+			vetorResulGraf.push(`${sep[item]}`)
+			tipoGrafico = 'bar'
+			
 		})
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id='total'>100%</td> <td id='total'></td> <td id='total'></td> </tr>`
 		
@@ -223,7 +332,8 @@ function gerarTabela(){
 		// Object.keys(sep).forEach( item => {
 		// 	totPor += sep[item]
 		// })
-
+		vetorResulGraf.push(`${ Math.round(min) }`)
+		legendaGrafico.push(`${ Math.round(min) }`)
 		for(let i = 0; i < linha; i++) {
 			fiP = totVet[i] / totPor * 100
 			fac += totVet[i] 
@@ -231,7 +341,12 @@ function gerarTabela(){
 			corpoTabela.innerHTML += `<tr> <td>${Math.round(min)} |---- ${Math.round(min + ic)}</td> <td>${totVet[i]}</td> <td>${fiP.toFixed(2)}</td> <td>${fac}</td> <td>${facP.toFixed(2)}</td> </tr>`
 			cont += totVet[i]
 			min += ic
-			vetorGrafico[i] = (totVet[i]  / totPor * 100).toFixed(2)
+
+			// Manda grafico
+			legendaGrafico.push(`${ Math.round(min) }`)
+			vetorResulGraf.push(`${ Math.round(min + ic) }`)
+			tipoGrafico = 'bar'
+			
 		}
 		
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id='total'>100%</td> <td id='total'></td> <td id='total'></td> </tr>`
@@ -246,6 +361,11 @@ function gerarTabela(){
 document.querySelector('#BotaoCalcular').onclick = e => {
 	// evento do botao
 	gerarTabela()
+	if( tipoCalculo[3].checked ){
+		geraGrafico2(localGrafico, tipoGrafico, vetorResulGraf, tituloGrafico, legendaGrafico)
+	}else{
+		geraGrafico(localGrafico, tipoGrafico, vetorResulGraf, tituloGrafico, legendaGrafico)
+	}
 }
 
 // APENAS PARA LEMBRAR DE COMO CONTAR NAO MEXER
