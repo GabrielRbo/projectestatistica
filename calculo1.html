@@ -144,17 +144,27 @@
           <tbody id="corpo"></tbody>
         </table>
 
-        <!-- gráfico -->
-      <div class="col-lg ml-5 mt-5" style="width: 720px; height: 360px; border: 1px solid red;">
-        <script src="Chart/Chart.min.js"></script>
-        <canvas id="myChart" width= "640" height= "350" class="chartjs-render-monitor" style="display:block; width: 100px; height: 100px;"></canvas>
-      </div>
-        <!-- gráfico -->
-        
+        <table class="col table table-responsive-sm table-striped table-hover w-25 ml-10 mt-5">
+          <caption></caption>
+          <thead>
+            <th id="variavelNome2"></th>
+            <th>Média</th>
+            <th>Moda</th>
+            <th>Mediana</th>
+          </thead>
+          <tbody id="corpo2"></tbody>
+        </table>      
     </div>
+    
+    <!-- gráfico -->
+    <div class="col-lg ml-5 mt-5 justify-content-center" style="margin: 0px !important; border: 1px solid red;">
+      <script src="Chart/Chart.min.js"></script>
+      <canvas id="myChart" width= "640" height= "350" class="chartjs-render-monitor " style="display:block; width: 100px; height: 100px;"></canvas>
+    </div>
+    <!-- gráfico -->
 
     <!--rodapé-->
-    <footer>
+    <footer style="margin-top: 25px;">
       <div class="footer-copyright">
         <div class="container d-flex justify-content-center">
           <span>&copy; 2020 Exact Analytcs</span>

@@ -64,7 +64,14 @@ thead{
   background-color: aqua !important; 
 }   
 
+.tabelaMMM th tr:hover{
+  background-color: aqua !important; 
+}
 
 /**** BOTÃO DE UPLOAD ****/
 
+/* #myChart {
+  width: max-content;
+  height: max-content;
+} */
 
