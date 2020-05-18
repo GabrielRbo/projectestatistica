@@ -119,16 +119,15 @@ function geraGrafico2(localGrafico, tipoGrafico, vetorValores, titulo, legenda){
     options: {
         scales: {
             xAxes: [{
+            	
             	display:false,
             	barPercentage: 1.3,
+            	
             },{
             	display: true,
             }],
-            yAxes:[{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
+
+           
         }
     }
 });
@@ -357,6 +356,7 @@ function gerarTabela(){
 	// FINAL DO GRÁFICO
 }
 
+	
 // pega o clique do botao 
 document.querySelector('#BotaoCalcular').onclick = e => {
 	// evento do botao
