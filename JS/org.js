@@ -46,6 +46,18 @@ tipoCalculo[3].onchange = e => {
 	}
 }
 
+function mediana(come, fim){
+	vet = []
+	for(i=come; i <= fim; i++){
+		vet.push(i)
+	}
+	if( (vet.length % 2) == 0 ){
+		return ( vet[vet.length / 2] + vet[ (vet.length / 2) -1 ] ) / 2
+	}else{
+		return vet[Math.floor(vet.length / 2)]
+	}
+}
+
 function geraGrafico(localGrafico, tipoGrafico, vetorValores, titulo, legenda){
 	var graphic = document.getElementById(localGrafico).getContext('2d');
 
@@ -337,7 +349,11 @@ function gerarTabela(){
 			fiP = totVet[i] / totPor * 100
 			fac += totVet[i] 
 			facP += fiP
-			corpoTabela.innerHTML += `<tr> <td>${Math.round(min)} |---- ${Math.round(min + ic)}</td> <td>${totVet[i]}</td> <td>${fiP.toFixed(2)}</td> <td>${fac}</td> <td>${facP.toFixed(2)}</td> </tr>`
+			let valor1 = Math.round(min)
+			let valor2 = Math.round(min + ic)
+			let media = mediana(valor1, valor2)
+
+			corpoTabela.innerHTML += `<tr> <td>${Math.round(min)} |---- ${Math.round(min + ic)}</td> <td>${totVet[i]}</td> <td>${fiP.toFixed(2)}</td> <td>${fac}</td> <td>${facP.toFixed(2)}</td> <td>${media}</td> </tr>`
 			cont += totVet[i]
 			min += ic
 
