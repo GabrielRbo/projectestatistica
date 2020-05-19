@@ -22,18 +22,16 @@
 
     <header>
       <nav id="home" class="navbar navbar-expand-md navbar-light">
-        <!-- Imagem do Logo -->
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="index.html"> <!-- Imagem do Logo -->
           <img class="logo" src="img/logo01.png" alt="Exact Analytcs Empresa de Banco de Dados">
         </a>
         <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#menu-principal" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon "></span>
         </button>
-      
+        <!-- Imagem do Logo -->
+        <!-- Menu da NavBar-->      
         <div class="collapse navbar-collapse" id="menu-principal" style="background-color: rgba(22, 117, 170, 0.8);">
           <ul class="navbar-nav ml-auto">
-
-            <!-- Menu da NavBar-->
             <li class="nav-item">
               <a class="nav-link text-light" href="#"><i class="fas fa-home fa-xs"></i>Home</a>
             </li>
@@ -46,84 +44,86 @@
             <li class="nav-item">
               <a class="nav-link text-light" href="#"><i class="fas fa-headset fa-xs"></i>Contatos</a>
             </li>
-
-            <!--- imagem do login-->  
           </ul>
-          <a class="navbar-brand" href="#login">
+          <a class="navbar-brand" href="#login"> <!--- imagem do login-->            
             <i class="fas fa-user-circle text-light fa-2x" data-toggle="modal" data-target="#telaLogin"></i>
           </a>
         </div>
+        <!-- Menu da NavBar-->
       </nav>
+
+      <!-- POP UP DE LOGIN -->
+      <div class="modal fade" id="telaLogin" tabindex="-1" role="dialog" aria-labelledby="telaLoginModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="telaLoginModal">Faça o Login para Continuar</h5>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="username" class="col-form-label">Usuário</label>
+                  <input type="text" class="form-control" id="username">
+                </div>
+                <div class="form-group">
+                  <label for="senha" class="col-form-label">Senha</label>
+                  <input type="password" class="form-control" name="senha">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Login</button>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cadastro">Cadastrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- POP UP DE LOGIN -->
+
+      <!-- Pop Up Cadastro -->
+      <div class="modal fade" id="cadastro" tabindex="-1" role="dialog" aria-labelledby="cadastromodal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="cadastroModal">Cadastre-se</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="email" class="col-form-label">E-mail</label>
+                  <input type="email" class="form-control" name="email">
+                </div>
+              </form>
+              <div class="form-group">
+                <label for="fullName" class="col-form-label">Nome Completo</label>
+                <input id="fullName" type="text"class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="password" class="col-form-label">Senha</label>
+                  <input type="password" class="form-control" name="password">
+              </div>
+              <div class="form-group">
+                <label for="passwordRight" class="col-form-label">Confirmar Senha</label>
+                <input type="password" class="form-control" name="passwordRight">
+              </div>
+              <div class="form-group">
+                <label for="date"class="col-form-label">Data de Nascimento</label>
+                <input type="date" class="form-control" name="birthday" id="bithday">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary">Salvar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Pop Up Cadastro -->
+
     </header>
-
-    <!-- POP UP DE LOGIN -->
-    <div class="modal fade" id="telaLogin" tabindex="-1" role="dialog" aria-labelledby="telaLoginModal" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="telaLoginModal">Faça o Login para Continuar</h5>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <label for="username" class="col-form-label">Usuário</label>
-                <input type="text" class="form-control" id="username">
-              </div>
-              <div class="form-group">
-                <label for="senha" class="col-form-label">Senha</label>
-                <input type="password" class="form-control" name="senha">
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Login</button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cadastro">Cadastrar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  <!-- Pop Up Cadastro -->
-    <div class="modal fade" id="cadastro" tabindex="-1" role="dialog" aria-labelledby="cadastromodal" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="cadastroModal">Cadastre-se</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <label for="email" class="col-form-label">E-mail</label>
-                <input type="email" class="form-control" name="email">
-              </div>
-            </form>
-            <div class="form-group">
-              <label for="fullName" class="col-form-label">Nome Completo</label>
-              <input id="fullName" type="text"class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="password" class="col-form-label">Senha</label>
-                <input type="password" class="form-control" name="password">
-            </div>
-            <div class="form-group">
-              <label for="passwordRight" class="col-form-label">Confirmar Senha</label>
-              <input type="password" class="form-control" name="passwordRight">
-            </div>
-            <div class="form-group">
-              <label for="date"class="col-form-label">Data de Nascimento</label>
-              <input type="date" class="form-control" name="birthday" id="bithday">
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-primary">Salvar</button>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <main>
       <!--carousel-->
@@ -132,41 +132,36 @@
         <ol class="carousel-indicators">
           <li data-target="#carouselhome" data-slide-to="0" class="active"></li>
           <li data-target="#carouselhome" data-slide-to="1"></li>
-          <li data-target="#carouselhome" data-slide-to="2"></li>
         </ol>
-        <!--slide 1-->
-        <div class="carousel-inner">
-        
-          <div class="carousel-item active bg-primary">
-          <div class="row">
-            <div class="col">
-              <img class="rounded mx-auto img-fluid col-sm" style="height: 500px;" src="img/reuniao.jpg" alt="Primeiro Slide"> <!--imagem slide 1-->
-            </div>
+        <!--marcadores-->
 
-            <div class="col">
-              <h1>Boa Noite</h1>
-              <p>adhasidhsauhsaudhiashdiasdhiasudsaihdsuia <br>
-              asdgsauygdasuyasgduyasgduyasgduasydgasuy <br>
-              asdgyuasgduyasgduyasgduysagdyusgduas <br></p>
+        <div class="carousel-inner">    
+          <!--slide 1-->    
+          <div class="carousel-item active bg-primary">
+            <div class="row">
+              <div class="col">
+                <img class="rounded mx-auto img-fluid col-sm" style="height: 500px;" src="img/reuniao.jpg" alt="Primeiro Slide"> <!--imagem slide 1-->
+              </div>
+              <div class="col">
+                <h1>Boa Noite</h1>
+                <p>adhasidhsauhsaudhiashdiasdhiasudsaihdsuia <br>
+                asdgsauygdasuyasgduyasgduyasgduasydgasuy <br>
+                asdgyuasgduyasgduyasgduysagdyusgduas <br></p>
+              </div>
             </div>
           </div>
-        
-        </div>
+          <!--slide 1-->
           <!--slide 2-->
           <div class="carousel-item">
             <img class="rounded mx-auto d-block img-fluid" src="img/2.png" alt="Segundo Slide"> 
           </div>
-          <!--slide 3-->
-          <div class="carousel-item">
-            <img class="rounded mx-auto d-block img-fluid" src="img/3.png" alt="Terceiro Slide"> 
-          </div>
+          <!--slide 2-->
         </div>
 
         <a class="carousel-control-prev" href="#carouselhome" role="button" data-slide="prev"> <!--item para indicador anterior-->
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only ">Anterior</span>
         </a>
-
         <a class="carousel-control-next" href="#carouselhome" role="button" data-slide="next"> <!--item para indicador próximo-->
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Próximo</span>
@@ -203,7 +198,7 @@
           </div>
         </div>
       </div>
-
+      <!--cards-->
       <!--apresentação dos membros-->
       <div id="about">
         <div class="container">
@@ -261,20 +256,17 @@
         </div>
       
       </div>
-
+      <!--apresentação dos membros-->
     </main>
 
-              <!--rodapé-->
-              <footer>
-                <div class="footer-copyright">
-                  <div class="container d-flex justify-content-center">
-                    <span>&copy; 2020 Exact Analytcs</span>
-                  </div>
-                </div>        
-              </footer>
-
-
-
+    <!--rodapé-->
+    <footer>
+      <div class="footer-copyright">
+        <div class="container d-flex justify-content-center">
+          <span>&copy; 2020 Exact Analytcs</span>
+        </div>
+      </div>        
+    </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
