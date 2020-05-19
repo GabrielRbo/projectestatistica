@@ -6,6 +6,7 @@ const NomeTabela = document.querySelector('#variavelNome')
 const nomeVariavel = document.querySelector('#nomeVariavel')
 const dadosVariavel = document.querySelector('#dadosVariavel')
 const corpoTabela = document.querySelector('#corpo')
+const corpoTabela2 = document.querySelector('#corpo2')
 
 // variaveis para gerar os dados do grafico
 let localGrafico = 'myChart'
@@ -150,6 +151,7 @@ function gerarTabela(){
 	vetorResulGraf = []
 	tituloGrafico = nomeVariavel.value // passar para o final
 	legendaGrafico = []
+	corpoTabela2.innerHTML = ``
 	//--------------------------------------------------------------
 	// validacao precisa aprimorar
 	if ( nomeVariavel.value.length < 3 ){
@@ -255,17 +257,45 @@ function gerarTabela(){
 		const corpoTabela = document.querySelector('#corpo')
 		corpoTabela.innerHTML = ``
 		cont = 0 
+		let media = 0
+		let moda = 0
+		let vet = [1]
+		let vet2 = []
 		Object.keys(sep).forEach( item => {
 			fac += sep[item]
 			facP += sep[item] / totPor * 100
 			corpoTabela.innerHTML += `<tr> <td>${item}</td> <td>${sep[item]}</td> <td>${(sep[item] / totPor * 100).toFixed(2) }%</td> <td> ${fac} </td> <td>${ facP.toFixed(2) }</td> </tr>`
 			cont += sep[item]
+			media += item * sep[item]
+
+			vet.push(fac)
+			vet2.push(item)
+
+			if( sep[item] > moda ){
+				moda = item
+			}
+
 			// Manda grafico
 			legendaGrafico.push(`${ item }`)
 			vetorResulGraf.push(`${sep[item]}`)
 			tipoGrafico = 'bar'
 			
 		})
+
+		let aux = 0
+		let aux2 = 1
+		let mediana = 0
+		let meio = cont / 2
+		for(i of vet){
+			if(meio > vet[aux] && meio < vet[aux2]){
+				mediana = vet.indexOf( vet[aux2] )
+			}
+			aux += 1
+			aux2 += 1
+		}
+
+		let rMediana = vet2[mediana -1]		
+		corpoTabela2.innerHTML += ` <tr> <td></td> <td>${media / cont}</td> <td>${moda}</td> <td>${rMediana}<td> <tr> ` 
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id='total'>100%</td> <td id='total'></td> <td id='total'></td> </tr>`
 		
 		// FIM TABELA DISCRETA
@@ -345,15 +375,32 @@ function gerarTabela(){
 		// })
 		vetorResulGraf.push(`${ Math.round(min) }`)
 		legendaGrafico.push(`${ Math.round(min) }`)
+		
+		let moda = 0
+		let compModa = 0
+		let contMedia = 0
+		let vet = []
+		let vet2 = []
 		for(let i = 0; i < linha; i++) {
 			fiP = totVet[i] / totPor * 100
 			fac += totVet[i] 
 			facP += fiP
 			let valor1 = Math.round(min)
 			let valor2 = Math.round(min + ic)
+			let valor3 = totVet[i]
 			let media = mediana(valor1, valor2)
 
-			corpoTabela.innerHTML += `<tr> <td>${Math.round(min)} |---- ${Math.round(min + ic)}</td> <td>${totVet[i]}</td> <td>${fiP.toFixed(2)}</td> <td>${fac}</td> <td>${facP.toFixed(2)}</td> <td>${media}</td> </tr>`
+			contMedia += valor3 * media
+
+			if(valor3 > compModa){
+				compModa = valor3
+				moda = media
+			}
+
+			vet.push(fac)
+			vet2.push( [Math.round(min), Math.round(min + ic), totVet[i], fac] )
+
+			corpoTabela.innerHTML += `<tr> <td>${Math.round(min)} |---- ${Math.round(min + ic)}</td> <td>${totVet[i]}</td> <td>${fiP.toFixed(2)}</td> <td>${fac}</td> <td>${facP.toFixed(2)}</td> </tr>`
 			cont += totVet[i]
 			min += ic
 
@@ -363,7 +410,28 @@ function gerarTabela(){
 			tipoGrafico = 'bar'
 			
 		}
-		
+		// mediana media moda
+		let meio = cont / 2
+		let aux = 0
+		let aux2 =1
+		let mediana1 = 0
+		for(i of vet){
+			if( meio > vet[aux] && meio < vet[aux2] ){
+				mediana1 = vet.indexOf(vet[aux2])
+			}
+			aux += 1
+			aux2 += 1
+		}
+		// alert(mediana1)
+		console.log(vet2)
+		fi = cont
+		i = vet2[mediana1][0]
+		fant = vet2[mediana1 - 1][3]
+		fimd = vet2[mediana1][2]
+		h = vet2[mediana1][1] - vet2[mediana1][0]
+		rMediana = i + (((fi/2)-fant)/fimd)*h
+		// alert(rMediana)
+		corpoTabela2.innerHTML += ` <tr> <td></td> <td>${ (contMedia / cont).toFixed(2)}</td> <td>${moda}</td> <td>${rMediana.toFixed(4)}</td> </tr>   `
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id='total'>100%</td> <td id='total'></td> <td id='total'></td> </tr>`
 		
 		// FIM TABELA CONTINUA

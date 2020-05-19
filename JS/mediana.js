@@ -9,4 +9,7 @@ function mediana(come, fim){
 		return vet[Math.floor(vet.length / 2)]
 	}
 }
-console.log( mediana(1,7) )
+
+
+
+console.log( mediana(60,140) )
