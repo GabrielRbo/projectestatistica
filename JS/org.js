@@ -259,6 +259,8 @@ function gerarTabela(){
 		cont = 0 
 		let media = 0
 		let moda = 0
+		let moda1 = 0
+		let moda2 = []
 		let vet = [1]
 		let vet2 = []
 		Object.keys(sep).forEach( item => {
@@ -270,9 +272,14 @@ function gerarTabela(){
 
 			vet.push(fac)
 			vet2.push(item)
-
+	
 			if( sep[item] > moda ){
-				moda = item
+				moda = sep[item]
+				moda1 = (item)
+				moda2 = []
+				moda2.push(`${moda1} `)
+			}else if( sep[item] == moda ){
+				moda2.push(`${item} `)
 			}
 
 			// Manda grafico
@@ -295,7 +302,7 @@ function gerarTabela(){
 		}
 
 		let rMediana = vet2[mediana -1]		
-		corpoTabela2.innerHTML += ` <tr> <td></td> <td>${media / cont}</td> <td>${moda}</td> <td>${rMediana}<td> <tr> ` 
+		corpoTabela2.innerHTML += ` <tr> <td></td> <td>${(media / cont).toFixed(2)}</td> <td>${moda2}</td> <td>${rMediana}<td> <tr> ` 
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id='total'>100%</td> <td id='total'></td> <td id='total'></td> </tr>`
 		
 		// FIM TABELA DISCRETA
