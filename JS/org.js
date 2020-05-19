@@ -59,6 +59,23 @@ function mediana(come, fim){
 	}
 }
 
+var corGraphic = new Array();
+// gera uma cor aleatória em hexadecimal
+function gera_cor(){
+    var hexadecimais = '0123456789ABCDEF';
+	for (var t = 0; t < vetorResulGraf.length; t++) {
+		var cor = '#'
+		
+		// Pega um número aleatório no array acima
+    	for (var i = 0; i < 6; i++ ) {
+    		//E concatena à variável cor
+			cor += hexadecimais[Math.floor(Math.random() * 16)];
+		}
+		corGraphic.push(cor);	
+	}
+	return corGraphic;
+}
+
 function geraGrafico(localGrafico, tipoGrafico, vetorValores, titulo, legenda){
 	var graphic = document.getElementById(localGrafico).getContext('2d');
 
@@ -69,22 +86,8 @@ function geraGrafico(localGrafico, tipoGrafico, vetorValores, titulo, legenda){
         datasets: [{
             label: `${titulo}`,
             data: vetorValores,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
+            backgroundColor: corGraphic,
+            borderColor: corGraphic,
             borderWidth: 1
         }]
     },
@@ -110,22 +113,8 @@ function geraGrafico2(localGrafico, tipoGrafico, vetorValores, titulo, legenda){
         datasets: [{
             label: `${titulo}`,
             data: vetorValores,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
+            backgroundColor: corGraphic,
+            borderColor: corGraphic,
             borderWidth: 1
         }]
     },
@@ -452,6 +441,7 @@ function gerarTabela(){
 document.querySelector('#BotaoCalcular').onclick = e => {
 	// evento do botao
 	gerarTabela()
+	gera_cor()
 	if( tipoCalculo[3].checked ){
 		geraGrafico2(localGrafico, tipoGrafico, vetorResulGraf, tituloGrafico, legendaGrafico)
 	}else{
