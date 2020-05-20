@@ -7,6 +7,7 @@ const nomeVariavel = document.querySelector('#nomeVariavel')
 const dadosVariavel = document.querySelector('#dadosVariavel')
 const corpoTabela = document.querySelector('#corpo')
 const corpoTabela2 = document.querySelector('#corpo2')
+const divGrafico = document.querySelector('#graficoC')
 
 // variaveis para gerar os dados do grafico
 let localGrafico = 'myChart'
@@ -141,6 +142,10 @@ function gerarTabela(){
 	tituloGrafico = nomeVariavel.value // passar para o final
 	legendaGrafico = []
 	corpoTabela2.innerHTML = ``
+	//Zera a div do grafico
+	graficoC.innerHTML = ''
+	//Add o canvas na div igual fizemos na tebela
+	graficoC.innerHTML = `<canvas id="myChart" width= "640" height= "350" class="chartjs-render-monitor " style="display:block; width: 100px; height: 100px;"></canvas>`
 	//--------------------------------------------------------------
 	// validacao precisa aprimorar
 	if ( nomeVariavel.value.length < 3 ){
