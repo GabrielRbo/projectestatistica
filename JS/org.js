@@ -199,13 +199,16 @@ function gerarTabela(){
 	Object.keys(sep).forEach( item => {
 		totPor += sep[item]
 	})
-
 	if( tipoCalculo[0].checked ){
 		// ADD OS VALORES NA TABELA NOMINAL
 		corpoTabela.innerHTML = ``
 		cont = 0 
+		let amostra = 0
+		moda = 0
+		moda1 = []
   
 		Object.keys(sep).forEach( item => {
+			amostra ++
 			fac += sep[item]
 			facP += sep[item] / totPor * 100
 			corpoTabela.innerHTML += `<tr> <td>${item}</td> <td>${sep[item]}</td> <td>${(sep[item] / totPor * 100).toFixed(2) }%</td> <td>${fac}</td> <td>${ facP.toFixed(2) }%</td> </tr>`
@@ -214,10 +217,19 @@ function gerarTabela(){
 			legendaGrafico.push(`${ item }`)
 			vetorResulGraf.push(`${sep[item]}`)
 			tipoGrafico = 'pie'
+
+			if( sep[item] > moda ){
+				moda1 = []
+				moda1.push(item)
+				moda = sep[item]
+			}else if( sep[item] == moda ){
+				moda1.push(item)
+			}
 			
 			
 		// WILL AQUI QUE ESTA PEGANDO, o valor porcentagem / precisa pegar e jogar no vetor 
 		})
+		corpoTabela2.innerHTML += `<tr></tr><td></td> <td>${ (cont/amostra).toFixed(2) }</td> <td>${moda1}</td> </tr>`
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id="total"> 100% </td> <td id="total"> </td> <td id="total"> </td> </tr>`
 		// FIM TABELA NOMINAL
 	
