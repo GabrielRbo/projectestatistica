@@ -9,7 +9,7 @@ customBtn.addEventListener("click", function() {
 
 btnUpload.addEventListener("change", function() {
   if (btnUpload.value) {
-    customTxt.innerHTML = realFileBtn.value.match(
+    customTxt.innerHTML = btnUpload.value.match(
       /[\/\\]([\w\d\s\.\-\(\)]+)$/
     )[1];
   } else {

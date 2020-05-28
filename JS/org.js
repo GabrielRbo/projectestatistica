@@ -8,6 +8,7 @@ const dadosVariavel = document.querySelector('#dadosVariavel')
 const corpoTabela = document.querySelector('#corpo')
 const corpoTabela2 = document.querySelector('#corpo2')
 const divGrafico = document.querySelector('#graficoC')
+const uploadBt = document.querySelector('#botaoUpload')
 
 // variaveis para gerar os dados do grafico
 let localGrafico = 'myChart'
@@ -482,3 +483,22 @@ function contaVetor(vetor){
 	}, {} )
 }
 // APENAS PARA LEMBRAR DE COMO CONTAR NAO MEXER
+
+// UPLOAD
+const f = document.querySelector('#file')
+uploadBt.onchange = event => {
+	a = new FileReader()
+	file = event.target.files[0]
+	
+	a.onload = e => {
+		// f.innerHTML = a.result.split('\n')
+		vetorCSV = a.result.split('\n')
+		
+		nomeVariavel.value = vetorCSV[0]
+		dadosVariavel.value = vetorCSV.slice(1,)
+	}
+	
+	a.readAsText(file) 
+
+}
+
