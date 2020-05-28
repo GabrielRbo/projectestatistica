@@ -116,16 +116,16 @@
 
       </form>
 
-      <button type="submit" id="BotaoCalcular" class="btn btn-primary" style="margin-left: 55px;">Calcular</button>
 
-      <form class="Upload"> 
+      <form class="Upload" onsubmit="return false"> 
+        <button type="submit" id="BotaoCalcular" class="btn btn-primary" style="margin-left: 55px;">Calcular</button>
         <input type="file" id="botaoUpload" hidden="hidden" accept=".csv" />
-        <button type="button" id="custom-button" class="btn btn-primary" style="margin-left: 55px; margin-top: 5px;">Escolha o Arquivo</button>
+        <button type="button" id="custom-button" class="btn btn-primary" >Escolha o Arquivo</button>
         <span id="custom-text">Nenhum Arquivo Selecionado.</span>
       </form>
       <!-- FIM DO FORMULÁRIO PARA INSERÇÃO DE DADOS-->
+        <div id="calculoNominal" class="container" style="display: none; ">
 
-      <div id="calculoNominal" class="container" style="display: none; ">
         <!-- tabela -->
         <div class="row">
           <table class="col table table-responsive-sm table-striped table-hover w-25 ml-10 mt-5">

@@ -320,12 +320,17 @@ function gerarTabela(){
 		// 1°passo
 		let min = Number( dados[0] )
 		let max = Number( dados[0] )
-		
+	console.log('----antes----->', min)
 		dados.forEach( item => {
 			if( Number(item) > max ) max = item
-			if( Number(item) < min ) min = item
+			if( min >= item ){
+				min = item
+				console.log('sim ' + min + ' item ' + item)
+			} 
+			console.log(item)
 		} )
-		
+		// console.log(dados, min)
+		console.log('---------->', min)
 		let at = (max - min)
 		
 		// 2°passo
@@ -380,6 +385,8 @@ function gerarTabela(){
 			minAux += ic
 			totVet.push(tot)
 		}
+		
+		
 
 		//pega o total separado
 		// let totPor = 0
@@ -411,6 +418,7 @@ function gerarTabela(){
 				moda = media
 			}
 
+			// console.log(min)
 			vet.push(fac)
 			vet2.push( [Math.round(min), Math.round(min + ic), totVet[i], fac] )
 
@@ -437,7 +445,7 @@ function gerarTabela(){
 			aux2 += 1
 		}
 		// alert(mediana1)
-		console.log(vet2)
+		// console.log(vet2)
 		fi = cont
 		i = vet2[mediana1][0]
 		fant = vet2[mediana1 - 1][3]
