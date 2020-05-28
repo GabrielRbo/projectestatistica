@@ -308,7 +308,8 @@ function gerarTabela(){
 			aux2 += 1
 		}
 
-		let rMediana = vet2[mediana -1]		
+		let rMediana = vet2[mediana -1]	
+		console.log('media ' + media + 'cont ' + cont)	
 		corpoTabela2.innerHTML += ` <tr> <td></td> <td>${(media / cont).toFixed(2)}</td> <td>${moda2}</td> <td>${rMediana}<td> <tr> ` 
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id='total'>100%</td> <td id='total'></td> <td id='total'></td> </tr>`
 		
@@ -500,7 +501,9 @@ uploadBt.onchange = event => {
 	
 	a.onload = e => {
 		// f.innerHTML = a.result.split('\n')
-		vetorCSV = a.result.split('\n')
+		vetorCSV = a.result
+		vetorCSV = vetorCSV.substring(0, vetorCSV.length - 1) //remove a ultima ','
+		vetorCSV = vetorCSV.split('\n')
 		
 		nomeVariavel.value = vetorCSV[0]
 		dadosVariavel.value = vetorCSV.slice(1,)
