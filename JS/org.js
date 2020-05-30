@@ -308,6 +308,7 @@ function gerarTabela(){
 			aux2 += 1
 		}
 
+
 		let rMediana = vet2[mediana -1]	
 		console.log('media ' + media + 'cont ' + cont)	
 		corpoTabela2.innerHTML += ` <tr> <td></td> <td>${(media / cont).toFixed(2)}</td> <td>${moda2}</td> <td>${rMediana}<td> <tr> ` 
@@ -321,24 +322,24 @@ function gerarTabela(){
 		// 1°passo
 		let min = Number( dados[0] )
 		let max = Number( dados[0] )
-	console.log('----antes----->', min)
+	// console.log('----antes----->', min)
 		dados.forEach( item => {
 			if( Number(item) > max ) max = item
-			if( min >= item ){
+			if( min > item ){
 				min = item
-				console.log('sim ' + min + ' item ' + item)
+				// console.log('sim ' + min + ' item ' + item)
 			} 
-			console.log(item)
+			// console.log(item)
 		} )
-		// console.log(dados, min)
-		console.log('---------->', min)
+		// console.log('min -->', min)
+		// console.log('---------->', min)
 		let at = (max - min)
 		
 		// 2°passo
 		let k = Number( Math.sqrt( dados.length ).toString()[0] ) // raiz quadrada do total dos elementos
 		let kmais = k + 1
 		let kmenos = k - 1
-
+		// console.log(k)
 		//3°passo
 		let inteiro = true
 		let ic
@@ -346,7 +347,6 @@ function gerarTabela(){
 		// ---------------------------------------------------------------------
 		// ficou mais pequeno
 		while( inteiro ){
-			at += 1
 			let ic1 = at / k
 			let ic2 = at / kmais
 			let ic3 = at / kmenos
@@ -354,15 +354,21 @@ function gerarTabela(){
 				ic = ic1
 				linha = k
 				inteiro = false
-			}else if( Number.isInteger(ic2) ){
+				console.log('at ' + at + ' ic ' + ic)
+			}
+			 if( Number.isInteger(ic2) ){
 				ic = ic2
 				linha = kmais
 				inteiro = false
-			}else if ( Number.isInteger(ic3) ){
+				console.log('at ' + at + ' ic ' + ic)
+			}
+			 if ( Number.isInteger(ic3) ){
 				ic = ic3
 				linha = kmenos
 				inteiro = false
+				console.log(' at ' + at + ' ic ' + ic)
 			}
+			at += 1
 		}
 		
 		corpoTabela.innerHTML = ''
