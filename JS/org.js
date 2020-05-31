@@ -107,7 +107,8 @@ function geraGrafico(localGrafico, tipoGrafico, vetorValores, titulo, legenda){
 
 function geraGrafico2(localGrafico, tipoGrafico, vetorValores, titulo, legenda){
 	var graphic = document.getElementById(localGrafico).getContext('2d');
-
+	//legenda.slice(0,0,0)
+	//console.log(legenda)
 	var myChart = new Chart(graphic, {
 		type: tipoGrafico,
     data: {
@@ -123,12 +124,21 @@ function geraGrafico2(localGrafico, tipoGrafico, vetorValores, titulo, legenda){
     options: {
         scales: {
             xAxes: [{
-            	
             	display:false,
             	barPercentage: 1.3,
+            	// categoryPercentage: 1.3,
+            	ticks: {
+		            max: 50,
+		            min: 0,
+		            stepSize: 50,
+        		}
+            	// stacked: true,
+            	// width: 100,
+            	
             	
             },{
             	display: true,
+            	categoryPercentage: 1.3,
             }],
 
            
@@ -460,7 +470,7 @@ function gerarTabela(){
 		h = vet2[mediana1][1] - vet2[mediana1][0]
 		rMediana = i + (((fi/2)-fant)/fimd)*h
 		// alert(rMediana)
-		corpoTabela2.innerHTML += ` <tr> <td></td> <td>${ (contMedia / cont).toFixed(2)}</td> <td>${moda}</td> <td>${rMediana.toFixed(4)}</td> </tr>   `
+		corpoTabela2.innerHTML += ` <tr> <td></td> <td>${ (contMedia / cont).toFixed(2)}</td> <td>${moda}</td> <td>${rMediana.toFixed(2)}</td> </tr>   `
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id='total'>100%</td> <td id='total'></td> <td id='total'></td> </tr>`
 		
 		// FIM TABELA CONTINUA
@@ -473,6 +483,8 @@ function gerarTabela(){
 // pega o clique do botao 
 document.querySelector('#BotaoCalcular').onclick = e => {
 	// evento do botao
+	// legendaGrafico.slice(0, 0, 0)
+	console.log(legendaGrafico)
 	gerarTabela()
 	gera_cor()
 	if( tipoCalculo[3].checked ){
