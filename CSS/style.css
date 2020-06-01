@@ -40,6 +40,31 @@ img.logo {
 #carouselhome {
   padding: 10px 0;
 }
+/** CONFIGURAÇÕES DOS CARDS ***/
+#services .card {
+  background-color: #1675aa;
+  margin-left: 5px;
+}
+
+#services .card-title {
+  font-size: 36px;
+  text-align: center;
+  color: white;
+}
+
+#services .card-text {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+/*** BOTÕES PARA OS CALCULOS ***/
+#services .botao {
+  border: 2px solid white;
+  font-weight: bold;
+  text-align: center;
+}
 
 /*** CONFIGURAÇÕES CALCULO 01 ***/
 input#nomeVariavel,
