@@ -106,6 +106,7 @@ function geraGrafico(localGrafico, tipoGrafico, vetorValores, titulo, legenda){
 
 function geraGrafico2(localGrafico, tipoGrafico, vetorValores, titulo, legenda){
 	var graphic = document.getElementById(localGrafico).getContext('2d');
+	let vetorComDados = nomeVariavel.value.split(',')
 	//legenda.slice(0,0,0)
 	//console.log(legenda)
 	var myChart = new Chart(graphic, {
@@ -320,7 +321,7 @@ function gerarTabela(){
 
 		let rMediana = vet2[mediana -1]	
 		console.log('media ' + media + 'cont ' + cont)	
-		corpoTabela2.innerHTML += ` <tr> <td></td> <td>${(media / cont).toFixed(2)}</td> <td>${moda2}</td> <td>${rMediana}<td> <tr> ` 
+		corpoTabela2.innerHTML += ` <tr> <td></td> <td>${(media / cont).toFixed(2)}</td> <td>${moda2}</td> <td>${rMediana}</td> </tr> ` 
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id='total'>100%</td> <td id='total'></td> <td id='total'></td> </tr>`
 		
 		// FIM TABELA DISCRETA
@@ -530,3 +531,88 @@ uploadBt.onchange = event => {
 
 }
 
+//------------------------------------------------------------
+quartil = document.querySelector('#quartil')
+quintil = document.querySelector('#quintil')
+decil = document.querySelector('#decil')
+porcentil = document.querySelector('#porcentil')
+qualValor = document.querySelector('#qualValor')
+porce = document.querySelector('#porcentagem')
+
+qualValor.onchange = () => {
+	if(quartil.checked){
+		if (porce.value == '25%'){
+			porce.value = `Q1`
+		}else if (porce.value == '50%'){
+			porce.value = `Q2`
+		}else if (porce.value == '75%'){
+			porce.value = `Q3`
+		}else if (porce.value == '100%'){
+			porce.value = `Q4`
+		}
+	}
+
+	if(quintil.checked){
+		if (porce.value == '20%'){
+			porce.value = `k1`
+		}else if (porce.value == '40%'){
+			porce.value = `k2`
+		}else if (porce.value == '60%'){
+			porce.value = `k3`
+		}else if (porce.value == '80%'){
+			porce.value = `k4`
+		}else if (porce.value == '100%'){
+			porce.value = `k5`
+		}
+	}
+
+	if( decil.checked ){
+		porce.value = `D${Number(porce.value.slice(0, -1))/10}`
+		
+	}
+
+	if(porcentil.checked){
+		porce.value = `C${porce.value.slice(0, -1)}`
+	}
+
+}
+
+quartil.onchange = () => {
+	if (quartil.checked){
+		qualValor.step = 25
+		porce.value = 0
+		qualValor.value = 0
+	}
+}
+
+quintil.onchange = () => {
+	if (quintil.checked){
+		qualValor.step = 20
+		porce.value = 0
+		qualValor.value = 0
+	}
+}
+
+decil.onchange = () => {
+	if (decil.checked){
+		qualValor.step = 10
+		porce.value = 0
+		qualValor.value = 0
+	}
+}
+
+porcentil.onchange = () => {
+	if (porcentil.checked){
+		qualValor.step = 1
+		porce.value = 0
+		qualValor.value = 0
+	}
+}
+
+function Separatriz(quartil, quintil, decil, porcentil){
+	if (quartil.checked){
+		qualValor.step = 25
+	}
+}
+
+//------------------------------------------------------------

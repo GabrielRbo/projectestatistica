@@ -157,9 +157,10 @@
 
             <div class="form-group" style="float: right; text-align: center;">
               <label for="formControlRange">Medida Separatriz (%)</label>
-              <input type="range" name="vol" value="0" min="0" max="100" class="form-control-range"
-                oninput="porcentagem.value=value" onchange="porcentagem.value=value">
-              <input type="text" id="porcentagem" value="0%" readonly style="border: 0px; text-align: center;">
+              <input id="qualValor" type="range" step="1" name="vol" value="0" min="0" max="100" class="form-control-range"
+                oninput="porcentagem.value=`${value}%`" onchange="porcentagem.value=`${value}%`">
+              <input type="text" id="porcentagem" value="0" readonly style="border: 0px; text-align: center;">
+              <!-- <input type="text" name=""> -->
             </div>
           </div>
         </form>
