@@ -17,7 +17,6 @@ let vetorResulGraf = []
 let tituloGrafico = nomeVariavel.value // passar para o final
 let legendaGrafico = []
 
-
 //--------------------------------------------------------------
 // se clicar no tipo de calculo esconde a tabela e o input de ordem
 if (tipoCalculo[1].checked) mostraDiv.style.display = 'block'

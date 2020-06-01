@@ -124,40 +124,98 @@
         <span id="custom-text">Nenhum Arquivo Selecionado.</span>
       </form>
       <!-- FIM DO FORMULÁRIO PARA INSERÇÃO DE DADOS-->
-        <div id="calculoNominal" class="container" style="display: none; ">
+      <div id="calculoNominal" class="container" style="display: none;padding-top: 20px;">
 
-        <!-- tabela -->
-        <div class="row">
-          <table class="col table table-responsive-sm table-striped table-hover w-50 ml-10 mt-5">
-            <caption></caption>
-            <thead>
-              <th id="variavelNome"></th>
-              <th>Fi</th>
-              <th>Fi%</th>
-              <th>Fac</th>
-              <th>Fac%</th>
-            </thead>
-            <tbody id="corpo"></tbody>
+        <!-- FORMULÁRIO PARA ESCOLHA DA MEDIDA SEPARATRIZ-->
+        <form>
+          <div style="width: 360px; height: max-content;">
+            <div style="padding-left: 20px; float: left;">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="medidaS" id="quartil" value="option">
+                <label class="form-check-label" for="quartil">
+                  Quartil
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="medidaS" id="quintil" value="option">
+                <label class="form-check-label" for="quintil">
+                  Quintil
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="medidaS" id="decil" value="option">
+                <label class="form-check-label" for="decil">
+                  Decil
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="medidaS" id="porcentil" value="option">
+                <label class="form-check-label" for="porcentil">
+                  Porcentil
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group" style="float: right; text-align: center;">
+              <label for="formControlRange">Medida Separatriz (%)</label>
+              <input type="range" name="vol" value="0" min="0" max="100" class="form-control-range"
+                oninput="porcentagem.value=value" onchange="porcentagem.value=value">
+              <input type="text" id="porcentagem" value="0%" readonly style="border: 0px; text-align: center;">
+            </div>
+          </div>
+        </form>
+
+        <!-- FIM DO FORMULÁRIO P/ MEDIDA SEPARATRIZ-->
+
+        <!-- TABELAS -->
+
+        <!-- TABELAS DE FREQUÊNCIAS-->
+        <div class="row" style="clear: both;">
+          <table class="col tabelafreq table table-responsive-sm table-striped table-hover w-50 ml-10 mt-5">
+              <caption></caption>
+              <thead>
+                <th id="variavelNome"></th>
+                <th>Fi</th>
+                <th>Fi%</th>
+                <th>Fac</th>
+                <th>Fac%</th>
+              </thead>
+              <tbody id="corpo"></tbody>
           </table>
-          <table class="col table table-responsive-sm table-striped table-hover w-25 ml-10 mt-5">
-            <caption></caption>
-            <thead>
-              <th id="variavelNome2"></th>
-              <th>Média</th>
-              <th>Moda</th>
-              <th>Mediana</th>
-            </thead>
-            <tbody id="corpo2"></tbody>
-          </table>      
-        </div>
-        <!-- tabela -->
+          <!-- FIM TABELAS DE FREQUÊNCIAS-->
 
-        <!-- gráfico -->
-        <div id='graficoC' class="col-lg ml-5 mt-5 justify-content-center" style="margin: 0px !important; border: 1px solid red;">
+          <!-- TABELAS DE MODA MÉDIA MEDIANA / MEDIDAS SEPARATRIZES / DESVIO PADRÃO -->
+          <table class="col tabelaMMM table table-responsive-sm table-striped table-hover w-25 ml-10 mt-5">
+              <caption></caption>
+              <thead>
+                <th id="variavelNome2"></th>
+                <th>Média</th>
+                <th>Moda</th>
+                <th>Mediana</th>
+              </thead>
+              <tbody id="corpo2"></tbody>
+          </table>
+            
+          <table class="col tabela3 table table-responsive-sm table-striped table-hover w-25 ml-10 mt-5">
+              <caption></caption>
+              <thead>
+                <th id="variavelNome3"></th>
+                <th>Desvio Padrão</th>
+                <th>Medida Separatriz</th>
+              </thead>
+              <tbody id="corpo3"></tbody>
+          </table> 
+        </div>
+      </div>
+        <!-- FIM TABELAS MMM / MS / DP -->
+        <!-- TABELAS -->
+       
+        <!-- GRÁFICO -->
+        <div id='graficoC' class="col-lg ml-5 mt-5 justify-content-center" style="margin: 0px !important;">
           <script src="Chart/Chart.min.js"></script>
           
         </div>
-        <!-- gráfico -->
+        <!-- FIM DO GRÁFICO -->
       </div>
     </main> 
 

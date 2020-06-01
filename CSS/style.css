@@ -60,11 +60,15 @@ thead{
   color: white;
 }
 
-#calculoNominal #corpo tr:hover  {
+.tabelafreq #corpo tr:hover  {
   background-color: aqua !important; 
 }   
 
-.tabelaMMM th tr:hover{
+.tabelaMMM #corpo2 tr:hover{
+  background-color: aqua !important;
+}
+
+.tabela3 #corpo3 tr:hover{
   background-color: aqua !important; 
 }
 
