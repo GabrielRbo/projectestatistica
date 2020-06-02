@@ -10,6 +10,8 @@ const corpoTabela2 = document.querySelector('#corpo2')
 const corpoTabela3 = document.querySelector('#corpo3')
 const divGrafico = document.querySelector('#graficoC')
 const uploadBt = document.querySelector('#botaoUpload')
+const amostraT = document.querySelector('#tipoAmostra')
+const populacaoT = document.querySelector('#tipoPopulacao')
 
 // variaveis para gerar os dados do grafico
 let localGrafico = 'myChart'
@@ -156,6 +158,8 @@ function gerarTabela(){
 	legendaGrafico = []
 	corpoTabela2.innerHTML = ``
 	corpoTabela3.innerHTML = ''
+	desvioP = []
+	desvioP2 = []
 	//Zera a div do grafico
 	graficoC.innerHTML = ''
 	//Add o canvas na div igual fizemos na tebela
@@ -337,7 +341,8 @@ function gerarTabela(){
 			facP += sep[item] / totPor * 100
 
 			vetorSeparetriz.push([item, sep[item], fac])
-
+			desvioP.push(item)
+			desvioP2.push(sep[item])
 			corpoTabela.innerHTML += `<tr> <td>${item}</td> <td>${sep[item]}</td> <td>${(sep[item] / totPor * 100).toFixed(2) }%</td> <td> ${fac} </td> <td>${ facP.toFixed(2) }</td> </tr>`
 			cont += sep[item]
 			media += item * sep[item]
@@ -396,13 +401,35 @@ function gerarTabela(){
 			pos += 1
 		}
 
-		corpoTabela3.innerHTML = `<tr> <td></td> <td>asdf</td> <td>${Li}</td> </tr>`
 
+		m = (media / cont).toFixed(2)
+		if( amostraT.checked ){
 
+			soma = 0
+			for(i of desvioP){
+				soma += (((i - m) ** 2) * desvioP2[desvioP.indexOf(i)]) / (cont - 1)
+			}
+		
+			dp = Math.sqrt(soma)
+			cv = (dp / m) * 100 
+
+		}else if( populacaoT.checked ){
+			
+			soma = 0
+			for(i of desvioP){
+				soma += (((i - m) ** 2) * desvioP2[desvioP.indexOf(i)]) / cont
+			}
+		
+			dp = Math.sqrt(soma)
+			cv = (dp / m) * 100 
+		}
+		corpoTabela3.innerHTML = `<tr> <td></td> <td>${dp}</td> <td>${cv}</td> <td>${Li}</td> </tr>`
 		// FIM TABELA DISCRETA
 
 	}else if( tipoCalculo[3].checked ){
 		// ADD OS VALORES NA TABELA CONTINUA
+		desvioP = []
+		desvioP2 = []
 		
 		// 1°passo
 		let min = Number( dados[0] )
@@ -513,6 +540,8 @@ function gerarTabela(){
 			// console.log(min)
 			vet.push(fac)
 			vet2.push( [Math.round(min), Math.round(min + ic), totVet[i], fac] )
+			desvioP.push(totVet[i])
+			desvioP2.push(fac)
 			vetorSeparetriz.push( [ Math.round(min), Math.round(min + ic), totVet[i], fac ] )
 			corpoTabela.innerHTML += `<tr> <td>${Math.round(min)} |---- ${Math.round(min + ic)}</td> <td>${totVet[i]}</td> <td>${fiP.toFixed(2)}</td> <td>${fac}</td> <td>${facP.toFixed(2)}</td> </tr>`
 			cont += totVet[i]
@@ -582,15 +611,37 @@ function gerarTabela(){
 		console.log( `resultS = ${l} + (( ${vLi} - ${posFacAnt} ) / ${fi}) * ${h}` )
 		resultS = l + (( vLi - posFacAnt ) / fi) * h
 
-		corpoTabela3.innerHTML = `<tr> <td></td> <td>asdf</td> <td>${resultS.toFixed(2)}</td> </tr>`
+		soma = 0
+		m = (contMedia / cont).toFixed(2)
+		dp = 0
+		cv = 0
+		if( amostraT.checked ){
+
+			for(i of desvioP){
+				soma += ((i - m) ** 2) * desvioP2[ desvioP.indexOf(i) ] 
+			}
 
 
+			dp = Math.sqrt( (soma / cont - 1) )
+			cv = (dp/m) * 100
+		}
+			
+		}else if( populacaoT.checked ){
+			
+			for(i of desvioP){
+				soma += ((i - m) ** 2) * desvioP2[ desvioP.index(i) ] 
+			}
 
 
+			dp = Math.sqrt( (soma / cont) )
+			cv = dp/m * 100
+		}
 
+
+		corpoTabela3.innerHTML = `<tr> <td></td> <td>${cv.toFixed(2)}</td> <td>${dp.toFixed(2)}</td> <td>${resultS.toFixed(2)}</td> </tr>`
 
 		// FIM TABELA CONTINUA
-	}
+	// }
 	
 	// FINAL DO GRÁFICO
 }
