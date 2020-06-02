@@ -7,6 +7,7 @@ const nomeVariavel = document.querySelector('#nomeVariavel')
 const dadosVariavel = document.querySelector('#dadosVariavel')
 const corpoTabela = document.querySelector('#corpo')
 const corpoTabela2 = document.querySelector('#corpo2')
+const corpoTabela3 = document.querySelector('#corpo3')
 const divGrafico = document.querySelector('#graficoC')
 const uploadBt = document.querySelector('#botaoUpload')
 
@@ -149,10 +150,12 @@ function geraGrafico2(localGrafico, tipoGrafico, vetorValores, titulo, legenda){
 
 // essa funcao que é chamada quando clica no botao 
 function gerarTabela(){
+	vetorSeparetriz = []
 	vetorResulGraf = []
 	tituloGrafico = nomeVariavel.value // passar para o final
 	legendaGrafico = []
 	corpoTabela2.innerHTML = ``
+	corpoTabela3.innerHTML = ''
 	//Zera a div do grafico
 	graficoC.innerHTML = ''
 	//Add o canvas na div igual fizemos na tebela
@@ -222,6 +225,9 @@ function gerarTabela(){
 			amostra ++
 			fac += sep[item]
 			facP += sep[item] / totPor * 100
+
+			vetorSeparetriz.push( [ item, sep[item], fac ] )
+
 			corpoTabela.innerHTML += `<tr> <td>${item}</td> <td>${sep[item]}</td> <td>${(sep[item] / totPor * 100).toFixed(2) }%</td> <td>${fac}</td> <td>${ facP.toFixed(2) }%</td> </tr>`
 			cont += sep[item]
 			// MANDA OS VALORES PROS GRAFICOS
@@ -242,6 +248,26 @@ function gerarTabela(){
 		})
 		corpoTabela2.innerHTML += `<tr></tr><td></td> <td>${ (cont/amostra).toFixed(2) }</td> <td>${moda1}</td> </tr>`
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id="total"> 100% </td> <td id="total"> </td> <td id="total"> </td> </tr>`
+		Li = 0
+		pos = 0
+		q = 0
+		vLi = cont * qualValor.value / 100
+		console.log('li -----antes ---', vLi)
+		for( i of vetorSeparetriz ){
+			// console.log(i)
+			if ( vLi <= i[2] && vLi >= q ){
+				Li = vetorSeparetriz[ pos ][0]
+				pos1 = pos
+				console.log('foi ', i[2])
+			}
+			q = i[2]
+			pos += 1
+		}
+
+		corpoTabela3.innerHTML = `<tr> <td></td> <td>asdf</td> <td>${Li}</td> </tr>`
+
+
+
 		// FIM TABELA NOMINAL
 	
 	}else if( tipoCalculo[1].checked ){
@@ -258,6 +284,7 @@ function gerarTabela(){
 			item = item.replace(/\s/g, '') // fazer testes
 			fac += sep[item]
 			facP += sep[item] / totPor * 100
+			vetorSeparetriz.push( [item, sep[item], fac] )
 			corpoTabela.innerHTML += `<tr> <td>${item}</td> <td>${sep[item]}</td> <td>${(sep[item] / totPor * 100).toFixed(2) }%</td> <td> ${fac} </td> <td>${ facP.toFixed(2) }</td> </tr>`
 			cont += sep[item]
 			// Manda grafico
@@ -267,6 +294,31 @@ function gerarTabela(){
 			
 		})
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id='total'>100%</td> <td id='total'></td> <td id='total'></td> </tr>`
+		
+
+		//------------------------------------------------
+		Li = 0
+		pos = 0
+		q = 0
+		vLi = cont * qualValor.value / 100
+		console.log('li -----antes ---', vLi)
+		for( i of vetorSeparetriz ){
+			// console.log(i)
+			if ( vLi <= i[2] && vLi >= q ){
+				Li = vetorSeparetriz[ pos ][0]
+				pos1 = pos
+				console.log('foi ', i[2])
+			}
+			q = i[2]
+			pos += 1
+		}
+
+		corpoTabela3.innerHTML = `<tr> <td></td> <td>asdf</td> <td>${Li}</td> </tr>`
+
+
+
+
+
 		// FIM TABELA ORDINAL
 
 	}else if( tipoCalculo[2].checked ){
@@ -283,6 +335,9 @@ function gerarTabela(){
 		Object.keys(sep).forEach( item => {
 			fac += sep[item]
 			facP += sep[item] / totPor * 100
+
+			vetorSeparetriz.push([item, sep[item], fac])
+
 			corpoTabela.innerHTML += `<tr> <td>${item}</td> <td>${sep[item]}</td> <td>${(sep[item] / totPor * 100).toFixed(2) }%</td> <td> ${fac} </td> <td>${ facP.toFixed(2) }</td> </tr>`
 			cont += sep[item]
 			media += item * sep[item]
@@ -323,7 +378,27 @@ function gerarTabela(){
 		console.log('media ' + media + 'cont ' + cont)	
 		corpoTabela2.innerHTML += ` <tr> <td></td> <td>${(media / cont).toFixed(2)}</td> <td>${moda2}</td> <td>${rMediana}</td> </tr> ` 
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id='total'>100%</td> <td id='total'></td> <td id='total'></td> </tr>`
-		
+			
+		//--- PORCENTIL ---\\
+		Li = 0
+		pos = 0
+		q = 0
+		vLi = cont * qualValor.value / 100
+		console.log('li -----antes ---', vLi)
+		for( i of vetorSeparetriz ){
+			// console.log(i)
+			if ( vLi <= i[2] && vLi >= q ){
+				Li = vetorSeparetriz[ pos ][0]
+				pos1 = pos
+				console.log('foi ', i[2])
+			}
+			q = i[2]
+			pos += 1
+		}
+
+		corpoTabela3.innerHTML = `<tr> <td></td> <td>asdf</td> <td>${Li}</td> </tr>`
+
+
 		// FIM TABELA DISCRETA
 
 	}else if( tipoCalculo[3].checked ){
@@ -438,7 +513,7 @@ function gerarTabela(){
 			// console.log(min)
 			vet.push(fac)
 			vet2.push( [Math.round(min), Math.round(min + ic), totVet[i], fac] )
-
+			vetorSeparetriz.push( [ Math.round(min), Math.round(min + ic), totVet[i], fac ] )
 			corpoTabela.innerHTML += `<tr> <td>${Math.round(min)} |---- ${Math.round(min + ic)}</td> <td>${totVet[i]}</td> <td>${fiP.toFixed(2)}</td> <td>${fac}</td> <td>${facP.toFixed(2)}</td> </tr>`
 			cont += totVet[i]
 			min += ic
@@ -473,6 +548,47 @@ function gerarTabela(){
 		corpoTabela2.innerHTML += ` <tr> <td></td> <td>${ (contMedia / cont).toFixed(2)}</td> <td>${moda}</td> <td>${rMediana.toFixed(2)}</td> </tr>   `
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id='total'>100%</td> <td id='total'></td> <td id='total'></td> </tr>`
 		
+
+		//--------------------------------------------------------
+		Li = 0
+		pos = 0
+		q = 0
+		vLi = cont * qualValor.value / 100
+		console.log('vli -----antes ---', vLi, cont, qualValor.value)
+		for( i of vetorSeparetriz ){
+			// console.log(i)
+			if ( vLi <= i[3] && vLi >= q ){
+				Li = vetorSeparetriz[ pos ]
+				pos1 = pos
+				console.log('foi ', i[2])
+			}
+			q = i[3]
+			pos += 1
+		}
+		console.log('-----------', Li)
+
+		l = Li[0]
+		// vli
+
+		if(vetorSeparetriz[pos - 1][3] == undefined){
+			posFacAnt = 0
+		}else {
+			posFacAnt = vetorSeparetriz[pos - 1][3]
+		}
+
+		fi = Li[3]
+		h = Li[1] - Li[0]
+
+		console.log( `resultS = ${l} + (( ${vLi} - ${posFacAnt} ) / ${fi}) * ${h}` )
+		resultS = l + (( vLi - posFacAnt ) / fi) * h
+
+		corpoTabela3.innerHTML = `<tr> <td></td> <td>asdf</td> <td>${resultS.toFixed(2)}</td> </tr>`
+
+
+
+
+
+
 		// FIM TABELA CONTINUA
 	}
 	
@@ -572,7 +688,7 @@ qualValor.onchange = () => {
 	}
 
 	if(porcentil.checked){
-		porce.value = `C${porce.value.slice(0, -1)}`
+		porce.value = `P${porce.value.slice(0, -1)}`
 	}
 
 }
