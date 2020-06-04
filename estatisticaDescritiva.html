@@ -79,98 +79,96 @@
         <div class="form-group">
           <label for="dadosVariavel">Dados da Variável</label>
           <input type="" class="form-control" id="dadosVariavel" placeholder="Insira os dados da Variável">
-           <small id="ajudaDados" class="form-text text-muted">Colocar os dados separados com ','</small>
+          <small id="ajudaDados" class="form-text text-muted">Colocar os dados separados com ','</small>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="calculoSelecionado" id="qualiNominal" value="option1" checked>
-          <label class="form-check-label" for="qualiNominal">
-            Qualitativa Nominal
-          </label>
+        <div class="ClassificaoCal" style="width: 300px !important; float: left;">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="calculoSelecionado" id="qualiNominal" value="option1" checked>
+            <label class="form-check-label" for="qualiNominal">
+              Qualitativa Nominal
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="calculoSelecionado" id="qualiOrdinal" value="option2">
+            <label class="form-check-label" for="qualiOrdinal">
+              Qualitativa Ordinal
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="calculoSelecionado" id="quantDiscreta" value="option3" >
+            <label class="form-check-label" for="quantDiscreta">
+              Quantitativa Discreta
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="calculoSelecionado" id="quantContinua" value="option4">
+            <label class="form-check-label" for="quantContinua">
+              Quantitativa Continua
+            </label>
+          </div>
+          <!-- ordem -->
+          <div class="form-group" id="ordemVer" style="display: none; margin-top: 20px; clear: both !important;">
+            <label for="ordem">Digite sua ordem</label>
+            <input type="" class="form-control" id="ordem" placeholder="Insira a ordem que deseja">
+              <small id="ajudaOrdem" class="form-text text-muted">Colocar os dados separados com ',' e dados repetidos serao apagados automaticamente</small>
+          </div>
+          <!-- ordem -->
         </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="calculoSelecionado" id="qualiOrdinal" value="option2">
-          <label class="form-check-label" for="qualiOrdinal">
-            Qualitativa Ordinal
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="calculoSelecionado" id="quantDiscreta" value="option3" >
-          <label class="form-check-label" for="quantDiscreta">
-            Quantitativa Discreta
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="calculoSelecionado" id="quantContinua" value="option4">
-          <label class="form-check-label" for="quantContinua">
-            Quantitativa Continua
-          </label>
-        </div>
-
-        <!-- ordem -->
-        <div class="form-group" id="ordemVer" style="display: none;">
-          <label for="ordem">Digite sua ordem</label>
-          <input type="" class="form-control" id="ordem" placeholder="Insira a ordem que deseja">
-            <small id="ajudaOrdem" class="form-text text-muted">Colocar os dados separados com ',' e dados repetidos serao apagados automaticamente</small>
-        </div>
-        <!-- ordem -->
 
       </form>
 
+       <!-- FORMULÁRIO PARA ESCOLHA DA MEDIDA SEPARATRIZ-->
+       <form>
+        <div style="width: 360px; height: max-content; float: left;">
+          <div style="padding-left: 20px; float: left;">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="medidaS" id="quartil" value="option">
+              <label class="form-check-label" for="quartil">
+                Quartil
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="medidaS" id="quintil" value="option">
+              <label class="form-check-label" for="quintil">
+                Quintil
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="medidaS" id="decil" value="option">
+              <label class="form-check-label" for="decil">
+                Decil
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="medidaS" id="porcentil" value="option">
+              <label class="form-check-label" for="porcentil">
+                Porcentil
+              </label>
+            </div>
+          </div>
 
-      <form class="Upload" onsubmit="return false"> 
+          <div class="form-group" style="float: right; text-align: center;">
+            <label for="formControlRange">Medida Separatriz (%)</label>
+            <input id="qualValor" type="range" step="1" name="vol"   value="0" min="0" max="100" class="form-control-range"
+              oninput="porcentagem.value=`${value}%`" onchange="porcentagem.value=`${value}%`">
+            <input type="text" id="porcentagem" value="0" readonly style="border: 0px; text-align: center;">
+            <!-- <input type="text" name=""> -->
+          </div>
+        </div>
+      </form>
+
+      <!-- FIM DO FORMULÁRIO P/ MEDIDA SEPARATRIZ-->
+
+
+      <form class="Upload" onsubmit="return false" style="clear:both;"> 
         <button type="submit" id="BotaoCalcular" class="btn btn-primary" style="margin-left: 55px;">Calcular</button>
         <input type="file" id="botaoUpload" hidden="hidden" accept=".csv" />
         <button type="button" id="custom-button" class="btn btn-primary" >Escolha o Arquivo</button>
         <span id="custom-text">Nenhum Arquivo Selecionado.</span>
       </form>
       <!-- FIM DO FORMULÁRIO PARA INSERÇÃO DE DADOS-->
-      
-      <!-- FORMULÁRIO PARA ESCOLHA DA MEDIDA SEPARATRIZ-->
-        <form>
-          <div style="width: 360px; height: max-content;">
-            <div style="padding-left: 20px; float: left;">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="medidaS" id="quartil" value="option">
-                <label class="form-check-label" for="quartil">
-                  Quartil
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="medidaS" id="quintil" value="option">
-                <label class="form-check-label" for="quintil">
-                  Quintil
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="medidaS" id="decil" value="option">
-                <label class="form-check-label" for="decil">
-                  Decil
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="medidaS" id="porcentil" value="option">
-                <label class="form-check-label" for="porcentil">
-                  Porcentil
-                </label>
-              </div>
-            </div>
-
-            <div class="form-group" style="float: right; text-align: center;">
-              <label for="formControlRange">Medida Separatriz (%)</label>
-              <input id="qualValor" type="range" step="1" name="vol" value="0" min="0" max="100" class="form-control-range"
-                oninput="porcentagem.value=`${value}%`" onchange="porcentagem.value=`${value}%`">
-              <input type="text" id="porcentagem" value="0" readonly style="border: 0px; text-align: center;">
-              <!-- <input type="text" name=""> -->
-            </div>
-          </div>
-        </form>
-
-        <!-- FIM DO FORMULÁRIO P/ MEDIDA SEPARATRIZ-->
 
       <div id="calculoNominal" class="container" style="display: none;padding-top: 20px;">
-
-        
-
         <!-- TABELAS -->
 
         <!-- TABELAS DE FREQUÊNCIAS-->
