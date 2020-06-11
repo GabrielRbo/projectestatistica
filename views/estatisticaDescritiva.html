@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="pt-Br">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- offline -->
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossorigin="anonymous">
+    <!-- offline -->
+    <link rel="stylesheet" href="../CSS/all.css">
+
+    <link rel="stylesheet" href="../CSS/style.css">
+
+    <title>Cálculo 1</title>
+    
+  </head>
+  <body>
+
+    <header>
+      <nav id="homing" class="navbar navbar-expand-md navbar-light ">
+        <!-- Imagem do Logo -->
+        <a class="navbar-brand" href="index.html">
+          <img class="logo" src="../img/logo01.png" alt="Exact Analytcs Empresa de Banco de Dados">
+        </a>
+        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#menu-principal" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon "></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="menu-principal">
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Menu da NavBar-->
+            <li class="nav-item">
+              <a class="nav-link text-light" href="index.html"><i class="fas fa-home fa-xs"></i>Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="index.html#services"><i class="fas fa-calculator fa-xs"></i>Serviços</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="index.html#about"><i class="fas fa-building fa-xs"></i>Sobre</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="#"><i class="fas fa-headset fa-xs"></i>Contatos</a>
+            </li>
+
+            <!--- imagem do login-->  
+          </ul>
+          <a class="navbar-brand" href="#login">
+            <i class="fas fa-user-circle text-light fa-2x" data-toggle="modal" data-target="#telaLogin"></i>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="calculo01">
+      <!-- INICIO DO FORMULÁRIO PARA INSERÇÃO MANUAL DE DADOS-->
+      <form id="estatistica-descritiva" class="my-4 px-5">
+        <div class="form-group">
+          <label for="nomeVariavel">Nome da Variável</label>
+          <input type="text" class="form-control" id="nomeVariavel" placeholder="Insira o nome da Variável">
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="tipoCalculado" id="tipoAmostra" value="option1" checked>
+            <label class="form-check-label" for="tipoAmostra">
+              Amostra
+            </label>
+        </div>
+        <div class="form-check form-group">
+          <input class="form-check-input" type="radio" name="tipoCalculado" id="tipoPopulacao" value="option2">
+          <label class="form-check-label" for="tipoPopulacao">
+            População
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="dadosVariavel">Dados da Variável</label>
+          <input type="" class="form-control" id="dadosVariavel" placeholder="Insira os dados da Variável">
+          <small id="ajudaDados" class="form-text text-muted">Colocar os dados separados com ','</small>
+        </div>
+        <div class="ClassificaoCal" style="width: 300px !important; float: left;">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="calculoSelecionado" id="qualiNominal" value="option1" checked>
+            <label class="form-check-label" for="qualiNominal">
+              Qualitativa Nominal
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="calculoSelecionado" id="qualiOrdinal" value="option2">
+            <label class="form-check-label" for="qualiOrdinal">
+              Qualitativa Ordinal
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="calculoSelecionado" id="quantDiscreta" value="option3" >
+            <label class="form-check-label" for="quantDiscreta">
+              Quantitativa Discreta
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="calculoSelecionado" id="quantContinua" value="option4">
+            <label class="form-check-label" for="quantContinua">
+              Quantitativa Continua
+            </label>
+          </div>
+          <!-- ordem -->
+          <div class="form-group" id="ordemVer" style="display: none; margin-top: 20px; clear: both !important;">
+            <label for="ordem">Digite sua ordem</label>
+            <input type="" class="form-control" id="ordem" placeholder="Insira a ordem que deseja">
+              <small id="ajudaOrdem" class="form-text text-muted">Colocar os dados separados com ',' e dados repetidos serao apagados automaticamente</small>
+          </div>
+          <!-- ordem -->
+        </div>
+
+      </form>
+
+       <!-- FORMULÁRIO PARA ESCOLHA DA MEDIDA SEPARATRIZ-->
+       <form>
+        <div style="width: 360px; height: max-content; float: left;">
+          <div style="padding-left: 20px; float: left;">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="medidaS" id="quartil" value="option">
+              <label class="form-check-label" for="quartil">
+                Quartil
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="medidaS" id="quintil" value="option">
+              <label class="form-check-label" for="quintil">
+                Quintil
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="medidaS" id="decil" value="option">
+              <label class="form-check-label" for="decil">
+                Decil
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="medidaS" id="porcentil" value="option">
+              <label class="form-check-label" for="porcentil">
+                Porcentil
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group" style="float: right; text-align: center;">
+            <label for="formControlRange">Medida Separatriz (%)</label>
+            <input id="qualValor" type="range" step="1" name="vol"   value="0" min="0" max="100" class="form-control-range"
+              oninput="porcentagem.value=`${value}%`" onchange="porcentagem.value=`${value}%`">
+            <input type="text" id="porcentagem" value="0" readonly style="border: 0px; text-align: center;">
+            <!-- <input type="text" name=""> -->
+          </div>
+        </div>
+      </form>
+
+      <!-- FIM DO FORMULÁRIO P/ MEDIDA SEPARATRIZ-->
+
+
+      <form class="Upload" onsubmit="return false" style="clear:both;"> 
+        <button type="submit" id="BotaoCalcular" class="btn btn-primary" style="margin-left: 55px;">Calcular</button>
+        <input type="file" id="botaoUpload" hidden="hidden" accept=".csv" />
+        <button type="button" id="custom-button" class="btn btn-primary" >Escolha o Arquivo</button>
+        <span id="custom-text">Nenhum Arquivo Selecionado.</span>
+      </form>
+      <!-- FIM DO FORMULÁRIO PARA INSERÇÃO DE DADOS-->
+
+      <div id="calculoNominal" class="container" style="display: none;padding-top: 20px;">
+        <!-- TABELAS -->
+
+        <!-- TABELAS DE FREQUÊNCIAS-->
+        <div class="row" style="clear: both;">
+          <table class="col tabelafreq table table-responsive-sm table-striped table-hover w-50 ml-10 mt-5">
+              <caption></caption>
+              <thead>
+                <th id="variavelNome"></th>
+                <th>Fi</th>
+                <th>Fi%</th>
+                <th>Fac</th>
+                <th>Fac%</th>
+              </thead>
+              <tbody id="corpo"></tbody>
+          </table>
+          <!-- FIM TABELAS DE FREQUÊNCIAS-->
+
+          <!-- TABELAS DE MODA MÉDIA MEDIANA / MEDIDAS SEPARATRIZES / DESVIO PADRÃO -->
+          <table class="col tabelaMMM table table-responsive-sm table-striped table-hover w-25 ml-10 mt-5">
+              <caption></caption>
+              <thead>
+                <th id="variavelNome2"></th>
+                <th>Média</th>
+                <th>Moda</th>
+                <th>Mediana</th>
+              </thead>
+              <tbody id="corpo2"></tbody>
+          </table>
+            
+          <table class="col tabela3 table table-responsive-sm table-striped table-hover w-25 ml-10 mt-5">
+              <caption></caption>
+              <thead>
+                <th id="variavelNome3"></th>
+                <th>Desvio Padrão</th>
+                <th>Variancia</th>
+                <th>Medida Separatriz</th>
+              </thead>
+              <tbody id="corpo3"></tbody>
+          </table> 
+        </div>
+      </div>
+        <!-- FIM TABELAS MMM / MS / DP -->
+        <!-- TABELAS -->
+       
+        <!-- GRÁFICO -->
+        <div id='graficoC' class="col-lg ml-5 mt-5 justify-content-center" style="margin: 0px !important;">
+          <script src="../Chart/Chart.min.js"></script>
+          
+        </div>
+        <!-- FIM DO GRÁFICO -->
+      </div>
+    </main> 
+
+    <!--rodapé-->
+    <div id="file">
+      
+    </div>
+    <footer style="margin-top: 25px;">
+      <div class="footer-copyright">
+        <div class="container d-flex justify-content-center">
+          <span>&copy; 2020 Exact Analytcs</span>
+        </div>
+      </div>        
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS , graphic.js-->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <!-- offline -->
+    <script type="text/javascript" src="../JS/jquery-3.4.1.slim.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <!-- offline -->
+    <script type="text/javascript" src="../JS/popper.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
+    <!-- offline -->
+    <script type="text/javascript" src="../JS/bootstrap.min.js"></script>
+   
+    <!-- offline -->
+    <script type="text/javascript" src="../JS/org.js"></script>
+
+    <!-- offline -->
+    <script type="text/javascript" src="../JS/graphic.js"></script>
+
+    <!-- offline --> 
+   <script type="text/javascript" src="../JS/html.js"></script> 
+
+  </body>
+</html>

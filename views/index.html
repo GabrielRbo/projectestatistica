@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="pt-Br">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- offline -->
+    <link rel="stylesheet" type="text/css" href="../CSS/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossorigin="anonymous">
+    <!-- offline -->
+    <link rel="stylesheet" type="text/css" href="../CSS/all.css">
+
+    <link rel="stylesheet" href="../CSS/style.css">
+    <title>Exact Analytcs</title>
+    
+  </head>
+  <body>
+
+    <header>
+      <nav id="home" class="navbar navbar-expand-md navbar-light">
+        <a class="navbar-brand" href="index.html"> <!-- Imagem do Logo -->
+          <img class="logo" src="../img/logo01.png" alt="Exact Analytcs Empresa de Banco de Dados">
+        </a>
+        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#menu-principal" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon "></span>
+        </button>
+        <!-- Imagem do Logo -->
+        <!-- Menu da NavBar-->      
+        <div class="collapse navbar-collapse" id="menu-principal" style="background-color: rgba(22, 117, 170, 0.8);">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link text-light" href="#"><i class="fas fa-home fa-xs"></i>Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="#services"><i class="fas fa-calculator fa-xs"></i>Serviços</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="#about"><i class="fas fa-building fa-xs"></i>Sobre</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="#"><i class="fas fa-headset fa-xs"></i>Contatos</a>
+            </li>
+          </ul>
+          <a class="navbar-brand" href="#login"> <!--- imagem do login-->            
+            <i class="fas fa-user-circle text-light fa-2x" data-toggle="modal" data-target="#telaLogin"></i>
+          </a>
+        </div>
+        <!-- Menu da NavBar-->
+      </nav>
+
+      <!-- POP UP DE LOGIN -->
+      <div class="modal fade" id="telaLogin" tabindex="-1" role="dialog" aria-labelledby="telaLoginModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="telaLoginModal">Faça o Login para Continuar</h5>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="username" class="col-form-label">Usuário</label>
+                  <input type="text" class="form-control" id="username">
+                </div>
+                <div class="form-group">
+                  <label for="senha" class="col-form-label">Senha</label>
+                  <input type="password" class="form-control" name="senha">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Login</button>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cadastro">Cadastrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- POP UP DE LOGIN -->
+
+      <!-- Pop Up Cadastro -->
+      <div class="modal fade" id="cadastro" tabindex="-1" role="dialog" aria-labelledby="cadastromodal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="cadastroModal">Cadastre-se</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="email" class="col-form-label">E-mail</label>
+                  <input type="email" class="form-control" name="email">
+                </div>
+              </form>
+              <div class="form-group">
+                <label for="fullName" class="col-form-label">Nome Completo</label>
+                <input id="fullName" type="text"class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="password" class="col-form-label">Senha</label>
+                  <input type="password" class="form-control" name="password">
+              </div>
+              <div class="form-group">
+                <label for="passwordRight" class="col-form-label">Confirmar Senha</label>
+                <input type="password" class="form-control" name="passwordRight">
+              </div>
+              <div class="form-group">
+                <label for="date"class="col-form-label">Data de Nascimento</label>
+                <input type="date" class="form-control" name="birthday" id="bithday">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary">Salvar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Pop Up Cadastro -->
+
+    </header>
+
+    <main>
+      <!--carousel-->
+      <div id="carouselhome" class="carousel slide mb-5" data-ride="carousel">
+        <!--marcadores-->
+        <ol class="carousel-indicators">
+          <li data-target="#carouselhome" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselhome" data-slide-to="1"></li>
+        </ol>
+        <!--marcadores-->
+
+        <div class="carousel-inner">    
+          <!--slide 1-->    
+          <div class="carousel-item active bg-primary">
+            <div class="row">
+              <img class="rounded mx-auto d-block img-fluid" style="height: 500px;" src="../img/reuniao.jpg" alt="Primeiro Slide"> <!--imagem slide 1-->
+              <div class="col">
+                <h1>Trabalho de interdisciplinar ADS</h1>
+                <p>Fatec Franca - Faculdade de Tecnologia de Franca Dr Thomaz Novelino<br></p>
+              </div>
+            </div>
+          </div>
+          <!--slide 1-->
+          <!--slide 2-->
+          <div class="carousel-item">
+            <div class="row" style="border: 1px solid blue">
+              <img class="rounded mx-auto d-block img-fluid" src="img/2.png" alt="Segundo Slide" style="height: 500px; border: 1px solid red"> 
+              <div class="col">
+                <h1>Trabalho de interdisciplinar ADS</h1>
+                <p>Fatec Franca - Faculdade de Tecnologia de Franca Dr Thomaz Novelino<br></p>
+              </div>
+            </div>
+          </div>
+          <!--slide 2-->
+        </div>
+
+        <a class="carousel-control-prev" href="#carouselhome" role="button" data-slide="prev"> <!--item para indicador anterior-->
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only ">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselhome" role="button" data-slide="next"> <!--item para indicador próximo-->
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Próximo</span>
+        </a>
+
+      </div>
+      <!--carousel-->
+      <!--cards-->
+      <div class="container" id="services">
+        <div class="row">
+          <div class="card col-md" style="width: 18rem;">
+            <div id="calcDescritiva" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img class="d-block w-100" src="../img/graf1.png" alt="Grafico 01">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="../img/graf2.png" alt="Grafico 02">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="../img/graf3.jpg" alt="Grafico 03">
+                </div>
+              </div>
+            </div>
+            <div class="card-body" >
+              <h5 class="card-title">Estatística Descritiva </h5>
+              <p class="card-text">A estatística descritiva é um ramo da estatística que aplica
+                várias técnicas para descrever e sumarizar um conjunto de dados</p>
+              <div class="botao"><a href="estatisticaDescritiva.html" class="btn">Ir Para os Cálculos</a></div> <!--aqui serve para linkar as paginas, tem que editar-->
+            </div>
+          </div>
+          <div class="card col-md" style="width: 18rem;">
+            <img class="card-img-top" src="../img/2.png" alt="Card imagem 2">
+            <div class="card-body">
+              <h5 class="card-title">Título do card</h5>
+              <p class="card-text">Exemplo de texto escrito no card</p>
+              <div class="botao"><a href="calculo2.html" class="btn">Linkar pagina</a></div> <!--aqui serve para linkar as paginas, tem que editar-->
+            </div>
+          </div>
+          <div class="card col-md" style="width: 18rem;">
+            <img class="card-img-top" src="../img/3.png" alt="Card imagem 3">
+            <div class="card-body">
+              <h5 class="card-title">Título do card</h5>
+              <p class="card-text">Exemplo de texto escrito no card</p>
+              <div class="botao"><a href="calculo3.html" class="btn">Linkar pagina</a></div> <!--aqui serve para linkar as paginas, tem que editar-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--cards-->
+      <!--apresentação dos membros-->
+      <div id="about">
+        <div class="container">
+          <hr class="featurette-divider">
+          <div class="row featurette">
+            <div class="col-md-7">
+              <h2 class="featurette-heading">Gabriel Ribeiro</h2>
+              <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            </div>
+            <div class="col-md-5">
+              <img class="featurette-image img-fluid mx-auto" src="../img/user_man.png" width="200" height="100" alt="foto do Gabriel">
+            </div>
+          </div>
+          <hr class="featurette-divider">
+          <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+              <h2 class="featurette-heading">Geraldo Gonçalves</h2>
+              <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+              <img class="featurette-image img-fluid mx-auto" src="../img/user_man.png" width="200" height="100" alt="foto do Geraldo">
+            </div>
+          </div>
+          <hr class="featurette-divider">
+          <div class="row featurette">
+            <div class="col-md-7">
+              <h2 class="featurette-heading">Thalyson Resende</h2>
+              <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            </div>
+            <div class="col-md-5">
+              <img class="featurette-image img-fluid mx-auto" src="../img/user_man.png" width="200" height="100" alt="foto do Thalyson">
+            </div>
+          </div>
+          <hr class="featurette-divider">
+          <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+              <h2 class="featurette-heading">Vinício Flávio</h2>
+              <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+              <img class="featurette-image img-fluid mx-auto" src="../img/user_man.png" width="200" height="100" alt="foto do Vinício">
+            </div>
+          </div>
+          <hr class="featurette-divider">
+          <div class="row featurette">
+            <div class="col-md-7">
+              <h2 class="featurette-heading">Wilian Rodrigues</h2>
+              <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            </div>
+            <div class="col-md-5">
+              <img class="featurette-image img-fluid mx-auto" src="../img/user_man.png" width="200" height="100" alt="foto do Wilian">
+            </div>
+          </div> 
+          <hr class="featurette-divider">
+        </div>
+      
+      </div>
+      <!--apresentação dos membros-->
+    </main>
+
+    <!--rodapé-->
+    <footer>
+      <div class="footer-copyright">
+        <div class="container d-flex justify-content-center">
+          <span>&copy; 2020 Exact Analytcs</span>
+        </div>
+      </div>        
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <!-- offline -->
+    <script type="text/javascript" src="../JS/jquery-3.4.1.slim.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <!-- offline -->
+    <script type="text/javascript" src="../JS/popper.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- offline -->
+    <script type="text/javascript" src="../JS/bootstrap.min.js"></script>
+
+  </body>
+</html>
