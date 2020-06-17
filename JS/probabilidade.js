@@ -45,7 +45,11 @@ function fatorial(n){
 } 
 
 function prob (n, k){
-    return fatorial(n) / ( fatorial(n - k) * fatorial(k) )
+    return fatorial(n) / fatorial(n - k) * fatorial(k) 
+}
+
+function prob2(n, k, p, q){
+    return n/k * p**k * q**(n-k)
 }
 
 function media( n, p ){
@@ -72,7 +76,7 @@ btBinomial.onclick = () => {
     let q = eleQ.value
     let k = eleK.value
 
-    tabP.innerHTML = prob(n, k)
+    tabP.innerHTML = (prob2(n, k, p, q) * 100).toFixed(2)
     tabM.innerHTML = media(n, p).toFixed(2)
     tabD.innerHTML = desvioPadra(n, p, q).toFixed(2)
     tabV.innerHTML = (( desvioPadra(n, p, q) / media(n, p) ) * 100).toFixed(2)
@@ -85,4 +89,14 @@ btBinomial.onclick = () => {
 //----------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------
 const btNormal = document.querySelector('#btCalcNormal')
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------
 const btUniform = document.querySelector('#btCalcUniform')
