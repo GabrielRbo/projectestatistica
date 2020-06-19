@@ -104,3 +104,13 @@ thead{
   height: max-content;
 } */
 
+
+
+/*** PROBABILIDADES ***/ 
+#calcProbabilidade {
+
+  display: block;
+  border: 1px solid black;
+  text-align: center; 
+
+}
