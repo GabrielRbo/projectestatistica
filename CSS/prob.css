@@ -46,3 +46,7 @@ footer {
 
     width: 100%;
 }
+
+.escondido {
+    display: none;
+}
