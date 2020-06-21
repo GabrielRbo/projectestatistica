@@ -181,7 +181,7 @@ function gerarTabela(){
 	if ( tipoCalculo[1].checked ){
 		let ordemInput = document.querySelector('#ordem')
 		if ( ordemInput.value.length < 1 ){
-			alert('A ordem nao pode ficar fazia!')
+			alert('A ordem nao pode ficar vazia!')
 			ordemInput.focus()
 			return
 		}

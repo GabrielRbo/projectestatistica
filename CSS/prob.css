@@ -1,0 +1,48 @@
+/*** PROBABILIDADES ***/ 
+body {
+    text-align: center;
+
+}
+
+.teste {
+    border: 0.5px solid black;
+    width: 30%;
+}
+
+#calcProbabilidade {
+
+    text-align: center; 
+  
+}
+
+#calcBinomial,
+#calcNormal,
+#calcUniforme {
+    width: 50%;
+    text-align: center;
+    
+
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.tbinomial,
+.tnormal,
+.tuniforme {
+    margin-top: 20px;
+    margin-bottom: 48px;
+}
+
+.tbinomial tbody tr td {
+    font-weight: bold;
+}
+
+
+footer {
+    bottom: 0;
+    position: fixed;
+
+    margin-top: 20px;
+
+    width: 100%;
+}

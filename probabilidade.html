@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="pt-Br">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- offline -->
+    <link rel="stylesheet" type="text/css" href="../CSS/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossorigin="anonymous">
+    <!-- offline -->
+    <link rel="stylesheet" type="text/css" href="../CSS/all.css">
+
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="/CSS/prob.css">
+
+    <title>Probabilidades</title>
+    
+  </head>
+  <body>
+
+    <header>
+      <nav id="homing" class="navbar navbar-expand-md navbar-light ">
+        <!-- Imagem do Logo -->
+        <a class="navbar-brand" href="index.html">
+          <img class="logo" src="../img/logo01.png" alt="Exact Analytcs Empresa de Banco de Dados">
+        </a>
+        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#menu-principal" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon "></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="menu-principal">
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Menu da NavBar-->
+            <li class="nav-item">
+              <a class="nav-link text-light" href="index.html"><i class="fas fa-home fa-xs"></i>Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="index.html#services"><i class="fas fa-calculator fa-xs"></i>Serviços</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="index.html#about"><i class="fas fa-building fa-xs"></i>Sobre</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="#"><i class="fas fa-headset fa-xs"></i>Contatos</a>
+            </li>
+
+            <!--- imagem do login-->  
+          </ul>
+          <a class="navbar-brand" href="#login">
+            <i class="fas fa-user-circle text-light fa-2x" data-toggle="modal" data-target="#telaLogin"></i>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!--- SELECIONAR UNIFORME / NORMAL / BINOMIAL -->
+
+    <div id="calcProbabilidade">
+      <h5> Selecione um Tipo de Calculo</h2>
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" name="CalcProb" type="radio" id="Prob1" value="option1">
+        <label class="form-check-label" for="Prob1">Binomial</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" name="CalcProb" type="radio" id="Prob2" value="option2">
+        <label class="form-check-label" for="Prob2">Normal</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" name="CalcProb" type="radio" id="Prob3" value="option3">
+        <label class="form-check-label" for="Prob3">Uniforme</label>
+      </div>
+   </div>
+
+  <!-- BINOMIAL -->
+  <div id="CalculosProb">
+    <div id="calcBinomial" hidden>
+      <h2 style="margin-top: 20px;">BINOMIAL</h2>
+      <hr class="teste" />
+      <form class="Calc">
+        <div class="form-group"></div>
+          <label for="formGroupExampleInput">Elemento (n)</label>
+          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Digite o número de elementos" style="text-align: center;">
+        <div class="form-group">
+          <label for="formGroupExampleInput2">Sucesso (p)</label>
+          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Digite a taxa de Sucesso (%)" style="text-align: center;">
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2">Fracasso (q)</label>
+          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Digite a taxa de Fracasso (%)" style="text-align: center;">
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2">Evento (k)</label>
+          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Digite aqui" style="text-align: center;">
+        </div>
+
+        <button type="button" class="btn btn-primary">Calcular</button>
+        
+      </form>
+
+      <table class="table table-striped tbinomial">
+        <tbody>
+          <tr>
+            <td>Probabilidade</td>
+            <td>26.00%</td>
+          </tr>
+          <tr>
+            <td>Média</td>
+            <td>320</td>
+
+          </tr>
+          <tr>
+            <td>Desvio Padrão</td>
+            <td>20.00%</td>
+
+          </tr>
+          <tr>
+            <td style="font-size: 14px;">Coeficiente de Variação</td>
+            <td></td>
+
+          </tr>
+        </tbody>
+      </table>
+    
+    </div>
+    
+    <!-- FIM BINOMIAL-->
+
+    <!-- NORMAL -->
+    <div id="calcNormal" hidden>
+      <h2 style="margin-top: 20px;">NORMAL</h2>
+      <hr class="teste" />
+      <form class="Calc">
+        <div class="form-group"></div>
+          <label for="formGroupExampleInput">Elemento</label>
+          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Digite o número de elementos" style="text-align: center;">
+        <div class="form-group">
+          <label for="formGroupExampleInput2">Média</label>
+          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Digite a Média" style="text-align: center;">
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2">Desvio Padrão</label>
+          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Digite o Desvio Padrão" style="text-align: center;">
+        </div>
+
+        <div class="input-group mb-3">
+
+          <select class="custom-select" id="selCalcNormal">
+            <option selected>Selecione</option>
+            <option value="1">Maior Que</option>
+            <option value="2">Menor Que</option>
+            <option value="3">Entre</option>
+          </select>
+        </div>
+
+        <button type="button" class="btn btn-primary">Calcular</button>
+        
+      </form>
+
+      <table class="table table-striped tnormal">
+        <tbody>
+          <tr>
+            <td>Valores</td>
+            <td>26.00%</td>
+          </tr>
+          <tr>
+            <td>Média</td>
+            <td>320</td>
+
+          </tr>
+          <tr>
+            <td>Desvio Padrão</td>
+            <td>20.00%</td>
+
+          </tr>
+          <tr>
+            <td>Valor Z</td>
+            <td></td>
+
+          </tr>
+          <tr>
+            <td>Valor Tabela Gauss</td>
+            <td></td>
+
+          </tr>
+          <tr>
+            <td>Probabilidade</td>
+            <td></td>
+
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  <!-- FIM NORMAL -->
+
+
+  <!-- UNIFORME -->
+  <div id="calcUniforme" hidden>
+    <h2 style="margin-top: 20px;">UNIFORME</h2>
+    <hr class="teste" />
+    <form class="Calc">
+      <div class="form-group"></div>
+        <label for="formGroupExampleInput">Elemento</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Digite o número de elementos" style="text-align: center;">
+      <div class="form-group">
+        <label for="formGroupExampleInput2">Ponto Mínimo</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Digite o ponto Mínimo" style="text-align: center;">
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput2">Ponto Máximo</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Digite o Ponto Máximo" style="text-align: center;">
+      </div>
+
+      <div class="input-group mb-3">
+
+        <select class="custom-select" id="selCalcUniforme">
+          <option selected>Selecione</option>
+          <option value="1">Maior Que</option>
+          <option value="2">Menor Que</option>
+          <option value="3">Entre</option>
+        </select>
+      </div>
+
+      <button type="button" class="btn btn-primary">Calcular</button>
+      
+    </form>
+
+    <table class="table table-striped tuniforme">
+      <tbody>
+        <tr>
+          <td>Probabilidade</td>
+          <td>26.00%</td>
+        </tr>
+        <tr>
+          <td>Variância</td>
+          <td>320</td>
+
+        </tr>
+        <tr>
+          <td>Desvio Padrão</td>
+          <td>20.00%</td>
+
+        </tr>
+        <tr>
+          <td style="font-size: 14px;">Coeficiente de Variação</td>
+          <td></td>
+
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+
+
+  <!-- FIM UNIFORME -->
+</div>
+
+    <!--rodapé-->
+    <footer>
+      <div class="footer-copyright">
+        <div class="container d-flex justify-content-center">
+          <span>&copy; 2020 Exact Analytcs</span>
+        </div>
+      </div>        
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <!-- offline -->
+    <script type="text/javascript" src="../JS/jquery-3.4.1.slim.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <!-- offline -->
+    <script type="text/javascript" src="../JS/popper.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- offline -->
+    <script type="text/javascript" src="../JS/bootstrap.min.js"></script>
+
+    <!-- Mostrar a tabela de calculo-->
+    <script src="/JS/probabilidade.js"></script>
+  </body>
+</html>
