@@ -1,10 +1,12 @@
 Projeto de Estatistica 
-Projeto desenvolvido para as aulas do 3ºSemestre de Analise e Desenvolvimento de Sistemas
+
+Desenvolvido para as aulas do 3ºSemestre de Analise e Desenvolvimento de Sistemas
 
 Aulas: Estatistica Aplicada (Profª Maria Luísa), Engenharia de Software (Profº Ely Prado), 
 Interação Humano-Computador(Profº Jorge Luís) e Estrutura de Dados (Profº Fausto Gonçalves)
 
 Integrantes do Projeto: 
+
 Gabriel Ribeiro (https://github.com/GabrielRbo)
 
 Geraldo Gonçalves (https://github.com/GeraldoAGoncalves)
