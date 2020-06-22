@@ -1,6 +1,6 @@
 Projeto de Estatistica 
 
-Desenvolvido para as aulas do 3ºSemestre de Analise e Desenvolvimento de Sistemas
+Desenvolvido para as aulas do 3ºSemestre de Analise e Desenvolvimento de Sistemas da FATEC - Dr.Thomaz Novelino (FRANCA/SP)
 
 Aulas: Estatistica Aplicada (Profª Maria Luísa), Engenharia de Software (Profº Ely Prado), 
 Interação Humano-Computador(Profº Jorge Luís) e Estrutura de Dados (Profº Fausto Gonçalves)
