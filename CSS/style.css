@@ -62,7 +62,7 @@ img.logo {
 /*** BOTÕES PARA OS CALCULOS ***/
 #services .botao {
   border: 2px solid white;
-  font-weight: bold;
+  font-weight: bold !important;
   text-align: center;
 }
 
