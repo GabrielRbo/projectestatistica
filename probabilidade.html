@@ -90,26 +90,26 @@
       <hr class="teste" />
       <form class="Calc">
         <div class="form-group"></div>
-        <label for="formGroupExampleInput">Elemento (n)</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Digite o número de elementos"
+        <label for="elementoN">Elemento (n)</label>
+        <input type="text" class="form-control" id="elementoN" placeholder="Digite o número de elementos"
           style="text-align: center;">
         <div class="form-group">
-          <label for="formGroupExampleInput2">Sucesso (p)</label>
-          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Digite a taxa de Sucesso (%)"
+          <label for="elementoP">Sucesso (p)</label>
+          <input type="text" class="form-control" id="elementoP" placeholder="Digite a taxa de Sucesso (%)"
             style="text-align: center;">
         </div>
         <div class="form-group">
-          <label for="formGroupExampleInput2">Fracasso (q)</label>
-          <input type="text" class="form-control" id="formGroupExampleInput2"
+          <label for="elementoQ">Fracasso (q)</label>
+          <input type="text" class="form-control" id="elementoQ"
             placeholder="Digite a taxa de Fracasso (%)" style="text-align: center;">
         </div>
         <div class="form-group">
-          <label for="formGroupExampleInput2">Evento (k)</label>
-          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Digite aqui"
+          <label for="elementoK">Evento (k)</label>
+          <input type="text" class="form-control" id="elementoK" placeholder="Digite aqui"
             style="text-align: center;">
         </div>
 
-        <button type="button" class="btn btn-primary">Calcular</button>
+        <button type="button" class="btn btn-primary" id="btCalcBino">Calcular</button>
 
       </form>
 
@@ -117,16 +117,16 @@
         <tbody>
           <tr>
             <td>Probabilidade</td>
-            <td>26.00%</td>
+            <td id="tabProb">26.00%</td>
           </tr>
           <tr>
             <td>Média</td>
-            <td>320</td>
+            <td id="tabMedia">320</td>
 
           </tr>
           <tr>
             <td>Desvio Padrão</td>
-            <td>20.00%</td>
+            <td id="tabDesvio">20.00%</td>
 
           </tr>
           <tr>
@@ -171,7 +171,7 @@
           </select>
         </div>
 
-        <button type="button" class="btn btn-primary">Calcular</button>
+        <button type="button" class="btn btn-primary" id="btCalcNormal">Calcular</button>
 
       </form>
 
@@ -244,7 +244,7 @@
           </select>
         </div>
 
-        <button type="button" class="btn btn-primary">Calcular</button>
+        <button type="button" class="btn btn-primary" id="btCalcUniform">Calcular 123</button>
 
       </form>
 
