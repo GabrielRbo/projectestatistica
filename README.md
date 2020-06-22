@@ -6,9 +6,13 @@ Interação Humano-Computador(Profº Jorge Luís) e Estrutura de Dados (Profº F
 
 Integrantes do Projeto: 
 Gabriel Ribeiro (https://github.com/GabrielRbo)
+
 Geraldo Gonçalves (https://github.com/GeraldoAGoncalves)
+
 Thalyson Resende (https://github.com/thalysonres)
+
 Vinício Flávio (https://github.com/Cois0)
+
 Wilian Rodrigues (https://github.com/Wil-Rs)
 
 
