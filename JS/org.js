@@ -110,8 +110,7 @@ function geraGrafico(localGrafico, tipoGrafico, vetorValores, titulo, legenda){
 function geraGrafico2(localGrafico, tipoGrafico, vetorValores, titulo, legenda){
 	var graphic = document.getElementById(localGrafico).getContext('2d');
 	let vetorComDados = nomeVariavel.value.split(',')
-	//legenda.slice(0,0,0)
-	//console.log(legenda)
+
 	var myChart = new Chart(graphic, {
 		type: tipoGrafico,
     data: {
@@ -256,13 +255,12 @@ function gerarTabela(){
 		pos = 0
 		q = 0
 		vLi = cont * qualValor.value / 100
-		console.log('li -----antes ---', vLi)
+
 		for( i of vetorSeparetriz ){
-			// console.log(i)
+			
 			if ( vLi <= i[2] && vLi >= q ){
 				Li = vetorSeparetriz[ pos ][0]
 				pos1 = pos
-				console.log('foi ', i[2])
 			}
 			q = i[2]
 			pos += 1
@@ -305,13 +303,13 @@ function gerarTabela(){
 		pos = 0
 		q = 0
 		vLi = cont * qualValor.value / 100
-		console.log('li -----antes ---', vLi)
+	
 		for( i of vetorSeparetriz ){
-			// console.log(i)
+		
 			if ( vLi <= i[2] && vLi >= q ){
 				Li = vetorSeparetriz[ pos ][0]
 				pos1 = pos
-				console.log('foi ', i[2])
+	
 			}
 			q = i[2]
 			pos += 1
@@ -378,9 +376,8 @@ function gerarTabela(){
 			aux2 += 1
 		}
 
-
 		let rMediana = vet2[mediana -1]	
-		console.log('media ' + media + 'cont ' + cont)	
+	
 		corpoTabela2.innerHTML += ` <tr> <td></td> <td>${(media / cont).toFixed(2)}</td> <td>${moda2}</td> <td>${rMediana}</td> </tr> ` 
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id='total'>100%</td> <td id='total'></td> <td id='total'></td> </tr>`
 			
@@ -389,13 +386,12 @@ function gerarTabela(){
 		pos = 0
 		q = 0
 		vLi = cont * qualValor.value / 100
-		console.log('li -----antes ---', vLi)
+	
 		for( i of vetorSeparetriz ){
-			// console.log(i)
+	
 			if ( vLi <= i[2] && vLi >= q ){
 				Li = vetorSeparetriz[ pos ][0]
 				pos1 = pos
-				console.log('foi ', i[2])
 			}
 			q = i[2]
 			pos += 1
@@ -434,24 +430,21 @@ function gerarTabela(){
 		// 1°passo
 		let min = Number( dados[0] )
 		let max = Number( dados[0] )
-	// console.log('----antes----->', min)
+
 		dados.forEach( item => {
 			if( Number(item) > max ) max = item
 			if( min > item ){
 				min = item
-				// console.log('sim ' + min + ' item ' + item)
 			} 
-			// console.log(item)
+
 		} )
-		// console.log('min -->', min)
-		// console.log('---------->', min)
+
 		let at = (max - min)
 		
 		// 2°passo
 		let k = Number( Math.sqrt( dados.length ).toString()[0] ) // raiz quadrada do total dos elementos
 		let kmais = k + 1
 		let kmenos = k - 1
-		// console.log(k)
 		//3°passo
 		let inteiro = true
 		let ic
@@ -466,19 +459,16 @@ function gerarTabela(){
 				ic = ic1
 				linha = k
 				inteiro = false
-				console.log('at ' + at + ' ic ' + ic)
 			}
 			 if( Number.isInteger(ic2) ){
 				ic = ic2
 				linha = kmais
 				inteiro = false
-				console.log('at ' + at + ' ic ' + ic)
 			}
 			 if ( Number.isInteger(ic3) ){
 				ic = ic3
 				linha = kmenos
 				inteiro = false
-				console.log(' at ' + at + ' ic ' + ic)
 			}
 			at += 1
 		}
@@ -509,7 +499,6 @@ function gerarTabela(){
 
 		//pega o total separado
 		// let totPor = 0
-		// console.log('total', totPor)
 		// Object.keys(sep).forEach( item => {
 		// 	totPor += sep[item]
 		// })
@@ -537,7 +526,6 @@ function gerarTabela(){
 				moda = media
 			}
 
-			// console.log(min)
 			vet.push(fac)
 			vet2.push( [Math.round(min), Math.round(min + ic), totVet[i], fac] )
 			desvioP.push(totVet[i])
@@ -566,7 +554,7 @@ function gerarTabela(){
 			aux2 += 1
 		}
 		// alert(mediana1)
-		// console.log(vet2)
+
 		fi = cont
 		i = vet2[mediana1][0]
 		fant = vet2[mediana1 - 1][3]
@@ -583,18 +571,14 @@ function gerarTabela(){
 		pos = 0
 		q = 0
 		vLi = cont * qualValor.value / 100
-		console.log('vli -----antes ---', vLi, cont, qualValor.value)
 		for( i of vetorSeparetriz ){
-			// console.log(i)
 			if ( vLi <= i[3] && vLi >= q ){
 				Li = vetorSeparetriz[ pos ]
 				pos1 = pos
-				console.log('foi ', i[2])
 			}
 			q = i[3]
 			pos += 1
 		}
-		console.log('-----------', Li)
 
 		l = Li[0]
 		// vli
@@ -608,7 +592,6 @@ function gerarTabela(){
 		fi = Li[3]
 		h = Li[1] - Li[0]
 
-		console.log( `resultS = ${l} + (( ${vLi} - ${posFacAnt} ) / ${fi}) * ${h}` )
 		resultS = l + (( vLi - posFacAnt ) / fi) * h
 
 		soma = 0
@@ -637,8 +620,8 @@ function gerarTabela(){
 			cv = dp/m * 100
 		}
 
-
-		corpoTabela3.innerHTML = `<tr> <td></td> <td>${cv.toFixed(2)}</td> <td>${dp.toFixed(2)}</td> <td>${resultS.toFixed(2)}</td> </tr>`
+    // ErroTabela
+	//	corpoTabela3.innerHTML = `<tr> <td></td> <td>${cv.toFixed(2)}</td> <td>${dp.toFixed(2)}</td> <td>${resultS.toFixed(2)}</td> </tr>`
 
 		// FIM TABELA CONTINUA
 	// }
@@ -651,7 +634,7 @@ function gerarTabela(){
 document.querySelector('#BotaoCalcular').onclick = e => {
 	// evento do botao
 	// legendaGrafico.slice(0, 0, 0)
-	console.log(legendaGrafico)
+
 	gerarTabela()
 	gera_cor()
 	if( tipoCalculo[3].checked ){
@@ -664,7 +647,6 @@ document.querySelector('#BotaoCalcular').onclick = e => {
 // APENAS PARA LEMBRAR DE COMO CONTAR NAO MEXER
 function contaVetor(vetor){
 	vetor.reduce( (obj, item) => {
-		console.log(obj, item)
 		if(!obj[item]){
 			obj[item] = 1
 

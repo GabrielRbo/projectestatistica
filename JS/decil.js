@@ -26,7 +26,7 @@ function selectionSort(vetor){
 // console.time('selectionSort')
 // selectionSort(a)
 // console.timeEnd('selectionSort')
-// console.log(a)
+
 
 teste = [0.9,1.0,1.8,2.9,3.1,5.3,5.5,12.2,12.9,14,20]
 
@@ -47,7 +47,7 @@ teste = [0.9,1.0,1.8,2.9,3.1,5.3,5.5,12.2,12.9,14,20]
 // }
 // // Dn = i * (n+1) / 10
 // // ordenar em ordem crescente
-// console.log( decil(teste, 'd6' ) )
+
 
 function separa(){
 	Q1 = i + ((p - Fan) / fq) .h
