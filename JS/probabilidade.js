@@ -42,7 +42,7 @@ function fatorial(n){
         soma *= i
     }
     return soma
-}
+} 
 
 function prob (n, k){
     return fatorial(n) / ( fatorial(n - k) * fatorial(k) )
@@ -60,6 +60,7 @@ btBinomial.onclick = () => {
     const tabP = document.querySelector('#tabProb')
     const tabM = document.querySelector('#tabMedia')
     const tabD = document.querySelector('#tabDesvio')
+    const tabV = document.querySelector('#tabCoefVari')
 
     const eleN = document.querySelector('#elementoN')
     const eleP = document.querySelector('#elementoP')
@@ -73,7 +74,8 @@ btBinomial.onclick = () => {
 
     tabP.innerHTML = prob(n, k)
     tabM.innerHTML = media(n, p).toFixed(2)
-    tabD.innerHTML = desvioPadra(n, p, q)
+    tabD.innerHTML = desvioPadra(n, p, q).toFixed(2)
+    tabV.innerHTML = (( desvioPadra(n, p, q) / media(n, p) ) * 100).toFixed(2)
 
 }
 
