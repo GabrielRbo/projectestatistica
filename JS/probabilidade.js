@@ -49,7 +49,8 @@ function prob (n, k){
 }
 
 function prob2(n, k, p, q){
-    return n/k * p**k * q**(n-k)
+    sub = n - k
+    return (n/k) * (p**k) * (q**sub)
 }
 
 function media( n, p ){

@@ -13,6 +13,29 @@ const uploadBt = document.querySelector('#botaoUpload')
 const amostraT = document.querySelector('#tipoAmostra')
 const populacaoT = document.querySelector('#tipoPopulacao')
 
+function encontrarPosMenor(vetor, posIni){
+    let posMenor = posIni
+    for (let i = posIni + 1; i < vetor.length; i++){
+        if(vetor[i] < vetor[posMenor]) posMenor = i
+    }
+    return posMenor
+}
+
+function troca(vetor, i, j){
+    let aux = vetor[i]
+    vetor[i] = vetor[j]
+    vetor[j] = aux
+}
+
+function selectionSort(vetor){
+    for(let i = 0;  i < vetor.length - 1; i++){
+        let posMenor = encontrarPosMenor(vetor, i + 1)
+        if (vetor[posMenor] < vetor[i]) {
+            troca(vetor, posMenor, i)
+        }
+    }
+}
+
 // variaveis para gerar os dados do grafico
 let localGrafico = 'myChart'
 let tipoGrafico
@@ -192,6 +215,7 @@ function gerarTabela(){
 
 
 	let dados = dadosVariavel.value.split(',')
+	selectionSort(dados)
 	let dadosSeparados = []
 
 	// SEPARA E CONTAS OS ELEMENTOS(DO CAMPO -> DADOS DA VARIAVEL)
