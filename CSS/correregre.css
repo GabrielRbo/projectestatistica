@@ -1,0 +1,25 @@
+main #graficos {
+    float: right; 
+
+    width: 55%; 
+    height: 360px; 
+
+    border: 1px solid red; 
+
+    margin-bottom: 48px; 
+    margin-top: 48px; 
+    margin-right: 3%;
+}
+
+main #informacoes {
+    float: left; 
+
+    width: 38%; 
+    height: 360px; 
+
+    border: 1px solid red; 
+    
+    margin-bottom: 48px; 
+    margin-top: 48px; 
+    margin-left: 3%;
+}

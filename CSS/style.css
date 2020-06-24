@@ -103,3 +103,13 @@ thead{
   width: max-content;
   height: max-content;
 } */
+
+
+.correlacao {
+  width: 50%;
+  text-align: center;
+  
+
+  margin: 0 auto;
+  margin-top: 20px;
+}

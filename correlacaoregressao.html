@@ -1,88 +1,142 @@
 <!doctype html>
 <html lang="pt-Br">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- offline -->
-    <link rel="stylesheet" type="text/css" href="../CSS/bootstrap.min.css">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossorigin="anonymous">
-    <!-- offline -->
-    <link rel="stylesheet" type="text/css" href="CSS/all.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- offline -->
+  <link rel="stylesheet" type="text/css" href="../CSS/bootstrap.min.css">
 
-    <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
+    integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossorigin="anonymous">
+  <!-- offline -->
+  <link rel="stylesheet" type="text/css" href="CSS/all.css">
+  <link rel="stylesheet" href="/CSS/correregre.css">
 
-    <title>Cálculo 3</title>
-    
-  </head>
-  <body>
+  <link rel="stylesheet" href="CSS/style.css">
 
-    <header>
-      <nav id="homing" class="navbar navbar-expand-md navbar-light ">
-        <!-- Imagem do Logo -->
-        <a class="navbar-brand" href="index.html">
-          <img class="logo" src="img/logo01.png" alt="Exact Analytcs Empresa de Banco de Dados">
+  <title>Cálculo 3</title>
+
+</head>
+
+<body>
+
+  <header>
+    <nav id="homing" class="navbar navbar-expand-md navbar-light ">
+      <!-- Imagem do Logo -->
+      <a class="navbar-brand" href="index.html">
+        <img class="logo" src="img/logo01.png" alt="Exact Analytcs Empresa de Banco de Dados">
+      </a>
+      <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#menu-principal"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon "></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menu-principal">
+        <ul class="navbar-nav ml-auto">
+
+          <!-- Menu da NavBar-->
+          <li class="nav-item">
+            <a class="nav-link text-light" href="index.html"><i class="fas fa-home fa-xs"></i>Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="index.html#services"><i
+                class="fas fa-calculator fa-xs"></i>Serviços</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="index.html#about"><i class="fas fa-building fa-xs"></i>Sobre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#"><i class="fas fa-headset fa-xs"></i>Contatos</a>
+          </li>
+
+          <!--- imagem do login-->
+        </ul>
+        <a class="navbar-brand" href="#login">
+          <i class="fas fa-user-circle text-light fa-2x" data-toggle="modal" data-target="#telaLogin"></i>
         </a>
-        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#menu-principal" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon "></span>
-        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <h2 style="margin-top: 48px; text-align: center;">CORRELAÇÃO E REGRESSÃO</h2>
+    <hr style="border: 0.5px solid black; width: 30%;" class="teste" />
+
+    <form class="correlacao">
+      <div class="form-group">
+        <label for="valx">Valors de (X):</label>
+        <input type="text" class="form-control" id="valx" placeholder="Digite os valores" style="text-align: center;">
+      </div>
+      <div class="form-group">
+        <label for="valy">Valors de (Y):</label>
+        <input type="text" class="form-control" id="valy" placeholder="Digite os Valores" style="text-align: center;">
+      </div>
+
+      <button type="button" class="btn btn-primary" id="btCalcUniform">Calcular</button>
+    </form>
+
+    <div id="informacoes">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>Correlação: </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Regressão: Y = </td>
+            <td></td>
+
+          </tr>
+
+        </tbody>
+      </table>
+
       
-        <div class="collapse navbar-collapse" id="menu-principal">
-          <ul class="navbar-nav ml-auto">
+    </div>
 
-            <!-- Menu da NavBar-->
-            <li class="nav-item">
-              <a class="nav-link text-light" href="index.html"><i class="fas fa-home fa-xs"></i>Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" href="index.html#services"><i class="fas fa-calculator fa-xs"></i>Serviços</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" href="index.html#about"><i class="fas fa-building fa-xs"></i>Sobre</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" href="#"><i class="fas fa-headset fa-xs"></i>Contatos</a>
-            </li>
-
-            <!--- imagem do login-->  
-          </ul>
-          <a class="navbar-brand" href="#login">
-            <i class="fas fa-user-circle text-light fa-2x" data-toggle="modal" data-target="#telaLogin"></i>
-          </a>
-        </div>
-      </nav>
-    </header>
-
-    <main>
+    <div id="graficos">
+      
 
 
-    </main>
+    </div>
 
-    <!--rodapé-->
-    <footer>
-      <div class="footer-copyright">
-        <div class="container d-flex justify-content-center">
-          <span>&copy; 2020 Exact Analytcs</span>
-        </div>
-      </div>        
-    </footer>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <!-- offline -->
-    <script type="text/javascript" src="JS/jquery-3.4.1.slim.min.js"></script>
+  </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <!-- offline -->
-    <script type="text/javascript" src="JS/popper.min.js"></script>
+  <!--rodapé-->
+  <footer>
+    <div class="footer-copyright">
+      <div class="container d-flex justify-content-center">
+        <span>&copy; 2020 Exact Analytcs</span>
+      </div>
+    </div>
+  </footer>
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <!-- offline -->
-    <script type="text/javascript" src="JS/bootstrap.min.js"></script>
-  </body>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <!-- offline -->
+  <script type="text/javascript" src="JS/jquery-3.4.1.slim.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <!-- offline -->
+  <script type="text/javascript" src="JS/popper.min.js"></script>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <!-- offline -->
+  <script type="text/javascript" src="JS/bootstrap.min.js"></script>
+</body>
+
 </html>
