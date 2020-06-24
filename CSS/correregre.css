@@ -18,8 +18,25 @@ main #informacoes {
     height: 360px; 
 
     border: 1px solid red; 
-    
+
     margin-bottom: 48px; 
     margin-top: 48px; 
     margin-left: 3%;
+}
+
+tbody th{
+    background-color: #59a4dc;
+
+    width: 35%;
+    
+}
+
+tbody, td, th, tr {
+    border: 1px solid black !important;
+    width: 35%;
+}
+
+table {
+
+    margin-top: 48px;
 }
