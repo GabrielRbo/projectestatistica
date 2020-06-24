@@ -109,7 +109,7 @@ function geraGrafico(localGrafico, tipoGrafico, vetorValores, titulo, legenda){
 
 function geraGrafico2(localGrafico, tipoGrafico, vetorValores, titulo, legenda){
 	var graphic = document.getElementById(localGrafico).getContext('2d');
-	let vetorComDados = nomeVariavel.value.split(',')
+	let vetorComDados = nomeVariavel.value.split(';')
 
 	var myChart = new Chart(graphic, {
 		type: tipoGrafico,
@@ -190,7 +190,7 @@ function gerarTabela(){
 	localDaTabela.style.display = 'block'
 
 
-	let dados = dadosVariavel.value.split(',')
+	let dados = dadosVariavel.value.split(';')
 	let dadosSeparados = []
 
 	// SEPARA E CONTAS OS ELEMENTOS(DO CAMPO -> DADOS DA VARIAVEL)
@@ -274,7 +274,7 @@ function gerarTabela(){
 	
 	}else if( tipoCalculo[1].checked ){
 		// ADD OS VALORES NA TABELA ORDINAL
-		let ordemInput = document.querySelector('#ordem').value.split(',')
+		let ordemInput = document.querySelector('#ordem').value.split(';')
 		ordemInput = ordemInput.filter( (este, i) => ordemInput.indexOf(este) === i )
 
 
