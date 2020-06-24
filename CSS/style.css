@@ -104,7 +104,6 @@ thead{
   height: max-content;
 } */
 
-
 .correlacao {
   width: 50%;
   text-align: center;
@@ -112,4 +111,16 @@ thead{
 
   margin: 0 auto;
   margin-top: 20px;
+}
+
+/*Elemento flutuante tabela*/
+.taba{
+  width: 265px;
+  padding: 5px;
+  float: left;
+  margin: 15px;
+}
+
+.clear{
+  clear: both;
 }
