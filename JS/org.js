@@ -645,7 +645,7 @@ function gerarTabela(){
 		}
 
     // ErroTabela
-	//	corpoTabela3.innerHTML = `<tr> <td></td> <td>${cv.toFixed(2)}</td> <td>${dp.toFixed(2)}</td> <td>${resultS.toFixed(2)}</td> </tr>`
+		corpoTabela3.innerHTML = `<tr> <td></td> <td>${cv.toFixed(2)}</td> <td>${dp.toFixed(2)}</td> <td>${resultS.toFixed(2)}</td> </tr>`
 
 		// FIM TABELA CONTINUA
 	// }
