@@ -1,8 +1,5 @@
 const opCalc = document.getElementsByName('CalcProb')
 
-console.log(opCalc);
-
-
 $(opCalc[0]).click(function () {
     $('#calcBinomial.escondido').css("display","block")
     

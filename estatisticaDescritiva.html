@@ -116,9 +116,8 @@
         </div>
 
       </form>
-
-       <!-- FORMULÁRIO PARA ESCOLHA DA MEDIDA SEPARATRIZ-->
-       <form>
+      <!-- FORMULÁRIO PARA ESCOLHA DA MEDIDA SEPARATRIZ-->
+      <form>
         <div style="width: 360px; height: max-content; float: left;">
           <div style="padding-left: 20px; float: left;">
             <div class="form-check">
@@ -156,10 +155,7 @@
           </div>
         </div>
       </form>
-
       <!-- FIM DO FORMULÁRIO P/ MEDIDA SEPARATRIZ-->
-
-
       <form class="Upload" onsubmit="return false" style="clear:both;"> 
         <button type="submit" id="BotaoCalcular" class="btn btn-primary" style="margin-left: 55px;">Calcular</button>
         <input type="file" id="botaoUpload" hidden="hidden" accept=".csv" />
@@ -169,11 +165,11 @@
       <!-- FIM DO FORMULÁRIO PARA INSERÇÃO DE DADOS-->
 
       <div id="calculoNominal" class="container" style="display: none;padding-top: 20px;">
+        
         <!-- TABELAS -->
-
-        <!-- TABELAS DE FREQUÊNCIAS-->
-        <div class="row" style="clear: both;">
-          <table class="col tabelafreq table table-responsive-sm table-striped table-hover w-50 ml-10 mt-5">
+        <div class="row clear">
+          <!-- TABELAS DE FREQUÊNCIAS-->
+          <table class="taba col tabelafreq table table-responsive-sm table-striped table-hover w-50 ml-10 mt-5">
               <caption></caption>
               <thead>
                 <th id="variavelNome"></th>
@@ -187,7 +183,7 @@
           <!-- FIM TABELAS DE FREQUÊNCIAS-->
 
           <!-- TABELAS DE MODA MÉDIA MEDIANA / MEDIDAS SEPARATRIZES / DESVIO PADRÃO -->
-          <table class="col tabelaMMM table table-responsive-sm table-striped table-hover w-25 ml-10 mt-5">
+          <table class="taba col tabelaMMM table table-responsive-sm table-striped table-hover w-25 ml-10 mt-5">
               <caption></caption>
               <thead>
                 <th id="variavelNome2"></th>
@@ -198,7 +194,7 @@
               <tbody id="corpo2"></tbody>
           </table>
             
-          <table class="col tabela3 table table-responsive-sm table-striped table-hover w-25 ml-10 mt-5">
+          <table class="taba col tabela3 table table-responsive-sm table-striped table-hover w-25 ml-10 mt-5">
               <caption></caption>
               <thead>
                 <th id="variavelNome3"></th>
@@ -208,24 +204,20 @@
               </thead>
               <tbody id="corpo3"></tbody>
           </table> 
+          <!-- FIM TABELAS MMM / MS / DP -->
         </div>
-      </div>
-        <!-- FIM TABELAS MMM / MS / DP -->
         <!-- TABELAS -->
        
         <!-- GRÁFICO -->
         <div id='graficoC' class="col-lg ml-5 mt-5 justify-content-center" style="margin: 0px !important;">
-          <script src="Chart/Chart.min.js"></script>
-          
+          <script src="Chart/Chart.min.js"></script>          
         </div>
         <!-- FIM DO GRÁFICO -->
+
       </div>
     </main> 
 
-    <!--rodapé-->
-    <div id="file">
-      
-    </div>
+    <!--rodapé-->   
     <footer style="margin-top: 25px;">
       <div class="footer-copyright">
         <div class="container d-flex justify-content-center">
@@ -251,9 +243,6 @@
    
     <!-- offline -->
     <script type="text/javascript" src="JS/org.js"></script>
-
-    <!-- offline -->
-    <script type="text/javascript" src="JS/graphic.js"></script>
 
     <!-- offline --> 
    <script type="text/javascript" src="JS/html.js"></script> 

@@ -1,7 +1,6 @@
 // APENAS PARA LEMBRAR DE COMO CONTAR NAO MEXER
 function contaVetor(vetor){
 	vetor.reduce( (obj, item) => {
-		console.log(obj, item)
 		if(!obj[item]){
 			obj[item] = 1
 
@@ -87,7 +86,6 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 
 	// SEPARA E CONTAS OS ELEMENTOS(DO CAMPO -> DADOS DA VARIAVEL)
 	let sep = dados.reduce( (obj, item) => {
-		// console.log(obj, item)
 		item = item.replace(/\s/g, '')// fazer testes
 		if(!obj[item]){
 			obj[item] = 1
@@ -168,7 +166,7 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 		let k = Number( Math.sqrt( dados.length ).toString()[0] ) // raiz quadrada do total dos elementos
 		let kmais = k + 1
 		let kmenos = k - 1
-	//	console.log('quantidade', dados.length,'K',k, 'kmais',kmais,'kmenos', kmenos)
+
 		//3°passo
 
 		let inteiro = true
@@ -195,12 +193,6 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 				inteiro = false
 			}
 		}
-
-		console.log('ic', ic, linha)
-	//	console.log('dps',at)
-    //   console.log('depois', ic)
-
-	//	console.log('linha', linha)
 
 		const corpoTabela = document.querySelector('#corpo')
 		corpoTabela.innerHTML = ''
@@ -242,9 +234,6 @@ function nominal(nomeVariavelTabela, localDaTabelaSite){
 	}
 
 }
-
-
-
 
 // pega o clique do botao 
 document.querySelector('#BotaoCalcular').onclick = e => {

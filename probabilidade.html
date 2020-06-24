@@ -83,8 +83,9 @@
       </div>
   </div>
 
-  <!-- BINOMIAL -->
+
   <div id="CalculosProb">
+    <!-- BINOMIAL -->
     <div id="calcBinomial" class="escondido">
       <h2 style="margin-top: 20px;">BINOMIAL</h2>
       <hr class="teste" />
@@ -100,13 +101,12 @@
         </div>
         <div class="form-group">
           <label for="elementoQ">Fracasso (q)</label>
-          <input type="text" class="form-control" id="elementoQ"
-            placeholder="Digite a taxa de Fracasso (%)" style="text-align: center;">
+          <input type="text" class="form-control" id="elementoQ" placeholder="Digite a taxa de Fracasso (%)"
+            style="text-align: center;">
         </div>
         <div class="form-group">
           <label for="elementoK">Evento (k)</label>
-          <input type="text" class="form-control" id="elementoK" placeholder="Digite aqui"
-            style="text-align: center;">
+          <input type="text" class="form-control" id="elementoK" placeholder="Digite aqui" style="text-align: center;">
         </div>
 
         <button type="button" class="btn btn-primary" id="btCalcBino">Calcular</button>
@@ -117,21 +117,21 @@
         <tbody>
           <tr>
             <td>Probabilidade</td>
-            <td id="tabProb">26.00%</td>
+            <td id="tabProb">0</td>
           </tr>
           <tr>
             <td>Média</td>
-            <td id="tabMedia">320</td>
+            <td id="tabMedia">0</td>
 
           </tr>
           <tr>
             <td>Desvio Padrão</td>
-            <td id="tabDesvio">20.00%</td>
+            <td id="tabDesvio">0</td>
 
           </tr>
           <tr>
             <td style="font-size: 14px;">Coeficiente de Variação</td>
-            <td id="tabCoefVari"></td>
+            <td id="tabCoefVari">0</td>
 
           </tr>
         </tbody>
@@ -146,6 +146,7 @@
       <h2 style="margin-top: 20px;">NORMAL</h2>
       <hr class="teste" />
       <form class="Calc">
+<<<<<<< HEAD
         <div class="form-group"></div>
         <label for="formGroupExampleInputnormalEle">Elemento</label>
         <input type="text" class="form-control" id="normalEle" placeholder="Digite o número de elementos"
@@ -158,17 +159,33 @@
         <div class="form-group">
           <label for="normalDesvio">Desvio Padrão</label>
           <input type="text" class="form-control" id="normalDesvio" placeholder="Digite o Desvio Padrão"
+=======
+        <div class="form-group">
+          <label for="media1">Média</label>
+          <input type="text" class="form-control" id="media1" placeholder="Digite a Média" style="text-align: center;">
+        </div>
+        <div class="form-group">
+          <label for="dp1">Desvio Padrão</label>
+          <input type="text" class="form-control" id="dp1" placeholder="Digite o Desvio Padrão"
+>>>>>>> 2fd79c088d7fb7020a24178725dcc20a38984f36
             style="text-align: center;">
         </div>
 
         <div class="input-group mb-3">
 
           <select class="custom-select" id="selCalcNormal">
-            <option selected>Selecione</option>
+            <option>Selecione</option>
             <option value="1">Maior Que</option>
             <option value="2">Menor Que</option>
             <option value="3">Entre</option>
           </select>
+        </div>
+
+        <div class="form-group">
+          <label for="intervalo">Intervalo</label>
+          <input type="text" class="form-control" id="intervalo" placeholder="Digite o número de elementos"
+            style="text-align: center;">
+
         </div>
 
         <button type="button" class="btn btn-primary" id="btCalcNormal">Calcular</button>
@@ -179,31 +196,55 @@
         <tbody>
           <tr>
             <td>Valores</td>
+<<<<<<< HEAD
             <td id="nv">26.00%</td>
           </tr>
           <tr>
             <td>Média</td>
             <td id="nm">320</td>
+=======
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>Média</td>
+            <td>0</td>
+>>>>>>> 2fd79c088d7fb7020a24178725dcc20a38984f36
 
           </tr>
           <tr>
             <td>Desvio Padrão</td>
+<<<<<<< HEAD
             <td id="nd">20.00%</td>
+=======
+            <td>0</td>
+>>>>>>> 2fd79c088d7fb7020a24178725dcc20a38984f36
 
           </tr>
           <tr>
             <td>Valor Z</td>
+<<<<<<< HEAD
             <td id="nz"></td>
+=======
+            <td>0</td>
+>>>>>>> 2fd79c088d7fb7020a24178725dcc20a38984f36
 
           </tr>
           <tr>
             <td>Valor Tabela Gauss</td>
+<<<<<<< HEAD
             <td id="ng"></td>
+=======
+            <td>0</td>
+>>>>>>> 2fd79c088d7fb7020a24178725dcc20a38984f36
 
           </tr>
           <tr>
             <td>Probabilidade</td>
+<<<<<<< HEAD
             <td id="np"></td>
+=======
+            <td>0</td>
+>>>>>>> 2fd79c088d7fb7020a24178725dcc20a38984f36
 
           </tr>
         </tbody>
@@ -219,32 +260,34 @@
       <h2 style="margin-top: 20px;">UNIFORME</h2>
       <hr class="teste" />
       <form class="Calc">
-        <div class="form-group"></div>
-        <label for="formGroupExampleInput">Elemento</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Digite o número de elementos"
-          style="text-align: center;">
         <div class="form-group">
-          <label for="formGroupExampleInput2">Ponto Mínimo</label>
-          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Digite o ponto Mínimo"
+          <label for="pontomin">Ponto Mínimo</label>
+          <input type="text" class="form-control" id="pontomin" placeholder="Digite o ponto Mínimo"
             style="text-align: center;">
         </div>
         <div class="form-group">
-          <label for="formGroupExampleInput2">Ponto Máximo</label>
-          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Digite o Ponto Máximo"
+          <label for="pontomax">Ponto Máximo</label>
+          <input type="text" class="form-control" id="pontomax" placeholder="Digite o Ponto Máximo"
             style="text-align: center;">
         </div>
 
         <div class="input-group mb-3">
 
           <select class="custom-select" id="selCalcUniforme">
-            <option selected>Selecione</option>
+            <option>Selecione</option>
             <option value="1">Maior Que</option>
             <option value="2">Menor Que</option>
             <option value="3">Entre</option>
           </select>
         </div>
 
-        <button type="button" class="btn btn-primary" id="btCalcUniform">Calcular 123</button>
+        <div class="form-group">
+          <label for="intervalo2">Intervalo</label>
+          <input type="text" class="form-control" id="intervalo2" placeholder="Digite o número de elementos"
+            style="text-align: center;">
+        </div>
+
+        <button type="button" class="btn btn-primary" id="btCalcUniform">Calcular</button>
 
       </form>
 
@@ -252,21 +295,20 @@
         <tbody>
           <tr>
             <td>Probabilidade</td>
-            <td>26.00%</td>
+            <td>0</td>
           </tr>
           <tr>
             <td>Variância</td>
-            <td>320</td>
+            <td>0</td>
 
           </tr>
           <tr>
             <td>Desvio Padrão</td>
-            <td>20.00%</td>
-
+            <td>0</td>
           </tr>
           <tr>
             <td style="font-size: 14px;">Coeficiente de Variação</td>
-            <td></td>
+            <td>0</td>
 
           </tr>
 
