@@ -212,13 +212,9 @@ function gerarTabela(){
 	NomeTabela.innerHTML = nomeVariavel.value
 	localDaTabela.style.display = 'block'
 
-
-<<<<<<< HEAD
 	let dados = dadosVariavel.value.split(',')
 	selectionSort(dados)
-=======
-	let dados = dadosVariavel.value.split(';')
->>>>>>> 2fd79c088d7fb7020a24178725dcc20a38984f36
+	// let dados = dadosVariavel.value.split(';')
 	let dadosSeparados = []
 
 	// SEPARA E CONTAS OS ELEMENTOS(DO CAMPO -> DADOS DA VARIAVEL)
