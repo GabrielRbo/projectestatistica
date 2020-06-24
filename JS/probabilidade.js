@@ -74,7 +74,7 @@ btBinomial.onclick = () => {
     let q = eleQ.value
     let k = eleK.value
 
-    tabP.innerHTML = (prob2(n, k, p, q) * 100).toFixed(2)
+    tabP.innerHTML = (prob2(n, k, p, q) / 100).toFixed(2)
     tabM.innerHTML = media(n, p).toFixed(2)
     tabD.innerHTML = desvioPadra(n, p, q).toFixed(2)
     tabV.innerHTML = (( desvioPadra(n, p, q) / media(n, p) ) * 100).toFixed(2)
