@@ -207,3 +207,52 @@ btNormal.onclick = () => {
 //----------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------
 const btUniform = document.querySelector('#btCalcUniform')
+
+btUniform.onclick = () => {
+    const pMin = document.querySelector('#pontomin')
+    const pMax = document.querySelector('#pontomax')
+    const sel = document.querySelector('#selCalcUniforme')
+    const inter = document.querySelector('#intervalo2')
+
+    const probab = document.querySelector('#probU')
+    const variancia = document.querySelector('#varU')
+    const desvioU = document.querySelector('#desvioU')
+    const mediaU = document.querySelector('#mediaU')
+
+    if( sel.selectedIndex == 0 ){
+        //maior que
+        let iitt
+        if( inter.value == '' ){
+            iitt =  Number(pMax.value) - Number(pMin.value)
+        }else {
+            iitt = inter.value
+        }
+        prob = 1 / ( Number(pMax.value) - Number(pMin.value) ) * iitt
+        prob = prob * 100
+        probab.innerHTML = (prob).toFixed(2)
+    
+    }else if( sel.selectedIndex == 2){
+        //entre
+        v = inter.value.split(';')
+        iitt =  v[1] - v[0]
+        prob = 1 / ( Number(pMax.value) - Number(pMin.value) ) * iitt
+        probab.innerHTML = (prob * 100).toFixed(2)
+
+    }else if( sel.selectedIndex == 1){
+        //menor que
+        v = inter.value.split(';')
+        iitt = inter.value - Number(pMin.value)
+        prob = 1 / ( Number(pMax.value) - Number(pMin.value) ) * iitt
+        probab.innerHTML = (prob * 100).toFixed(2)
+    }
+
+    desviop = Math.sqrt( Math.pow(( Number(pMax.value) - Number(pMin.value)), 2) / 12 )
+    desvioU.innerHTML = desviop.toFixed(2)
+
+    mediaR = Number(pMin.value) + Number(pMax.value)
+    mediaU.innerHTML = mediaR / 2
+
+    varia = desviop.toFixed(2) / (mediaR / 2) * 100
+    variancia.innerHTML = varia.toFixed(2)
+
+}
