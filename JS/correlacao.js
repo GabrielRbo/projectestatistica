@@ -9,7 +9,9 @@ const rCorrelacao = document.querySelector('#rCorrelacao')
 const rRegressao = document.querySelector('#rRegressao')
 const bt = document.querySelector('#btCalcUniform')
 const pontoF = document.querySelector('#pontoF')
-
+let resultadoRegressao = 0
+let fA = 0
+let fB = 0
 function grafico(dados, dadosG){
 
     var ctx = document.getElementById('gf').getContext('2d');
@@ -17,7 +19,7 @@ function grafico(dados, dadosG){
         type: 'scatter',
         data: {
             datasets: [{
-                label: 'Scatter Dataset',
+                label: 'Correlacao',
                  data: dados, // dados
                  backgroundColor: '#338FFFFF',
             },{
@@ -108,9 +110,11 @@ btR.onclick = () => {
 	console.log('reta ' + reta)
 
 	//add tabela correlacao e regrecao
-	rCorrelacao.innerHTML = resultado
+	rCorrelacao.innerHTML = resultado.toFixed(2)
 	rRegressao.innerHTML = reta
-
+	// resultadoRegressao = `${A.toFixed(3)} + ${B.toFixed(4)} * x`
+	fA = A.toFixed(3)
+	fB = B.toFixed(4)
 	dataG = [{
         x:(menor - A ) / B , y: menor
     },{
@@ -119,4 +123,13 @@ btR.onclick = () => {
 
 
 	grafico(dadosGrafico, dataG)
+}
+
+bt.onclick = () => {
+	if( nVx.value != "" ){
+		resultadoRegressao = Number(fA) + Number(fB) * Number(nVx.value)
+		// alert(resultadoRegressao)
+	}else if( nVy.value != "" ){
+
+	}
 }
