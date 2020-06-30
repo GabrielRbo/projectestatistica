@@ -45,11 +45,25 @@ btR.onclick = () => {
 	console.log('somaY2 ' + somaY2)
 	console.log('somaXY '+ somaXY)
 
+	//Correlacao
 	a = Vx.length * somaXY - somaX * somaY
 	b = Math.sqrt(  Vx.length * somaX2 - somaX ** 2  ) * Math.sqrt( Vx.length * somaY2 - somaY **2 )
 	//let resultado =  (Vx.length * somaXY ) - (somaX * somaY) / Math.sqrt( (Vx.length * somaX2) - (somaX ** 2) ) * Math.sqrt( (Vx.length * somaY2) - (somaY **2) )
 	let resultado = a / b
-	console.log('-->' + Vx.length )
-	console.log('R '+ resultado)
+	
+	//Regressao
+	// aB1 = (Vx.length * somaXY - somaX * somaY)
+	// aB2 = (Vx.length * somaX2 - somaX ** 2)
+	B = (Vx.length * somaXY - somaX * somaY) / (Vx.length * somaX2 - somaX ** 2)
+	console.log(B)
 
+	A = (somaY - B * somaX) / Vx.length
+	console.log('a' + A)
+
+	reta = `${A.toFixed(3)} + ${B.toFixed(4)} * x`
+	console.log('reta ' + reta)
+
+	//add tabela correlacao e regrecao
+	rCorrelacao.innerHTML = resultado
+	rRegressao.innerHTML = reta
 }
