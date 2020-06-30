@@ -14,43 +14,73 @@
     </style>
 </head>
 <body>
-   Por favor selecione arquivo que será lido:
+   <!-- Por favor selecione arquivo que será lido:
     <input type="file" id="txtfiletoread" /><br />
     <div>Conteúdo do arquivo:</div>
     <div id="filecontents">
-    </div>
+    </div> -->
 
+    <canvas id="gf"></canvas>
+
+    <script type="text/javascript" src="Chart/Chart.js"></script>
     <script>
 
-        window.onload = function () {
-            //Check the support for the File API support
-            if (window.File && window.FileReader && window.FileList && window.Blob) {
-                var fileSelected = document.getElementById('txtfiletoread');
-                fileSelected.addEventListener('change', function (e) {
-                    //Set the extension for the file
-                    var fileExtension = /text.*/;
-                    //Get the file object
-                    var fileTobeRead = fileSelected.files[0];
-                    //Check of the extension match
-                    if (fileTobeRead.type.match(fileExtension)) {
-                        //Initialize the FileReader object to read the 2file
-                        var fileReader = new FileReader();
-                        fileReader.onload = function (e) {
-                            var fileContents = document.getElementById('filecontents');
-                            fileContents.innerText = fileReader.result;
-                        }
-                        fileReader.readAsText(fileTobeRead);
-                    }
-                    else {
-                        alert("Por favor selecione arquivo texto");
-                    }
+        // window.onload = function () {
+        //     //Check the support for the File API support
+        //     if (window.File && window.FileReader && window.FileList && window.Blob) {
+        //         var fileSelected = document.getElementById('txtfiletoread');
+        //         fileSelected.addEventListener('change', function (e) {
+        //             //Set the extension for the file
+        //             var fileExtension = /text.*/;
+        //             //Get the file object
+        //             var fileTobeRead = fileSelected.files[0];
+        //             //Check of the extension match
+        //             if (fileTobeRead.type.match(fileExtension)) {
+        //                 //Initialize the FileReader object to read the 2file
+        //                 var fileReader = new FileReader();
+        //                 fileReader.onload = function (e) {
+        //                     var fileContents = document.getElementById('filecontents');
+        //                     fileContents.innerText = fileReader.result;
+        //                 }
+        //                 fileReader.readAsText(fileTobeRead);
+        //             }
+        //             else {
+        //                 alert("Por favor selecione arquivo texto");
+        //             }
 
-                }, false);
-            }
-            else {
-                alert("Arquivo(s) não suportado(s)");
-            }
+        //         }, false);
+        //     }
+        //     else {
+        //         alert("Arquivo(s) não suportado(s)");
+        //     }
+        // }
+
+        let tx = [{x:10, y:10}, {x:4, y:4}, {x:1,y:1},{x:15, y:10}, {x:7, y:4}, {x:1,y:10}]
+
+        function grafico(dados){
+
+            var ctx = document.getElementById('gf').getContext('2d');
+            var scatterChart = new Chart(ctx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: 'Scatter Dataset',
+                         data: dados, // dados
+                         backgroundColor: '#338FFFFF',
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            type: 'linear',
+                            position: 'bottom'
+                        }]
+                    }
+                }
+            });
         }
+
+        grafico(tx)
 
     </script>
 </body>

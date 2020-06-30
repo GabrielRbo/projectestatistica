@@ -3,13 +3,46 @@ const vy = document.querySelector('#valy')
 const nVx = document.querySelector('#nValx')
 const nVy = document.querySelector('#nValy')
 const btR = document.querySelector('#btCalcR')
+// const gf = document.querySelector('#btCalcR')
 
 const rCorrelacao = document.querySelector('#rCorrelacao')
 const rRegressao = document.querySelector('#rRegressao')
 const bt = document.querySelector('#btCalcUniform')
 const pontoF = document.querySelector('#pontoF')
 
+function grafico(dados, dadosG){
+
+    var ctx = document.getElementById('gf').getContext('2d');
+    var scatterChart = new Chart(ctx, {
+        type: 'scatter',
+        data: {
+            datasets: [{
+                label: 'Scatter Dataset',
+                 data: dados, // dados
+                 backgroundColor: '#338FFFFF',
+            },{
+            	type: 'line',
+                data: dadosG,
+                fill: false,
+                borderColor:"#00008B",
+                backgroundColor: "#00008B",
+                showLine: true,
+                pointRadius: 0
+            }]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    type: 'linear',
+                    position: 'bottom'
+                }]
+            }
+        }
+    });
+}
+
 btR.onclick = () => {
+	document.querySelector('#graficos').innerHTML = `<canvas id="gf"></canvas>`
 	let Vx = vx.value.split(',')
 	let Vy = vy.value.split(',')
 	let somaX = 0 //
@@ -20,6 +53,8 @@ btR.onclick = () => {
 	let x2 = []
 	let y2 = []
 	let xy = []
+
+	let dadosGrafico = []
 
 	for(i of Vx){
 		somaX += Number(i)
@@ -35,9 +70,18 @@ btR.onclick = () => {
 		somaY2 += i**2
 	}
 
+	let maior = Vy[0]
+	let menor = Vy[0]
 	for( i in Vx){
 		xy.push( Vx[i] * Vy[i] )
 		somaXY += Vx[i] * Vy[i]
+		dadosGrafico.push( {x: Vx[i] ,y: Vy[i] } )
+		if ( maior < Vy[i] ){
+			maior = Vy[i]
+		}
+		if( menor > Vy[i] ){
+			menor = Vy[i]
+		}
 	}
 	console.log('SomaX ' + somaX)
 	console.log('SomaY ' + somaY)
@@ -66,4 +110,13 @@ btR.onclick = () => {
 	//add tabela correlacao e regrecao
 	rCorrelacao.innerHTML = resultado
 	rRegressao.innerHTML = reta
+
+	dataG = [{
+        x:(menor - A ) / B , y: menor
+    },{
+        x:(maior - A ) / B , y: maior
+    }]
+
+
+	grafico(dadosGrafico, dataG)
 }
