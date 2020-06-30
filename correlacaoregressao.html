@@ -78,7 +78,7 @@
         <input type="text" class="form-control" id="valy" placeholder="Digite os Valores" style="text-align: center;">
       </div>
 
-      <button type="button" class="btn btn-primary" id="btCalcUniform">Calcular</button>
+      <button type="button" class="btn btn-primary" id="btCalcR">Calcular</button>
     </form>
 
     <div id="informacoes">
@@ -86,11 +86,11 @@
         <tbody>
           <tr>
             <th>Correlação: </th>
-            <td></td>
+            <td id="rCorrelacao"></td>
           </tr>
           <tr>
             <th>Regressão:</th>
-            <td></td>
+            <td id="rRegressao"></td>
 
           </tr>
 
@@ -98,19 +98,19 @@
       </table>
 
       <div class="form-group">
-        <label for="valx">Novos Valores de (X):</label>
-        <input type="text" class="form-control" id="valx" placeholder="Digite os valores" style="text-align: center;">
+        <label for="nValx">Novos Valores de (X):</label>
+        <input type="text" class="form-control" id="nValx" placeholder="Digite os valores" style="text-align: center;">
       </div>
       <div class="form-group">
-        <label for="valy">Novos Valores de (Y):</label>
-        <input type="text" class="form-control" id="valy" placeholder="Digite os Valores" style="text-align: center;">
+        <label for="nValy">Novos Valores de (Y):</label>
+        <input type="text" class="form-control" id="nValy" placeholder="Digite os Valores" style="text-align: center;">
       </div>
 
       <button type="button" class="btn btn-primary" id="btCalcUniform" style="float: left;">Calcular</button>
 
       <table style="float: right; width: 45%; margin: 0;">
         <th>Ponto Futuro</th>
-        <td></tr>
+        <td id="pontoF"></tr>
       </table>
     </form>
 
@@ -154,6 +154,7 @@
     crossorigin="anonymous"></script>
   <!-- offline -->
   <script type="text/javascript" src="JS/bootstrap.min.js"></script>
+  <script type="text/javascript" src="JS/correlacao.js"></script>
 </body>
 
 </html>
