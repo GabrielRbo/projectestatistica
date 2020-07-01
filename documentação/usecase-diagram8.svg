@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='10 60 300 268' xmlns:xlink='http://www.w3.org/1999/xlink' width='300.0px' font-size='13' font-family='Arial, LiberationSans' version='1.1' height='268.0px'>
+  <defs>
+<style type='text/css'><![CDATA[svg text {text-rendering: geometricPrecision;}]]></style>    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='301d1b47-2869-4cfc-97a0-001ffe5d5f46' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='5e3b7dfe-a2b5-4ec8-8700-571665262a0e' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='5c6f969b-daad-4985-89b2-a970ce8f3f8c' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+  </defs>
+  <desc>UsecaseDiagram</desc>
+  <g transform='translate(58.0,153.0)' id='_c2Ao4J1rEDitiaajoLKttw'>
+    <circle r='6.5' cx='20.0' cy='8.5' stroke-width='1.5' fill='rgb(255, 255, 255)' stroke='rgb(136, 136, 136)' look='allInOne'/>
+    <line y1='15.0' x1='20.0' y2='45.5' x2='20.0' stroke-width='1.5' fill='rgb(255, 255, 255)' stroke='rgb(136, 136, 136)' look='allInOne'/>
+    <line y1='26.0' x1='6.0' y2='26.0' x2='34.0' stroke-width='1.5' fill='rgb(255, 255, 255)' stroke='rgb(136, 136, 136)' look='allInOne'/>
+    <line y1='45.5' x1='20.0' y2='63.0' x2='9.2' stroke-width='1.5' fill='rgb(255, 255, 255)' stroke='rgb(136, 136, 136)' look='allInOne'/>
+    <line y1='45.5' x1='20.0' y2='63.0' x2='30.799999999999997' fill='rgb(255, 255, 255)' stroke='rgb(136, 136, 136)' look='allInOne'/>
+    <text text-anchor='middle' x='20.0' y='78.0' font-size='13' font-style='normal' fill='rgb(0, 0, 0)'>Usuário</text>
+  </g>
+  <g transform='translate(180.0,90.0)' id='_iQ8nkZ1rEDitiaajoLKttw'>
+    <ellipse cx='50.0' cy='27.5' rx='50.0' ry='27.5' stroke-width='1.0' fill='url(#301d1b47-2869-4cfc-97a0-001ffe5d5f46)' stroke='rgb(187, 187, 187)' look='allInOne'/>
+    <g transform='translate(0.0,21.0)'>
+      <g transform='translate(0.0,0.0)'>
+        <text font-weight='bold' text-anchor='middle' x='50.0' y='13.0' font-size='13' fill='rgb(3, 54, 86)'>Cadastrar-se</text>
+      </g>
+    </g>
+  </g>
+  <g transform='translate(180.0,165.0)' id='_wKz6YJ1rEDitiaajoLKttw'>
+    <ellipse cx='50.0' cy='27.5' rx='50.0' ry='27.5' stroke-width='1.0' fill='url(#5e3b7dfe-a2b5-4ec8-8700-571665262a0e)' stroke='rgb(187, 187, 187)' look='allInOne'/>
+    <g transform='translate(0.0,14.5)'>
+      <g transform='translate(0.0,0.0)'>
+        <text font-weight='bold' text-anchor='middle' x='50.0' y='13.0' font-size='13' fill='rgb(3, 54, 86)'>Escolher cálculo</text>
+        <text font-weight='bold' text-anchor='middle' x='50.0' y='26.0' font-size='13' fill='rgb(3, 54, 86)'>desejado</text>
+      </g>
+    </g>
+  </g>
+  <g transform='translate(180.0,243.0)' id='_3iq4w51rEDitiaajoLKttw'>
+    <ellipse cx='50.0' cy='27.5' rx='50.0' ry='27.5' stroke-width='1.0' fill='url(#5c6f969b-daad-4985-89b2-a970ce8f3f8c)' stroke='rgb(187, 187, 187)' look='allInOne'/>
+    <g transform='translate(0.0,21.0)'>
+      <g transform='translate(0.0,0.0)'>
+        <text font-weight='bold' text-anchor='middle' x='50.0' y='13.0' font-size='13' fill='rgb(3, 54, 86)'>Inserir dados</text>
+      </g>
+    </g>
+  </g>
+  <g transform='translate(79.0,178.0)' id='_gqLooJ1sEDitiaajoLKttw'/>
+  <g transform='translate(40.0,208.0)' id='_hEjQdp1sEDitiaajoLKttw'/>
+  <g transform='translate(76.0,239.0)' id='_hVq1pJ1sEDitiaajoLKttw'/>
+  <g id='_gpyAA51sEDitiaajoLKttw'>
+    <line y1='183.0' x1='98.0' y2='142.0' x2='180.0' id='_gp9mMp1sEDitiaajoLKttw' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_hESKsp1sEDitiaajoLKttw'>
+    <line y1='193.0' x1='98.0' y2='193.0' x2='180.0' id='_hEdw4p1sEDitiaajoLKttw' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_hVcMJp1sEDitiaajoLKttw'>
+    <line y1='203.0' x1='98.0' y2='245.0' x2='180.0' id='_hVlWEp1sEDitiaajoLKttw' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+</svg>
