@@ -105,8 +105,12 @@ btR.onclick = () => {
 
 	A = (somaY - B * somaX) / Vx.length
 	console.log('a' + A)
-
-	reta = `${A.toFixed(3)} + ${B.toFixed(4)} * x`
+	ar = A.toFixed(3)
+	br = B.toFixed(4)
+	if( br.indexOf('-') ){
+		br = br.slice(0, )
+	}
+	reta = `${ar} + ${br} * x`
 	console.log('reta ' + reta)
 
 	//add tabela correlacao e regrecao
@@ -126,10 +130,19 @@ btR.onclick = () => {
 }
 
 bt.onclick = () => {
+	resultadoRegressao = 0
+	pontof = []
 	if( nVx.value != "" ){
 		resultadoRegressao = Number(fA) + Number(fB) * Number(nVx.value)
-		// alert(resultadoRegressao)
+		console.log('x' + resultadoRegressao)
+		pontof.push( {x:nVx.value, y:resultadoRegressao} )
 	}else if( nVy.value != "" ){
+		resultadoRegressao = ((nVy.value - fA) / fB).toFixed(0)
+		console.log('x' + resultadoRegressao)
+		pontof.push( {x:resultadoRegressao, y:nVy.value} )
 
 	}
+
+	grafico(pontof, 0)
+	pontoF.innerHTML = resultadoRegressao
 }

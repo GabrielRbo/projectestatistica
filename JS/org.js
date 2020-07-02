@@ -1,3 +1,6 @@
+// https://www.youtube.com/watch?v=8j1u7kwpl6I
+// https://www.youtube.com/watch?v=CWVdARqguwY
+
 // pega os elementos da pagina
 const tipoCalculo = document.getElementsByName('calculoSelecionado')
 const mostraDiv = document.querySelector('#ordemVer')
@@ -42,6 +45,19 @@ let tipoGrafico
 let vetorResulGraf = []
 let tituloGrafico = nomeVariavel.value // passar para o final
 let legendaGrafico = []
+
+
+function medidaSeparatriz(msValor, totPor, dados) {
+	// msValor = msValor.slice(0, -1)
+	var msResultAux = parseInt((msValor / 100) * totPor) //posição
+	var msResult
+	for (i = 1; i <= dados.length; i++) {
+		if (i == msResultAux) {
+			msResult = dados[i - 1]
+		}
+	}
+	return msResult
+}
 
 //--------------------------------------------------------------
 // se clicar no tipo de calculo esconde a tabela e o input de ordem
@@ -285,7 +301,7 @@ function gerarTabela(){
 			rMediana = (mediana.length / 2)
 			rMediana = `${mediana[rMediana]}, ${mediana[rMediana + 1]}`
 		}
-		console.log(rMediana)
+		// console.log(rMediana)
 		corpoTabela2.innerHTML += `<tr></tr><td></td> <td>---</td> <td>${moda1}</td> <td>${rMediana}</td> </tr>`
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id="total"> 100% </td> <td id="total"> </td> <td id="total"> </td> </tr>`
 		Li = 0
@@ -301,8 +317,11 @@ function gerarTabela(){
 			q = i[2]
 			pos += 1
 		}
-
-		corpoTabela3.innerHTML = `<tr> <td></td> <td>---</td> <td>---</td> </tr>`
+		//                        %        total dados  , dados
+		
+		console.log(auxPorcentagem, cont, dados)
+		separatriz = medidaSeparatriz(auxPorcentagem, cont, dados)
+		corpoTabela3.innerHTML = `<tr> <td></td> <td>---</td> <td>---</td> <td>${separatriz}</td></tr>`
 
 
 
@@ -310,7 +329,7 @@ function gerarTabela(){
 	
 	}else if( tipoCalculo[1].checked ){
 		// ADD OS VALORES NA TABELA ORDINAL
-		let ordemInput = document.querySelector('#ordem').value.split(';')
+		let ordemInput = document.querySelector('#ordem').value.split(',')
 		ordemInput = ordemInput.filter( (este, i) => ordemInput.indexOf(este) === i )
 
 
@@ -318,6 +337,8 @@ function gerarTabela(){
 		const corpoTabela = document.querySelector('#corpo')
 		corpoTabela.innerHTML = ``
 		cont = 0 
+		moda1 = []
+		moda = 0
 		ordemInput.forEach( item => {
 			item = item.replace(/\s/g, '') // fazer testes
 			fac += sep[item]
@@ -329,6 +350,14 @@ function gerarTabela(){
 			legendaGrafico.push(`${ item }`)
 			vetorResulGraf.push(`${sep[item]}`)
 			tipoGrafico = 'pie'
+
+			if( sep[item] > moda ){
+				moda1 = []
+				moda1.push(item)
+				moda = sep[item]
+			}else if( sep[item] == moda ){
+				moda1.push(item)
+			}
 			
 		})
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id='total'>100%</td> <td id='total'></td> <td id='total'></td> </tr>`
@@ -351,7 +380,21 @@ function gerarTabela(){
 			pos += 1
 		}
 
-		corpoTabela3.innerHTML = `<tr> <td></td> <td>asdf</td> <td>${Li}</td> </tr>`
+		rMediana = 0
+		mediana = dadosVariavel.value.split(',')
+		verifica = mediana.length % 2
+		selectionSort(mediana)
+		if(verifica == 1){
+			rMediana = (mediana.length / 2) + 0.5 - 1
+			rMediana = mediana[rMediana]
+		}else{
+			rMediana = (mediana.length / 2)
+			rMediana = `${mediana[rMediana]}, ${mediana[rMediana + 1]}`
+		}
+		console.log(auxPorcentagem, cont, dados)
+		separatriz = medidaSeparatriz(auxPorcentagem, cont, dados)
+		corpoTabela2.innerHTML = `<tr> <td></td> <td>---</td> <td>${moda1}</td> <td>${rMediana}</td>  </tr>`
+		corpoTabela3.innerHTML = `<tr> <td></td> <td>---</td> <td>---</td> <td>${separatriz}</td> </tr>`
 
 
 
@@ -402,17 +445,18 @@ function gerarTabela(){
 
 		let aux = 0
 		let aux2 = 1
-		let mediana = 0
+		let medianaj = 0
 		let meio = cont / 2
 		for(i of vet){
 			if(meio > vet[aux] && meio < vet[aux2]){
-				mediana = vet.indexOf( vet[aux2] )
+				medianaj = vet.indexOf( vet[aux2] )
+				console.log('que to vendo '+medianaj)
 			}
 			aux += 1
 			aux2 += 1
 		}
 
-		let rMediana = vet2[mediana -1]	
+		let rMediana = vet2[medianaj -1]	
 	
 		corpoTabela2.innerHTML += ` <tr> <td></td> <td>${(media / cont).toFixed(2)}</td> <td>${moda2}</td> <td>${rMediana}</td> </tr> ` 
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id='total'>100%</td> <td id='total'></td> <td id='total'></td> </tr>`
@@ -721,39 +765,52 @@ porcentil = document.querySelector('#porcentil')
 qualValor = document.querySelector('#qualValor')
 porce = document.querySelector('#porcentagem')
 
+auxPorcentagem = 0
+
 qualValor.onchange = () => {
 	if(quartil.checked){
 		if (porce.value == '25%'){
 			porce.value = `Q1`
+			auxPorcentagem = 25
 		}else if (porce.value == '50%'){
 			porce.value = `Q2`
+			auxPorcentagem = 50
 		}else if (porce.value == '75%'){
 			porce.value = `Q3`
+			auxPorcentagem = 75
 		}else if (porce.value == '100%'){
 			porce.value = `Q4`
+			auxPorcentagem = 100
 		}
 	}
 
 	if(quintil.checked){
 		if (porce.value == '20%'){
 			porce.value = `k1`
+			auxPorcentagem = 20
 		}else if (porce.value == '40%'){
 			porce.value = `k2`
+			auxPorcentagem = 40
 		}else if (porce.value == '60%'){
 			porce.value = `k3`
+			auxPorcentagem = 60
 		}else if (porce.value == '80%'){
 			porce.value = `k4`
+			auxPorcentagem = 80
 		}else if (porce.value == '100%'){
 			porce.value = `k5`
+			auxPorcentagem = 100
 		}
 	}
 
 	if( decil.checked ){
+		auxPorcentagem = Number(porce.value.slice(0, -1))
 		porce.value = `D${Number(porce.value.slice(0, -1))/10}`
 		
 	}
 
 	if(porcentil.checked){
+		auxPorcentagem = porce.value.slice(0, -1)
 		porce.value = `P${porce.value.slice(0, -1)}`
 	}
 
