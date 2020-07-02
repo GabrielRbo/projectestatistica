@@ -247,6 +247,7 @@ function gerarTabela(){
 		let amostra = 0
 		moda = 0
 		moda1 = []
+		mediana = []
   
 		Object.keys(sep).forEach( item => {
 			amostra ++
@@ -270,16 +271,27 @@ function gerarTabela(){
 				moda1.push(item)
 			}
 			
-			
 		// WILL AQUI QUE ESTA PEGANDO, o valor porcentagem / precisa pegar e jogar no vetor 
 		})
-		corpoTabela2.innerHTML += `<tr></tr><td></td> <td>${ (cont/amostra).toFixed(2) }</td> <td>${moda1}</td> </tr>`
+
+		rMediana = 0
+		mediana = dadosVariavel.value.split(',')
+		verifica = mediana.length % 2
+		selectionSort(mediana)
+		if(verifica == 1){
+			rMediana = (mediana.length / 2) + 0.5 - 1
+			rMediana = mediana[rMediana]
+		}else{
+			rMediana = (mediana.length / 2)
+			rMediana = `${mediana[rMediana]}, ${mediana[rMediana + 1]}`
+		}
+		console.log(rMediana)
+		corpoTabela2.innerHTML += `<tr></tr><td></td> <td>---</td> <td>${moda1}</td> <td>${rMediana}</td> </tr>`
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id="total"> 100% </td> <td id="total"> </td> <td id="total"> </td> </tr>`
 		Li = 0
 		pos = 0
 		q = 0
 		vLi = cont * qualValor.value / 100
-
 		for( i of vetorSeparetriz ){
 			
 			if ( vLi <= i[2] && vLi >= q ){
@@ -290,7 +302,7 @@ function gerarTabela(){
 			pos += 1
 		}
 
-		corpoTabela3.innerHTML = `<tr> <td></td> <td>asdf</td> <td>${Li}</td> </tr>`
+		corpoTabela3.innerHTML = `<tr> <td></td> <td>---</td> <td>---</td> </tr>`
 
 
 
@@ -445,23 +457,23 @@ function gerarTabela(){
 		}
 		corpoTabela3.innerHTML = `<tr> <td></td> <td>${dp}</td> <td>${cv}</td> <td>${Li}</td> </tr>`
 		// FIM TABELA DISCRETA
-
 	}else if( tipoCalculo[3].checked ){
+		
 		// ADD OS VALORES NA TABELA CONTINUA
 		desvioP = []
 		desvioP2 = []
-		
+		let cv = 0
 		// 1°passo
 		let min = Number( dados[0] )
 		let max = Number( dados[0] )
 
 		dados.forEach( item => {
 			if( Number(item) > max ) max = item
-			if( min > item ){
-				min = item
-			} 
+				if( min > item ){
+					min = item
+				} 
 
-		} )
+			} )
 
 		let at = (max - min)
 		
@@ -484,12 +496,12 @@ function gerarTabela(){
 				linha = k
 				inteiro = false
 			}
-			 if( Number.isInteger(ic2) ){
+			if( Number.isInteger(ic2) ){
 				ic = ic2
 				linha = kmais
 				inteiro = false
 			}
-			 if ( Number.isInteger(ic3) ){
+			if ( Number.isInteger(ic3) ){
 				ic = ic3
 				linha = kmenos
 				inteiro = false
@@ -594,6 +606,7 @@ function gerarTabela(){
 		Li = 0
 		pos = 0
 		q = 0
+		// cv = 0
 		vLi = cont * qualValor.value / 100
 		for( i of vetorSeparetriz ){
 			if ( vLi <= i[3] && vLi >= q ){
@@ -619,9 +632,10 @@ function gerarTabela(){
 		resultS = l + (( vLi - posFacAnt ) / fi) * h
 
 		soma = 0
+		// cv = 0
 		m = (contMedia / cont).toFixed(2)
 		dp = 0
-		cv = 0
+		
 		if( amostraT.checked ){
 
 			for(i of desvioP){
@@ -631,10 +645,8 @@ function gerarTabela(){
 
 			dp = Math.sqrt( (soma / cont - 1) )
 			cv = (dp/m) * 100
-		}
-			
 		}else if( populacaoT.checked ){
-			
+
 			for(i of desvioP){
 				soma += ((i - m) ** 2) * desvioP2[ desvioP.index(i) ] 
 			}
@@ -644,16 +656,13 @@ function gerarTabela(){
 			cv = dp/m * 100
 		}
 
-    // ErroTabela
-		corpoTabela3.innerHTML = `<tr> <td></td> <td>${cv.toFixed(2)}</td> <td>${dp.toFixed(2)}</td> <td>${resultS.toFixed(2)}</td> </tr>`
-
+    	// ErroTabela resolvido ate o momento kkkkk
+    	corpoTabela3.innerHTML = `<tr> <td></td> <td>${cv.toFixed(2)}</td> <td>${dp.toFixed(2)}</td> <td>${resultS.toFixed(2)}</td> </tr>`
 		// FIM TABELA CONTINUA
-	// }
-	
+	}
 	// FINAL DO GRÁFICO
 }
 
-	
 // pega o clique do botao 
 document.querySelector('#BotaoCalcular').onclick = e => {
 	// evento do botao
