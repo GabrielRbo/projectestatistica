@@ -855,3 +855,18 @@ function Separatriz(quartil, quintil, decil, porcentil){
 }
 
 //------------------------------------------------------------
+/* JS PARA O BOTÃO */
+$(document).ready(function(){
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 100) {
+            $('a[href="#home"]').fadeIn();
+        } else {
+            $('a[href="#home"]').fadeOut();
+        }
+    });
+
+    $('a[href="#home"]').click(function(){
+        $('html, body').animate({scrollTop : 0},800);
+        return false;
+    });
+});
