@@ -45,6 +45,7 @@ let tipoGrafico
 let vetorResulGraf = []
 let tituloGrafico = nomeVariavel.value // passar para o final
 let legendaGrafico = []
+let tipoPorc
 
 
 function medidaSeparatriz(msValor, totPor, dados) {
@@ -126,23 +127,44 @@ function geraGrafico(localGrafico, tipoGrafico, vetorValores, titulo, legenda){
 		type: tipoGrafico,
     data: {
         labels: legenda,
-        datasets: [{
+		datasets: [{
             label: `${titulo}`,
-            data: vetorValores,
+            data:  valorPorc,
             backgroundColor: corGraphic,
-            borderColor: corGraphic,
-            borderWidth: 1
-        }]
+            borderColor: 'White',
+			borderWidth: 1,
+			datalabels: {
+				align: tipoPorc,
+				anchor: tipoPorc
+			}
+		}],
     },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
+    options: {	
+		responsive: true,
+		legend: {
+			display: true, 
+			position:'bottom',
+			labels: {
+			  fontFamily: "myriadpro-regular",
+			  boxWidth: 15,
+			  boxHeight: 2
+			}
+		} ,
+		plugins: {
+			datalabels: {
+				color: 'black',
+				display: true,
+				font: {
+					weight: 'bold'
+				},
+				formatter: (value, context) => {
+					return value + "%"
+				}
+	
+			}			  
+		},
+		
+	}
 });
 }
 
@@ -156,37 +178,44 @@ function geraGrafico2(localGrafico, tipoGrafico, vetorValores, titulo, legenda){
         labels: legenda,
         datasets: [{
             label: `${titulo}`,
-            data: vetorValores,
+            data: valorPorc,
             backgroundColor: corGraphic,
             borderColor: corGraphic,
-            borderWidth: 1
-        }]
+			borderWidth: 1,
+			datalabels: {
+				align: tipoPorc,
+				anchor: tipoPorc
+			}
+		}],
     },
-    options: {
-        scales: {
-            xAxes: [{
-            	display:false,
-            	barPercentage: 1.3,
-            	// categoryPercentage: 1.3,
-            	ticks: {
-		            max: 50,
-		            min: 0,
-		            stepSize: 50,
-        		}
-            	// stacked: true,
-            	// width: 100,
-            	
-            	
-            },{
-            	display: true,
-            	categoryPercentage: 1.3,
-            }],
-
-           
-        }
-    }
+    options: {	
+		responsive: true,
+		legend: {
+			display: true, 
+			position:'bottom',
+			labels: {
+			  fontFamily: "myriadpro-regular",
+			  boxWidth: 15,
+			  boxHeight: 2,
+			  margin: 5,
+			},
+		} ,
+		plugins: {
+			datalabels: {
+				color: 'black',
+				display: true,
+				font: {
+					weight: 'bold'
+				},
+				formatter: (value, context) => {
+					return value + "%"
+				}
+	
+			}
+		},
+	}
 });
-}
+} 
 
 // essa funcao que é chamada quando clica no botao 
 function gerarTabela(){
@@ -194,6 +223,7 @@ function gerarTabela(){
 	vetorResulGraf = []
 	tituloGrafico = nomeVariavel.value // passar para o final
 	legendaGrafico = []
+	valorPorc = []
 	corpoTabela2.innerHTML = ``
 	corpoTabela3.innerHTML = ''
 	desvioP = []
@@ -201,7 +231,7 @@ function gerarTabela(){
 	//Zera a div do grafico
 	graficoC.innerHTML = ''
 	//Add o canvas na div igual fizemos na tebela
-	graficoC.innerHTML = `<canvas id="myChart" width= "640" height= "350" class="chartjs-render-monitor " style="display:block; width: 100px; height: 100px;"></canvas>`
+	graficoC.innerHTML = `<canvas id="myChart" width= "640" height= "350" class="chartjs-render-monitor " style="display:block; width: 100px; height: 100px; margin: 0 auto"></canvas>`
 	//--------------------------------------------------------------
 	// validacao precisa aprimorar
 	if ( nomeVariavel.value.length < 3 ){
@@ -277,7 +307,9 @@ function gerarTabela(){
 			// MANDA OS VALORES PROS GRAFICOS
 			legendaGrafico.push(`${ item }`)
 			vetorResulGraf.push(`${sep[item]}`)
+			valorPorc.push(`${ (sep[item] / totPor * 100).toFixed(2)  }`)
 			tipoGrafico = 'pie'
+			tipoPorc = 'center'
 
 			if( sep[item] > moda ){
 				moda1 = []
@@ -349,7 +381,9 @@ function gerarTabela(){
 			// Manda grafico
 			legendaGrafico.push(`${ item }`)
 			vetorResulGraf.push(`${sep[item]}`)
-			tipoGrafico = 'pie'
+			valorPorc.push(`${ (sep[item] / totPor * 100).toFixed(2)  }`)
+			tipoGrafico = 'bar'
+			tipoPorc = 'end'
 
 			if( sep[item] > moda ){
 				moda1 = []
@@ -439,7 +473,9 @@ function gerarTabela(){
 			// Manda grafico
 			legendaGrafico.push(`${ item }`)
 			vetorResulGraf.push(`${sep[item]}`)
+			valorPorc.push(`${ (sep[item] / totPor * 100).toFixed(2)  }`)
 			tipoGrafico = 'bar'
+			tipoPorc = 'end'
 			
 		})
 
@@ -618,7 +654,9 @@ function gerarTabela(){
 			// Manda grafico
 			legendaGrafico.push(`${ Math.round(min) }`)
 			vetorResulGraf.push(`${ Math.round(min + ic) }`)
+			valorPorc.push(`${ (sep[item] / totPor * 100).toFixed(2)  }`)
 			tipoGrafico = 'bar'
+			tipoPorc = 'end'
 			
 		}
 		// mediana media moda
