@@ -170,10 +170,9 @@ function geraGrafico(localGrafico, tipoGrafico, vetorValores, titulo, legenda){
 
 function geraGrafico2(localGrafico, tipoGrafico, vetorValores, titulo, legenda){
 	var graphic = document.getElementById(localGrafico).getContext('2d');
-	let vetorComDados = nomeVariavel.value.split(';')
 
 	var myChart = new Chart(graphic, {
-		type: tipoGrafico,
+		type: 'horizontalBar',
     data: {
         labels: legenda,
         datasets: [{
@@ -188,32 +187,7 @@ function geraGrafico2(localGrafico, tipoGrafico, vetorValores, titulo, legenda){
 			}
 		}],
     },
-    options: {	
-		responsive: true,
-		legend: {
-			display: true, 
-			position:'bottom',
-			labels: {
-			  fontFamily: "myriadpro-regular",
-			  boxWidth: 15,
-			  boxHeight: 2,
-			  margin: 5,
-			},
-		} ,
-		plugins: {
-			datalabels: {
-				color: 'black',
-				display: true,
-				font: {
-					weight: 'bold'
-				},
-				formatter: (value, context) => {
-					return value + "%"
-				}
-	
-			}
-		},
-	}
+    
 });
 } 
 
@@ -349,7 +323,6 @@ function gerarTabela(){
 			q = i[2]
 			pos += 1
 		}
-		//                        %        total dados  , dados
 		
 		console.log(auxPorcentagem, cont, dados)
 		separatriz = medidaSeparatriz(auxPorcentagem, cont, dados)
@@ -429,9 +402,6 @@ function gerarTabela(){
 		separatriz = medidaSeparatriz(auxPorcentagem, cont, dados)
 		corpoTabela2.innerHTML = `<tr> <td></td> <td>---</td> <td>${moda1}</td> <td>${rMediana}</td>  </tr>`
 		corpoTabela3.innerHTML = `<tr> <td></td> <td>---</td> <td>---</td> <td>${separatriz}</td> </tr>`
-
-
-
 
 
 		// FIM TABELA ORDINAL
@@ -650,12 +620,12 @@ function gerarTabela(){
 			corpoTabela.innerHTML += `<tr> <td>${Math.round(min)} |---- ${Math.round(min + ic)}</td> <td>${totVet[i]}</td> <td>${fiP.toFixed(2)}</td> <td>${fac}</td> <td>${facP.toFixed(2)}</td> </tr>`
 			cont += totVet[i]
 			min += ic
-
+		
 			// Manda grafico
 			legendaGrafico.push(`${ Math.round(min) }`)
 			vetorResulGraf.push(`${ Math.round(min + ic) }`)
-			valorPorc.push(`${ (sep[item] / totPor * 100).toFixed(2)  }`)
-			tipoGrafico = 'bar'
+			valorPorc.push(`${ fiP.toFixed(2) }`)
+			tipoGrafico = 'line'
 			tipoPorc = 'end'
 			
 		}
@@ -664,6 +634,8 @@ function gerarTabela(){
 		let aux = 0
 		let aux2 =1
 		let mediana1 = 0
+
+		//console.log(mediana1)
 		for(i of vet){
 			if( meio > vet[aux] && meio < vet[aux2] ){
 				mediana1 = vet.indexOf(vet[aux2])
@@ -671,7 +643,7 @@ function gerarTabela(){
 			aux += 1
 			aux2 += 1
 		}
-		// alert(mediana1)
+	    //console.log(mediana1)
 
 		fi = cont
 		i = vet2[mediana1][0]
@@ -679,7 +651,7 @@ function gerarTabela(){
 		fimd = vet2[mediana1][2]
 		h = vet2[mediana1][1] - vet2[mediana1][0]
 		rMediana = i + (((fi/2)-fant)/fimd)*h
-		// alert(rMediana)
+		//console.log(rMediana)
 		corpoTabela2.innerHTML += ` <tr> <td></td> <td>${ (contMedia / cont).toFixed(2)}</td> <td>${moda}</td> <td>${rMediana.toFixed(2)}</td> </tr>   `
 		corpoTabela.innerHTML += `<tr> <td id="total">Total</td> <td id="total">${cont}</td> <td id='total'>100%</td> <td id='total'></td> <td id='total'></td> </tr>`
 		
