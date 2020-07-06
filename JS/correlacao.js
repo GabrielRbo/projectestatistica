@@ -36,7 +36,10 @@ function selectionSort(vetor){
         }
     }
 }
+//add cor
+let cor = []
 
+label1 = ['Correlacao']
 function grafico(dados, dadosG){
 
     var ctx = document.getElementById('gf').getContext('2d');
@@ -44,12 +47,13 @@ function grafico(dados, dadosG){
         type: 'scatter',
         data: {
             datasets: [{
-                label: 'Correlacao',
+                label: label1,
                  data: dados, // dados
-                 backgroundColor: '#338FFFFF',
+                 backgroundColor: cor,
             },{
             	type: 'line',
                 data: dadosG,
+                label: 'Linha',
                 fill: false,
                 borderColor:"#00008B",
                 backgroundColor: "#00008B",
@@ -68,7 +72,13 @@ function grafico(dados, dadosG){
     });
 }
 
+let dadosGrafico = []
 btR.onclick = () => {
+	dadosGrafico = []
+	for( i of vx.value.split(',') ){
+		cor.push('#338FFFFF')
+		console.log('i ', i)
+	}
 	document.querySelector('#graficos').innerHTML = `<canvas id="gf"></canvas>`
 	let Vx = vx.value.split(',')
 	let Vy = vy.value.split(',')
@@ -81,7 +91,6 @@ btR.onclick = () => {
 	let y2 = []
 	let xy = []
 
-	let dadosGrafico = []
 
 	for(i of Vx){
 		somaX += Number(i)
@@ -151,6 +160,7 @@ btR.onclick = () => {
 	grafico(dadosGrafico, dataG)
 }
 
+//ponto futuro
 bt.onclick = () => {
 	resultadoRegressao = 0
 	pontof = []
@@ -162,7 +172,8 @@ bt.onclick = () => {
 		pontof.push( {x:resultadoRegressao, y:nVy.value} )
 
 	}
-
-	grafico(pontof, 0)
+	dadosGrafico.push({x:pontof[0].x, y:pontof[0].y})
+	cor.push('#FF0000FF')
+	grafico(dadosGrafico, dataG)
 	pontoF.innerHTML = resultadoRegressao
 }
