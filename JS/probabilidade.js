@@ -42,14 +42,15 @@ function fatorial(n){
 } 
 
 function prob (n, k){
-    return fatorial(n) / fatorial(n - k) * fatorial(k) 
+    return fatorial(n) / ( fatorial(n - k) * fatorial(k) )
 }
 
-function prob2(n, k, p, q){
+function prob2(n1,n, k, p, q){
     // sub = n - k
     // return (n/k) *  (p**k) * (q**sub)
     // return fatorial(n) / (fatorial(n - k)) * fatorial(k)
-    return (n/k) * Math.pow(p, k) * Math.pow(q, n-k)
+    aux = n-k
+    return n1 * Math.pow(p, k) * Math.pow(q, aux)
 }
 
 function media( n, p ){
@@ -74,9 +75,31 @@ btBinomial.onclick = () => {
     let n = eleN.value
     let p = eleP.value / 100
     let q = eleQ.value / 100
-    let k = eleK.value
+    let k = eleK.value.split(',')
 
-    tabP.innerHTML = (prob2(n, k, p, q) * 100).toFixed(2)
+    // if( k == 0 ){
+    //     k = 1
+    // }
+
+    console.log('k '+ k)
+    console.log('split', k)
+
+    let soma = 0
+    for( i of k){
+        // i = k
+        if ( i == 0 ){
+            i = 1
+        }
+        i = Number(i)
+        n1 = prob(n, i)
+        console.log('n1 ', n1)
+        //nao entend o pq desse -1 mas sempre somava +1
+        i -= 1
+        soma += (prob2(n1 ,n, i, p, q) * 100)
+    }
+    console.log('soma ', soma.toFixed(2))
+    //(prob2(n, k, p, q) * 100).toFixed(2)
+    tabP.innerHTML = soma.toFixed(2)
     tabM.innerHTML = media(n, p).toFixed(2)
     tabD.innerHTML = desvioPadra(n, p, q).toFixed(2)
     tabV.innerHTML = (( desvioPadra(n, p, q) / media(n, p) ) * 100).toFixed(2)
