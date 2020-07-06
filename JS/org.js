@@ -170,26 +170,45 @@ function geraGrafico(localGrafico, tipoGrafico, vetorValores, titulo, legenda){
 
 function geraGrafico2(localGrafico, tipoGrafico, vetorValores, titulo, legenda){
 	var graphic = document.getElementById(localGrafico).getContext('2d');
+	let vetorComDados = nomeVariavel.value.split(';')
 
 	var myChart = new Chart(graphic, {
-		type: 'horizontalBar',
+		type: tipoGrafico,
     data: {
         labels: legenda,
         datasets: [{
             label: `${titulo}`,
-            data: valorPorc,
+            data: vetorValores,
             backgroundColor: corGraphic,
             borderColor: corGraphic,
-			borderWidth: 1,
-			datalabels: {
-				align: tipoPorc,
-				anchor: tipoPorc
-			}
-		}],
+            borderWidth: 1
+        }]
     },
-    
+    options: {
+        scales: {
+            xAxes: [{
+            	display:false,
+            	barPercentage: 1.3,
+            	// categoryPercentage: 1.3,
+            	ticks: {
+		            max: 50,
+		            min: 0,
+		            stepSize: 50,
+        		}
+            	// stacked: true,
+            	// width: 100,
+            	
+            	
+            },{
+            	display: true,
+            	categoryPercentage: 1.3,
+            }],
+
+           
+        }
+    }
 });
-} 
+}
 
 // essa funcao que é chamada quando clica no botao 
 function gerarTabela(){
@@ -625,7 +644,7 @@ function gerarTabela(){
 			legendaGrafico.push(`${ Math.round(min) }`)
 			vetorResulGraf.push(`${ Math.round(min + ic) }`)
 			valorPorc.push(`${ fiP.toFixed(2) }`)
-			tipoGrafico = 'line'
+			tipoGrafico = 'bar'
 			tipoPorc = 'end'
 			
 		}
