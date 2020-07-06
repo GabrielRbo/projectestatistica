@@ -383,7 +383,7 @@ function gerarTabela(){
 			vetorResulGraf.push(`${sep[item]}`)
 			valorPorc.push(`${ (sep[item] / totPor * 100).toFixed(2)  }`)
 			tipoGrafico = 'pie'
-			tipoPorc = 'end'
+			tipoPorc = 'center'
 
 			if( sep[item] > moda ){
 				moda1 = []
