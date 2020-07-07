@@ -42,7 +42,12 @@ function fatorial(n){
 } 
 
 function prob (n, k){
-    return fatorial(n) / ( fatorial(n - k) * fatorial(k) )
+    if ( k == 0 ){
+        r = 1
+    }else {
+        r = fatorial(n) / ( fatorial(n - k) * fatorial(k) )
+    }
+    return r
 }
 
 function prob2(n1,n, k, p, q){
@@ -77,32 +82,26 @@ btBinomial.onclick = () => {
     let q = eleQ.value / 100
     let k = eleK.value.split(',')
 
-    // if( k == 0 ){
-    //     k = 1
-    // }
-
-    console.log('k '+ k)
-    console.log('split', k)
-
-    let soma = 0
-    for( i of k){
-        // i = k
-        if ( i == 0 ){
-            i = 1
-        }
-        i = Number(i)
-        n1 = prob(n, i)
-        console.log('n1 ', n1)
-        //nao entend o pq desse -1 mas sempre somava +1
-        i -= 1
-        soma += (prob2(n1 ,n, i, p, q) * 100)
-    }
-    console.log('soma ', soma.toFixed(2))
-    //(prob2(n, k, p, q) * 100).toFixed(2)
-    tabP.innerHTML = soma.toFixed(2)
     tabM.innerHTML = media(n, p).toFixed(2)
     tabD.innerHTML = desvioPadra(n, p, q).toFixed(2)
     tabV.innerHTML = (( desvioPadra(n, p, q) / media(n, p) ) * 100).toFixed(2)
+
+    let soma = 0
+    for( j of k){
+        // j = k
+        console.log('vendo k ', k)
+        
+        j = Number(j)
+        let n1 = prob(n, j)
+        console.log('n1 ', n1)
+        console.log('j ', j)
+        //nao entend o pq desse -1 mas sempre somava +1
+        // j -= 1
+        soma += (prob2(n1 ,n, j, p, q) * 100)
+    }
+    //(prob2(n, k, p, q) * 100).toFixed(2)
+    console.log('soma ', soma)
+    tabP.innerHTML = soma.toFixed(2)
 
 }
 
