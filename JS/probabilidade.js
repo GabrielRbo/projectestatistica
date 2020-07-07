@@ -244,11 +244,11 @@ btUniform.onclick = () => {
     if( sel.selectedIndex == 0 ){
         //maior que
         let iitt
-        if( inter.value == '' ){
-            iitt =  Number(pMax.value) - Number(pMin.value)
-        }else {
-            iitt = inter.value
-        }
+        // if( inter.value == '' ){
+        iitt =  Number(pMax.value) - Number(inter.value)
+        // }else {
+        //     iitt = inter.value
+        // }
         prob = 1 / ( Number(pMax.value) - Number(pMin.value) ) * iitt
         prob = prob * 100
         probab.innerHTML = (prob).toFixed(2)
